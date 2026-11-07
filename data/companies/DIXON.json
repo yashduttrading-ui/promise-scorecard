@@ -158,8 +158,8 @@
       "note": "The first statement (“sub-4%, 4%”) is read as 3.9–4%, the range management gave in the next call."
     },
     {
-      "id": "fy27-revenue",
-      "topic": "Revenue",
+      "id": "fy27-ex-vivo-revenue",
+      "topic": "Revenue excluding Vivo",
       "period": "FY27",
       "deadline": "2027-03-31",
       "target": {
@@ -179,7 +179,8 @@
       ],
       "outcome": {
         "status": "pending"
-      }
+      },
+      "note": "Target excludes the Vivo business, which audited consolidated revenue will include. Not in the peer comparison; to score it, the audited Vivo contribution has to be taken out first."
     }
   ]
 }
