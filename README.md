@@ -27,7 +27,10 @@ Rows with `row_type` = `audited` are the reported financials. They cite the audi
 
 Reported revenue = revenue from operations (not total income), ₹ million ÷ 10 = ₹ crore. EBITDA isn't an audited line, so it is rebuilt as profit before tax (before exceptional items) + finance cost + depreciation − other income, ÷ revenue from operations. PAT margin = profit for the year ÷ revenue from operations. Working-capital days and milestones aren't in audited results and come from the call.
 
-The same "How scored" line is shown on every card on the site. `scripts/verify.py` does step 2 automatically for every row.
+The same "How scored" line is shown under each promise on the site (expand "Quotes, source pages and working"). `scripts/verify.py` does step 2 automatically for every row.
 
 ### Evidence pack
 `cd scripts && python3 evidence.py KAYNES` writes `checks/KAYNES_evidence.html` (not committed, ~5 MB): every quote next to an image of its PDF page with the quote highlighted, plus the verdict maths and tick boxes.
+
+### What was left out
+`cd scripts && python3 candidates.py KAYNES` writes `checks/KAYNES_forward_statements.csv`. It lists every sentence a management speaker said on the calls that contains a number and a forward-looking word, and marks the ones the scorecard uses (`used_in_claim`). Read the unused rows to check whether a material promise was missed. The site links to this file and to a CSV of the promise table.

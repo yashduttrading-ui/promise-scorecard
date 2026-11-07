@@ -593,7 +593,15 @@
     "quote": "the EMS space where we are playing has grown at about 18% last year or is expected to grow in this year 16% to 18%.",
     "speaker": "N. Muthukumar"
    },
-   "note": "Management put EMS market growth at 16–18% for this year (May 2026 call), so 2x implies roughly 32–36%. That arithmetic is ours, not management's."
+   "note": "Management put EMS market growth at 16–18% for this year (May 2026 call), so 2x implies roughly 32–36%. That arithmetic is ours, not management's.",
+   "implied": {
+    "base": "fy26-revenue",
+    "market_growth_pct": [
+     16,
+     18
+    ],
+    "multiple": 2
+   }
   },
   {
    "id": "semicon2-chennai-q3fy27",
