@@ -147,7 +147,8 @@ def page(title, body, desc):
 <style>{CSS}</style></head><body><main>{body}</main>
 <footer>Built by <a href="https://app.avanisai.com">Avanis</a>. Facts only: what management said on the record and what was later reported. Not investment advice.</footer>
 <script>document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{{document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
-document.querySelectorAll('.card').forEach(c=>c.hidden=b.dataset.f!=='all'&&c.dataset.v!==b.dataset.f)}})</script></body></html>"""
+document.querySelectorAll('.card').forEach(c=>c.hidden=b.dataset.f!=='all'&&c.dataset.v!==b.dataset.f)}});
+document.querySelectorAll('.watch li>a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.filters button[data-f=all]').click()))</script></body></html>"""
 
 def company_page(c):
     today = c["checked_on"]
