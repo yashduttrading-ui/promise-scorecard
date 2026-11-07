@@ -32,5 +32,8 @@ The same "How scored" line is shown under each promise on the site (expand "Quot
 ### Evidence pack
 `cd scripts && python3 evidence.py KAYNES` writes `checks/KAYNES_evidence.html` (not committed, ~5 MB): every quote next to an image of its PDF page with the quote highlighted, plus the verdict maths and tick boxes.
 
+### Rules and quarterly updates
+Scoring rules are in `RULES.md`. For a new quarter: `cd scripts && python3 new_quarter.py KAYNES 2026-11-14 <transcript-url>` downloads the transcript, registers it in the sources file and prints only the sentences a reviewer needs to read.
+
 ### What was left out
 `cd scripts && python3 candidates.py KAYNES` writes `checks/KAYNES_forward_statements.csv`. It lists every sentence a management speaker said on the calls that contains a number and a forward-looking word, and marks the ones the scorecard uses (`used_in_claim`). Read the unused rows to check whether a material promise was missed. The site links to this file and to a CSV of the promise table.
