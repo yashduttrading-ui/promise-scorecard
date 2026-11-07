@@ -1,712 +1,713 @@
 {
- "symbol": "KAYNES",
- "name": "Kaynes Technology India",
- "exchange": "NSE",
- "ir_page": "https://www.kaynestechnology.co.in/investors.html",
- "checked_on": "2026-11-07",
- "claims": [
-  {
-   "id": "fy24-revenue",
-   "topic": "Revenue",
-   "period": "FY24",
-   "deadline": "2024-03-31",
-   "target": {
-    "kind": "range",
-    "low": 1700,
-    "high": 1800,
-    "unit": "₹ cr"
-   },
-   "said": [
+  "symbol": "KAYNES",
+  "name": "Kaynes Technology India",
+  "short": "Kaynes",
+  "exchange": "NSE",
+  "ir_page": "https://www.kaynestechnology.co.in/investors.html",
+  "checked_on": "2026-11-07",
+  "claims": [
     {
-     "doc": "2023-02-07",
-     "page": 7,
-     "role": "first",
-     "quote": "for guidance, INR 1,700 crores is what we will be doing on the top line.",
-     "speaker": "Ramesh Kannan"
+      "id": "fy24-revenue",
+      "topic": "Revenue",
+      "period": "FY24",
+      "deadline": "2024-03-31",
+      "target": {
+        "kind": "range",
+        "low": 1700,
+        "high": 1800,
+        "unit": "₹ cr"
+      },
+      "said": [
+        {
+          "doc": "2023-02-07",
+          "page": 7,
+          "role": "first",
+          "quote": "for guidance, INR 1,700 crores is what we will be doing on the top line.",
+          "speaker": "Ramesh Kannan"
+        },
+        {
+          "doc": "2023-11-04",
+          "page": 5,
+          "role": "reaffirmed",
+          "quote": "we have guided for a revenue of INR1,700 crores to INR1,800 crores for the year and we are very confident of achieving this number.",
+          "speaker": "Jairam Sampath"
+        }
+      ],
+      "outcome": {
+        "value": 1804.6,
+        "unit": "₹ cr",
+        "doc": "2024-05-17",
+        "page": 4,
+        "quote": "the consolidated total revenues was INR18,046 million, representing 60.3% year-on-year growth.",
+        "speaker": "Jairam Sampath",
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 2,
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2024 (Audited)",
+          "measure": "revenue",
+          "lines": {
+            "rev": [
+              "Revenue from operations",
+              "18,046.19"
+            ]
+          }
+        }
+      }
     },
     {
-     "doc": "2023-11-04",
-     "page": 5,
-     "role": "reaffirmed",
-     "quote": "we have guided for a revenue of INR1,700 crores to INR1,800 crores for the year and we are very confident of achieving this number.",
-     "speaker": "Jairam Sampath"
-    }
-   ],
-   "outcome": {
-    "value": 1804.6,
-    "unit": "₹ cr",
-    "doc": "2024-05-17",
-    "page": 4,
-    "quote": "the consolidated total revenues was INR18,046 million, representing 60.3% year-on-year growth.",
-    "speaker": "Jairam Sampath",
-    "audited": {
-     "doc": "audited-FY25",
-     "page": 2,
-     "table": "Consolidated financial results (₹ million)",
-     "column": "Year ended 31 March 2024 (Audited)",
-     "measure": "revenue",
-     "lines": {
-      "rev": [
-       "Revenue from operations",
-       "18,046.19"
-      ]
-     }
-    }
-   }
-  },
-  {
-   "id": "fy24-ebitda",
-   "topic": "EBITDA margin",
-   "period": "FY24",
-   "deadline": "2024-03-31",
-   "target": {
-    "kind": "min",
-    "low": 15,
-    "unit": "%"
-   },
-   "said": [
-    {
-     "doc": "2023-11-04",
-     "page": 5,
-     "role": "first",
-     "quote": "We expect EBITDA to recover during the second half of the year and expect it to close around 15% for FY '24",
-     "speaker": "Jairam Sampath"
-    }
-   ],
-   "outcome": {
-    "value": 14.1,
-    "unit": "%",
-    "doc": "2024-05-17",
-    "page": 4,
-    "quote": "The EBITDA margin for the quarter and for the full year stood at 14.9% and 14.1% respectively.",
-    "speaker": "Jairam Sampath",
-    "audited": {
-     "doc": "audited-FY25",
-     "page": 2,
-     "table": "Consolidated financial results (₹ million)",
-     "column": "Year ended 31 March 2024 (Audited)",
-     "measure": "ebitda_margin",
-     "lines": {
-      "pbt": [
-       "Profit before tax",
-       "2,315.69"
+      "id": "fy24-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY24",
+      "deadline": "2024-03-31",
+      "target": {
+        "kind": "min",
+        "low": 15,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2023-11-04",
+          "page": 5,
+          "role": "first",
+          "quote": "We expect EBITDA to recover during the second half of the year and expect it to close around 15% for FY '24",
+          "speaker": "Jairam Sampath"
+        }
       ],
-      "fc": [
-       "Finance cost",
-       "533.74"
-      ],
-      "da": [
-       "Depreciation and amortization expense",
-       "251.41"
-      ],
-      "oi": [
-       "Other income",
-       "559.16"
-      ],
-      "rev": [
-       "Revenue from operations",
-       "18,046.19"
-      ]
-     }
-    }
-   }
-  },
-  {
-   "id": "fy24-pat",
-   "topic": "PAT margin",
-   "period": "FY24",
-   "deadline": "2024-03-31",
-   "target": {
-    "kind": "min",
-    "low": 10,
-    "unit": "%"
-   },
-   "said": [
-    {
-     "doc": "2023-11-04",
-     "page": 5,
-     "role": "first",
-     "quote": "PAT we are aiming for a double-digit percentage for FY '24.",
-     "speaker": "Jairam Sampath"
-    }
-   ],
-   "outcome": {
-    "value": 10.2,
-    "unit": "%",
-    "doc": "2024-05-17",
-    "page": 4,
-    "quote": "for the 12-months it was 10.2% respectively.",
-    "speaker": "Jairam Sampath",
-    "audited": {
-     "doc": "audited-FY25",
-     "page": 2,
-     "table": "Consolidated financial results (₹ million)",
-     "column": "Year ended 31 March 2024 (Audited)",
-     "measure": "pat_margin",
-     "lines": {
-      "pat": [
-       "Profit for the year",
-       "1,832.89"
-      ],
-      "rev": [
-       "Revenue from operations",
-       "18,046.19"
-      ]
-     }
-    }
-   }
-  },
-  {
-   "id": "fy25-revenue",
-   "topic": "Revenue",
-   "period": "FY25",
-   "deadline": "2025-03-31",
-   "target": {
-    "kind": "min",
-    "low": 3000,
-    "unit": "₹ cr"
-   },
-   "said": [
-    {
-     "doc": "2024-07-27",
-     "page": 3,
-     "role": "first",
-     "quote": "we will meet and exceed our estimates of 30,000 million of revenue and corresponding EBITDA margin targeting at 15% for FY '25.",
-     "speaker": "Ramesh Kannan"
+      "outcome": {
+        "value": 14.1,
+        "unit": "%",
+        "doc": "2024-05-17",
+        "page": 4,
+        "quote": "The EBITDA margin for the quarter and for the full year stood at 14.9% and 14.1% respectively.",
+        "speaker": "Jairam Sampath",
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 2,
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2024 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "2,315.69"
+            ],
+            "fc": [
+              "Finance cost",
+              "533.74"
+            ],
+            "da": [
+              "Depreciation and amortization expense",
+              "251.41"
+            ],
+            "oi": [
+              "Other income",
+              "559.16"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "18,046.19"
+            ]
+          }
+        }
+      }
     },
     {
-     "doc": "2024-10-04",
-     "page": 17,
-     "role": "reaffirmed",
-     "quote": "we will retain our whatever guidance we have given, INR3,000 crores on top line and 15% on EBITDA.",
-     "speaker": "Jairam Sampath"
+      "id": "fy24-pat",
+      "topic": "PAT margin",
+      "period": "FY24",
+      "deadline": "2024-03-31",
+      "target": {
+        "kind": "min",
+        "low": 10,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2023-11-04",
+          "page": 5,
+          "role": "first",
+          "quote": "PAT we are aiming for a double-digit percentage for FY '24.",
+          "speaker": "Jairam Sampath"
+        }
+      ],
+      "outcome": {
+        "value": 10.2,
+        "unit": "%",
+        "doc": "2024-05-17",
+        "page": 4,
+        "quote": "for the 12-months it was 10.2% respectively.",
+        "speaker": "Jairam Sampath",
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 2,
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2024 (Audited)",
+          "measure": "pat_margin",
+          "lines": {
+            "pat": [
+              "Profit for the year",
+              "1,832.89"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "18,046.19"
+            ]
+          }
+        }
+      }
     },
     {
-     "doc": "2025-01-28",
-     "page": 9,
-     "role": "cut",
-     "value": 2800,
-     "quote": "So revenue guidance will be somewhere between INR2,800 crores and INR2,900 crores.",
-     "speaker": "Jairam Sampath"
-    }
-   ],
-   "outcome": {
-    "value": 2721.8,
-    "unit": "₹ cr",
-    "doc": "2025-05-16",
-    "page": 3,
-    "quote": "For the 12 months ended March 2025, consolidated total revenues from operations were INR27,218 million, representing a 51% year- on-year growth.",
-    "speaker": "Jairam Sampath",
-    "audited": {
-     "doc": "audited-FY25",
-     "page": 2,
-     "table": "Consolidated financial results (₹ million)",
-     "column": "Year ended 31 March 2025 (Audited)",
-     "measure": "revenue",
-     "lines": {
-      "rev": [
-       "Revenue from operations",
-       "27,217.52"
-      ]
-     }
-    }
-   }
-  },
-  {
-   "id": "fy25-ebitda",
-   "topic": "EBITDA margin",
-   "period": "FY25",
-   "deadline": "2025-03-31",
-   "target": {
-    "kind": "min",
-    "low": 15,
-    "unit": "%"
-   },
-   "said": [
-    {
-     "doc": "2024-07-27",
-     "page": 3,
-     "role": "first",
-     "quote": "corresponding EBITDA margin targeting at 15% for FY '25.",
-     "speaker": "Ramesh Kannan"
-    }
-   ],
-   "outcome": {
-    "value": 15.1,
-    "unit": "%",
-    "doc": "2025-05-16",
-    "page": 3,
-    "quote": "The EBITDA margin for Q4 '25 quarter and FY '25 stood at 17.1% and 15.1%, respectively.",
-    "speaker": "Jairam Sampath",
-    "audited": {
-     "doc": "audited-FY25",
-     "page": 2,
-     "table": "Consolidated financial results (₹ million)",
-     "column": "Year ended 31 March 2025 (Audited)",
-     "measure": "ebitda_margin",
-     "lines": {
-      "pbt": [
-       "Profit before tax",
-       "3,716.24"
+      "id": "fy25-revenue",
+      "topic": "Revenue",
+      "period": "FY25",
+      "deadline": "2025-03-31",
+      "target": {
+        "kind": "min",
+        "low": 3000,
+        "unit": "₹ cr"
+      },
+      "said": [
+        {
+          "doc": "2024-07-27",
+          "page": 3,
+          "role": "first",
+          "quote": "we will meet and exceed our estimates of 30,000 million of revenue and corresponding EBITDA margin targeting at 15% for FY '25.",
+          "speaker": "Ramesh Kannan"
+        },
+        {
+          "doc": "2024-10-04",
+          "page": 17,
+          "role": "reaffirmed",
+          "quote": "we will retain our whatever guidance we have given, INR3,000 crores on top line and 15% on EBITDA.",
+          "speaker": "Jairam Sampath"
+        },
+        {
+          "doc": "2025-01-28",
+          "page": 9,
+          "role": "cut",
+          "value": 2800,
+          "quote": "So revenue guidance will be somewhere between INR2,800 crores and INR2,900 crores.",
+          "speaker": "Jairam Sampath"
+        }
       ],
-      "fc": [
-       "Finance cost",
-       "1,012.98"
-      ],
-      "da": [
-       "Depreciation and amortization expense",
-       "447.40"
-      ],
-      "oi": [
-       "Other income",
-       "1,069.63"
-      ],
-      "rev": [
-       "Revenue from operations",
-       "27,217.52"
-      ]
-     }
-    }
-   }
-  },
-  {
-   "id": "fy26-revenue",
-   "topic": "Revenue",
-   "period": "FY26",
-   "deadline": "2026-03-31",
-   "target": {
-    "kind": "min",
-    "low": 4350,
-    "unit": "₹ cr"
-   },
-   "said": [
-    {
-     "doc": "2025-05-16",
-     "page": 13,
-     "role": "first",
-     "quote": "60% minimum growth will take us to about INR4,350 crores or so.",
-     "speaker": "Jairam Sampath"
+      "outcome": {
+        "value": 2721.8,
+        "unit": "₹ cr",
+        "doc": "2025-05-16",
+        "page": 3,
+        "quote": "For the 12 months ended March 2025, consolidated total revenues from operations were INR27,218 million, representing a 51% year- on-year growth.",
+        "speaker": "Jairam Sampath",
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 2,
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2025 (Audited)",
+          "measure": "revenue",
+          "lines": {
+            "rev": [
+              "Revenue from operations",
+              "27,217.52"
+            ]
+          }
+        }
+      }
     },
     {
-     "doc": "2025-07-31",
-     "page": 5,
-     "role": "reaffirmed",
-     "quote": "So we maintain our what I call the guidance of INR4,500 crores plus on a consol basis.",
-     "speaker": "Jairam Sampath"
+      "id": "fy25-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY25",
+      "deadline": "2025-03-31",
+      "target": {
+        "kind": "min",
+        "low": 15,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2024-07-27",
+          "page": 3,
+          "role": "first",
+          "quote": "corresponding EBITDA margin targeting at 15% for FY '25.",
+          "speaker": "Ramesh Kannan"
+        }
+      ],
+      "outcome": {
+        "value": 15.1,
+        "unit": "%",
+        "doc": "2025-05-16",
+        "page": 3,
+        "quote": "The EBITDA margin for Q4 '25 quarter and FY '25 stood at 17.1% and 15.1%, respectively.",
+        "speaker": "Jairam Sampath",
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 2,
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2025 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "3,716.24"
+            ],
+            "fc": [
+              "Finance cost",
+              "1,012.98"
+            ],
+            "da": [
+              "Depreciation and amortization expense",
+              "447.40"
+            ],
+            "oi": [
+              "Other income",
+              "1,069.63"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "27,217.52"
+            ]
+          }
+        }
+      }
     },
     {
-     "doc": "2026-05-14",
-     "page": 7,
-     "role": "cut",
-     "value": 4000,
-     "quote": "In the third quarter, I think we have turned out to saying about INR4,000 crores because of a few delays.",
-     "speaker": "N. Muthukumar"
-    }
-   ],
-   "outcome": {
-    "value": 3626.4,
-    "unit": "₹ cr",
-    "doc": "2026-05-14",
-    "page": 2,
-    "quote": "Our total revenue stood at INR3,626.4 crores, reflecting a year-on-year growth of 33.2%.",
-    "speaker": "Ramesh Kunhikannan",
-    "audited": {
-     "doc": "audited-FY26",
-     "page": 12,
-     "table": "Consolidated financial results (₹ million)",
-     "column": "Year ended 31 March 2026 (Audited)",
-     "measure": "revenue",
-     "lines": {
-      "rev": [
-       "Revenue from operations",
-       "36,263.54"
-      ]
-     }
-    }
-   },
-   "management_response": {
-    "doc": "2026-05-14",
-    "page": 7,
-    "quote": "we sincerely understand and appreciate that the guidance what we have given, we could not meet.",
-    "speaker": "N. Muthukumar"
-   }
-  },
-  {
-   "id": "fy26-ebitda",
-   "topic": "EBITDA margin",
-   "period": "FY26",
-   "deadline": "2026-03-31",
-   "target": {
-    "kind": "min",
-    "low": 15.6,
-    "unit": "%"
-   },
-   "said": [
-    {
-     "doc": "2025-05-16",
-     "page": 14,
-     "role": "first",
-     "quote": "this year, FY '26, we are saying that core business will yield another 50 basis points, so about 15.6% EBITDA.",
-     "speaker": "Jairam Sampath"
-    }
-   ],
-   "outcome": {
-    "value": 15.8,
-    "unit": "%",
-    "doc": "2026-05-14",
-    "page": 2,
-    "quote": "This translates into an EBITDA margin of 15.8% for FY '26",
-    "speaker": "Ramesh Kunhikannan",
-    "audited": {
-     "doc": "audited-FY26",
-     "page": 12,
-     "table": "Consolidated financial results (₹ million)",
-     "column": "Year ended 31 March 2026 (Audited)",
-     "measure": "ebitda_margin",
-     "lines": {
-      "pbt": [
-       "Profit before exceptional items and tax",
-       "5,068.90"
+      "id": "fy26-revenue",
+      "topic": "Revenue",
+      "period": "FY26",
+      "deadline": "2026-03-31",
+      "target": {
+        "kind": "min",
+        "low": 4350,
+        "unit": "₹ cr"
+      },
+      "said": [
+        {
+          "doc": "2025-05-16",
+          "page": 13,
+          "role": "first",
+          "quote": "60% minimum growth will take us to about INR4,350 crores or so.",
+          "speaker": "Jairam Sampath"
+        },
+        {
+          "doc": "2025-07-31",
+          "page": 5,
+          "role": "reaffirmed",
+          "quote": "So we maintain our what I call the guidance of INR4,500 crores plus on a consol basis.",
+          "speaker": "Jairam Sampath"
+        },
+        {
+          "doc": "2026-05-14",
+          "page": 7,
+          "role": "cut",
+          "value": 4000,
+          "quote": "In the third quarter, I think we have turned out to saying about INR4,000 crores because of a few delays.",
+          "speaker": "N. Muthukumar"
+        }
       ],
-      "fc": [
-       "Finance cost",
-       "1,169.27"
-      ],
-      "da": [
-       "Depreciation and amortization expense",
-       "1,070.68"
-      ],
-      "oi": [
-       "Other income",
-       "1,568.30"
-      ],
-      "rev": [
-       "Revenue from operations",
-       "36,263.54"
-      ]
-     }
-    }
-   }
-  },
-  {
-   "id": "nwc-70s",
-   "topic": "Working capital days",
-   "period": "by FY25",
-   "deadline": "2025-03-31",
-   "target": {
-    "kind": "max",
-    "high": 79,
-    "unit": "days"
-   },
-   "said": [
-    {
-     "doc": "2023-05-20",
-     "page": 6,
-     "role": "first",
-     "quote": "should go in the 70s from whatever 98 days, 99 days that we are seeing now.",
-     "speaker": "Jairam Sampath"
-    }
-   ],
-   "outcome": {
-    "value": 87,
-    "unit": "days",
-    "doc": "2025-05-16",
-    "page": 4,
-    "quote": "Net working capital days for the year 2025 were at 87 days",
-    "speaker": "Jairam Sampath"
-   }
-  },
-  {
-   "id": "nwc-fy26",
-   "topic": "Working capital days",
-   "period": "FY26",
-   "deadline": "2026-03-31",
-   "target": {
-    "kind": "max",
-    "high": 70,
-    "unit": "days"
-   },
-   "said": [
-    {
-     "doc": "2025-07-31",
-     "page": 11,
-     "role": "first",
-     "quote": "Sir, our target is 70 days without any extraordinary items.",
-     "speaker": "Jairam Sampath"
-    }
-   ],
-   "outcome": {
-    "value": 122,
-    "unit": "days",
-    "doc": "2026-05-14",
-    "page": 4,
-    "quote": "We realized our working capital days stood at around 122 days in FY '26",
-    "speaker": "N. Muthukumar"
-   },
-   "management_response": {
-    "doc": "2026-05-14",
-    "page": 4,
-    "quote": "the working capital days reducing from 83 days in FY '24 to 53 days in FY '26.",
-    "speaker": "N. Muthukumar"
-   },
-   "note": "Management says the smart-meter business drove the consolidated number; core EMS was 53 days."
-  },
-  {
-   "id": "osat-production",
-   "topic": "OSAT (chip assembly) commercial production",
-   "period": "by end FY25",
-   "deadline": "2025-03-31",
-   "target": {
-    "kind": "milestone"
-   },
-   "said": [
-    {
-     "doc": "2023-11-04",
-     "page": 15,
-     "role": "first",
-     "quote": "And by the end of FY '25, we would have commenced, what is known as commercial production.",
-     "speaker": "Jairam Sampath"
+      "outcome": {
+        "value": 3626.4,
+        "unit": "₹ cr",
+        "doc": "2026-05-14",
+        "page": 2,
+        "quote": "Our total revenue stood at INR3,626.4 crores, reflecting a year-on-year growth of 33.2%.",
+        "speaker": "Ramesh Kunhikannan",
+        "audited": {
+          "doc": "audited-FY26",
+          "page": 12,
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2026 (Audited)",
+          "measure": "revenue",
+          "lines": {
+            "rev": [
+              "Revenue from operations",
+              "36,263.54"
+            ]
+          }
+        }
+      },
+      "management_response": {
+        "doc": "2026-05-14",
+        "page": 7,
+        "quote": "we sincerely understand and appreciate that the guidance what we have given, we could not meet.",
+        "speaker": "N. Muthukumar"
+      }
     },
     {
-     "doc": "2025-07-31",
-     "page": 3,
-     "role": "moved",
-     "quote": "is on track to be fully operational for commercial production by December '25.",
-     "speaker": "Ramesh Kannan"
-    }
-   ],
-   "outcome": {
-    "status": "late",
-    "doc": "2026-05-14",
-    "page": 3,
-    "quote": "Unit 1 is fully operational, and Unit 2 is in commercialization by Q2 '26.",
-    "first_seen": "2026-05-14",
-    "speaker": "Ramesh Kunhikannan",
-    "done": true
-   }
-  },
-  {
-   "id": "osat-pcb-revenue",
-   "topic": "OSAT + PCB first revenue",
-   "period": "Q4 FY26",
-   "deadline": "2026-03-31",
-   "target": {
-    "kind": "milestone"
-   },
-   "said": [
-    {
-     "doc": "2025-01-28",
-     "page": 3,
-     "role": "first",
-     "quote": "revenue start target as Q4 FY '26 for both OSAT and HDI PC boards.",
-     "speaker": "Ramesh Kannan"
-    }
-   ],
-   "outcome": {
-    "status": "late",
-    "doc": "2026-08-08",
-    "page": 13,
-    "quote": "we already told from third quarter the revenue starts in both the business",
-    "first_seen": "2026-08-08",
-    "speaker": "N. Muthukumar",
-    "done": false,
-    "new_deadline": "2026-12-31"
-   },
-   "note": "As of the Aug 2026 call, first revenue is expected from Q3 FY27."
-  },
-  {
-   "id": "usd1bn-fy28",
-   "topic": "US$1bn revenue",
-   "period": "FY28",
-   "deadline": "2028-03-31",
-   "target": {
-    "kind": "milestone"
-   },
-   "said": [
-    {
-     "doc": "2024-07-27",
-     "page": 16,
-     "role": "first",
-     "quote": "So, this $1 billion is our aspirational target as of FY’28, sir.",
-     "speaker": "Jairam Sampath"
+      "id": "fy26-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY26",
+      "deadline": "2026-03-31",
+      "target": {
+        "kind": "min",
+        "low": 15.6,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2025-05-16",
+          "page": 14,
+          "role": "first",
+          "quote": "this year, FY '26, we are saying that core business will yield another 50 basis points, so about 15.6% EBITDA.",
+          "speaker": "Jairam Sampath"
+        }
+      ],
+      "outcome": {
+        "value": 15.8,
+        "unit": "%",
+        "doc": "2026-05-14",
+        "page": 2,
+        "quote": "This translates into an EBITDA margin of 15.8% for FY '26",
+        "speaker": "Ramesh Kunhikannan",
+        "audited": {
+          "doc": "audited-FY26",
+          "page": 12,
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2026 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before exceptional items and tax",
+              "5,068.90"
+            ],
+            "fc": [
+              "Finance cost",
+              "1,169.27"
+            ],
+            "da": [
+              "Depreciation and amortization expense",
+              "1,070.68"
+            ],
+            "oi": [
+              "Other income",
+              "1,568.30"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "36,263.54"
+            ]
+          }
+        }
+      }
     },
     {
-     "doc": "2025-11-05",
-     "page": 17,
-     "role": "reaffirmed",
-     "quote": "So $1 billion by FY '28, certainly visibility is there, and we are sure we'll do it.",
-     "speaker": "Jairam Sampath"
-    }
-   ],
-   "outcome": {
-    "status": "pending"
-   }
-  },
-  {
-   "id": "osat-pcb-fy27",
-   "topic": "OSAT + PCB revenue",
-   "period": "FY27",
-   "deadline": "2027-03-31",
-   "target": {
-    "kind": "range",
-    "low": 450,
-    "high": 500,
-    "unit": "₹ cr"
-   },
-   "said": [
+      "id": "nwc-70s",
+      "topic": "Working capital days",
+      "period": "by FY25",
+      "deadline": "2025-03-31",
+      "target": {
+        "kind": "max",
+        "high": 79,
+        "unit": "days"
+      },
+      "said": [
+        {
+          "doc": "2023-05-20",
+          "page": 6,
+          "role": "first",
+          "quote": "should go in the 70s from whatever 98 days, 99 days that we are seeing now.",
+          "speaker": "Jairam Sampath"
+        }
+      ],
+      "outcome": {
+        "value": 87,
+        "unit": "days",
+        "doc": "2025-05-16",
+        "page": 4,
+        "quote": "Net working capital days for the year 2025 were at 87 days",
+        "speaker": "Jairam Sampath"
+      }
+    },
     {
-     "doc": "2026-08-08",
-     "page": 14,
-     "role": "first",
-     "quote": "INR450 to INR500 crores, which is what we are targeting at this point in time, we are on the target.",
-     "speaker": "N. Muthukumar"
-    }
-   ],
-   "outcome": {
-    "status": "pending"
-   }
-  },
-  {
-   "id": "fy27-revenue-growth",
-   "topic": "Revenue growth",
-   "period": "FY27",
-   "deadline": "2027-03-31",
-   "target": {
-    "kind": "milestone",
-    "label": "2x the EMS market's growth"
-   },
-   "said": [
+      "id": "nwc-fy26",
+      "topic": "Working capital days",
+      "period": "FY26",
+      "deadline": "2026-03-31",
+      "target": {
+        "kind": "max",
+        "high": 70,
+        "unit": "days"
+      },
+      "said": [
+        {
+          "doc": "2025-07-31",
+          "page": 11,
+          "role": "first",
+          "quote": "Sir, our target is 70 days without any extraordinary items.",
+          "speaker": "Jairam Sampath"
+        }
+      ],
+      "outcome": {
+        "value": 122,
+        "unit": "days",
+        "doc": "2026-05-14",
+        "page": 4,
+        "quote": "We realized our working capital days stood at around 122 days in FY '26",
+        "speaker": "N. Muthukumar"
+      },
+      "management_response": {
+        "doc": "2026-05-14",
+        "page": 4,
+        "quote": "the working capital days reducing from 83 days in FY '24 to 53 days in FY '26.",
+        "speaker": "N. Muthukumar"
+      },
+      "note": "Management says the smart-meter business drove the consolidated number; core EMS was 53 days."
+    },
     {
-     "doc": "2026-08-08",
-     "page": 13,
-     "role": "first",
-     "quote": "revenue growth, we have committed the 2x of the market growth.",
-     "speaker": "N. Muthukumar"
-    }
-   ],
-   "outcome": {
-    "status": "pending"
-   },
-   "context": {
-    "doc": "2026-05-14",
-    "page": 10,
-    "quote": "the EMS space where we are playing has grown at about 18% last year or is expected to grow in this year 16% to 18%.",
-    "speaker": "N. Muthukumar"
-   },
-   "note": "Management put EMS market growth at 16–18% for this year (May 2026 call), so 2x implies roughly 32–36%. That arithmetic is ours, not management's."
-  },
-  {
-   "id": "semicon2-chennai-q3fy27",
-   "topic": "Semicon Unit 2 + Chennai PCB plant operational",
-   "period": "Q3 FY27",
-   "deadline": "2026-12-31",
-   "target": {
-    "kind": "milestone"
-   },
-   "said": [
+      "id": "osat-production",
+      "topic": "OSAT (chip assembly) commercial production",
+      "period": "by end FY25",
+      "deadline": "2025-03-31",
+      "target": {
+        "kind": "milestone"
+      },
+      "said": [
+        {
+          "doc": "2023-11-04",
+          "page": 15,
+          "role": "first",
+          "quote": "And by the end of FY '25, we would have commenced, what is known as commercial production.",
+          "speaker": "Jairam Sampath"
+        },
+        {
+          "doc": "2025-07-31",
+          "page": 3,
+          "role": "moved",
+          "quote": "is on track to be fully operational for commercial production by December '25.",
+          "speaker": "Ramesh Kannan"
+        }
+      ],
+      "outcome": {
+        "status": "late",
+        "doc": "2026-05-14",
+        "page": 3,
+        "quote": "Unit 1 is fully operational, and Unit 2 is in commercialization by Q2 '26.",
+        "first_seen": "2026-05-14",
+        "speaker": "Ramesh Kunhikannan",
+        "done": true
+      }
+    },
     {
-     "doc": "2026-08-08",
-     "page": 3,
-     "role": "first",
-     "quote": "Both Kaynes Semicon Unit 2 and Kaynes Circuit Chennai remain on the track to be operational by quarter 3 FY27",
-     "speaker": "Ramesh Kunhikannan"
-    }
-   ],
-   "outcome": {
-    "status": "pending"
-   }
-  },
-  {
-   "id": "metering-cash-q3fy27",
-   "topic": "Metering cash flow gap (₹600 cr) mostly closed",
-   "period": "by Q3 FY27",
-   "deadline": "2026-12-31",
-   "target": {
-    "kind": "milestone",
-    "label": "70–80% of ₹600 cr recovered"
-   },
-   "said": [
+      "id": "osat-pcb-revenue",
+      "topic": "OSAT + PCB first revenue",
+      "period": "Q4 FY26",
+      "deadline": "2026-03-31",
+      "target": {
+        "kind": "milestone"
+      },
+      "said": [
+        {
+          "doc": "2025-01-28",
+          "page": 3,
+          "role": "first",
+          "quote": "revenue start target as Q4 FY '26 for both OSAT and HDI PC boards.",
+          "speaker": "Ramesh Kannan"
+        }
+      ],
+      "outcome": {
+        "status": "late",
+        "doc": "2026-08-08",
+        "page": 13,
+        "quote": "we already told from third quarter the revenue starts in both the business",
+        "first_seen": "2026-08-08",
+        "speaker": "N. Muthukumar",
+        "done": false,
+        "new_deadline": "2026-12-31"
+      },
+      "note": "As of the Aug 2026 call, first revenue is expected from Q3 FY27."
+    },
     {
-     "doc": "2026-05-14",
-     "page": 11,
-     "role": "first",
-     "quote": "the INR600 crores by end of the third quarter will come to around we will try to work on the positive, but at least 70% to 80% of this will come down for sure.",
-     "speaker": "N. Muthukumar"
-    }
-   ],
-   "outcome": {
-    "status": "pending"
-   }
-  },
-  {
-   "id": "cash-positive-fy27",
-   "topic": "Cash-flow positive",
-   "period": "FY27",
-   "deadline": "2027-03-31",
-   "target": {
-    "kind": "milestone"
-   },
-   "said": [
+      "id": "usd1bn-fy28",
+      "topic": "US$1bn revenue",
+      "period": "FY28",
+      "deadline": "2028-03-31",
+      "target": {
+        "kind": "milestone"
+      },
+      "said": [
+        {
+          "doc": "2024-07-27",
+          "page": 16,
+          "role": "first",
+          "quote": "So, this $1 billion is our aspirational target as of FY’28, sir.",
+          "speaker": "Jairam Sampath"
+        },
+        {
+          "doc": "2025-11-05",
+          "page": 17,
+          "role": "reaffirmed",
+          "quote": "So $1 billion by FY '28, certainly visibility is there, and we are sure we'll do it.",
+          "speaker": "Jairam Sampath"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
+    },
     {
-     "doc": "2026-08-08",
-     "page": 5,
-     "role": "first",
-     "quote": "by end of the financial year we'll turn the cash positive, we are pretty confident on that.",
-     "speaker": "N. Muthukumar"
-    }
-   ],
-   "outcome": {
-    "status": "pending"
-   }
-  },
-  {
-   "id": "osat-pcb-production-fy27",
-   "topic": "OSAT + PCB production value",
-   "period": "FY27",
-   "deadline": "2027-03-31",
-   "target": {
-    "kind": "milestone",
-    "label": "PCB ₹300–400 cr, OSAT ₹250–300 cr"
-   },
-   "said": [
+      "id": "osat-pcb-fy27",
+      "topic": "OSAT + PCB revenue",
+      "period": "FY27",
+      "deadline": "2027-03-31",
+      "target": {
+        "kind": "range",
+        "low": 450,
+        "high": 500,
+        "unit": "₹ cr"
+      },
+      "said": [
+        {
+          "doc": "2026-08-08",
+          "page": 14,
+          "role": "first",
+          "quote": "INR450 to INR500 crores, which is what we are targeting at this point in time, we are on the target.",
+          "speaker": "N. Muthukumar"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
+    },
     {
-     "doc": "2026-05-14",
-     "page": 18,
-     "role": "first",
-     "quote": "I'm sure and certain we will do a good number of PCB of around INR300 crores to INR400 crores, and OSAT of around INR250 crores to INR300 crores.",
-     "speaker": "Ramesh Kunhikannan"
-    }
-   ],
-   "outcome": {
-    "status": "pending"
-   },
-   "note": "This is production value. The separate ₹450–500 cr figure below is revenue."
-  },
-  {
-   "id": "rail-fy27",
-   "topic": "Rail business growth",
-   "period": "FY27",
-   "deadline": "2027-03-31",
-   "target": {
-    "kind": "milestone",
-    "label": "20–25%"
-   },
-   "said": [
+      "id": "fy27-revenue-growth",
+      "topic": "Revenue growth",
+      "period": "FY27",
+      "deadline": "2027-03-31",
+      "target": {
+        "kind": "milestone",
+        "label": "2x the EMS market's growth"
+      },
+      "said": [
+        {
+          "doc": "2026-08-08",
+          "page": 13,
+          "role": "first",
+          "quote": "revenue growth, we have committed the 2x of the market growth.",
+          "speaker": "N. Muthukumar"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      },
+      "context": {
+        "doc": "2026-05-14",
+        "page": 10,
+        "quote": "the EMS space where we are playing has grown at about 18% last year or is expected to grow in this year 16% to 18%.",
+        "speaker": "N. Muthukumar"
+      },
+      "note": "Management put EMS market growth at 16–18% for this year (May 2026 call), so 2x implies roughly 32–36%. That arithmetic is ours, not management's."
+    },
     {
-     "doc": "2026-05-14",
-     "page": 13,
-     "role": "first",
-     "quote": "So rail business, I'm expecting this year to grow by around 20%, 25% because of these coming in.",
-     "speaker": "Ramesh Kunhikannan"
+      "id": "semicon2-chennai-q3fy27",
+      "topic": "Semicon Unit 2 + Chennai PCB plant operational",
+      "period": "Q3 FY27",
+      "deadline": "2026-12-31",
+      "target": {
+        "kind": "milestone"
+      },
+      "said": [
+        {
+          "doc": "2026-08-08",
+          "page": 3,
+          "role": "first",
+          "quote": "Both Kaynes Semicon Unit 2 and Kaynes Circuit Chennai remain on the track to be operational by quarter 3 FY27",
+          "speaker": "Ramesh Kunhikannan"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "metering-cash-q3fy27",
+      "topic": "Metering cash flow gap (₹600 cr) mostly closed",
+      "period": "by Q3 FY27",
+      "deadline": "2026-12-31",
+      "target": {
+        "kind": "milestone",
+        "label": "70–80% of ₹600 cr recovered"
+      },
+      "said": [
+        {
+          "doc": "2026-05-14",
+          "page": 11,
+          "role": "first",
+          "quote": "the INR600 crores by end of the third quarter will come to around we will try to work on the positive, but at least 70% to 80% of this will come down for sure.",
+          "speaker": "N. Muthukumar"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "cash-positive-fy27",
+      "topic": "Cash-flow positive",
+      "period": "FY27",
+      "deadline": "2027-03-31",
+      "target": {
+        "kind": "milestone"
+      },
+      "said": [
+        {
+          "doc": "2026-08-08",
+          "page": 5,
+          "role": "first",
+          "quote": "by end of the financial year we'll turn the cash positive, we are pretty confident on that.",
+          "speaker": "N. Muthukumar"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "osat-pcb-production-fy27",
+      "topic": "OSAT + PCB production value",
+      "period": "FY27",
+      "deadline": "2027-03-31",
+      "target": {
+        "kind": "milestone",
+        "label": "PCB ₹300–400 cr, OSAT ₹250–300 cr"
+      },
+      "said": [
+        {
+          "doc": "2026-05-14",
+          "page": 18,
+          "role": "first",
+          "quote": "I'm sure and certain we will do a good number of PCB of around INR300 crores to INR400 crores, and OSAT of around INR250 crores to INR300 crores.",
+          "speaker": "Ramesh Kunhikannan"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      },
+      "note": "This is production value. The separate ₹450–500 cr figure below is revenue."
+    },
+    {
+      "id": "rail-fy27",
+      "topic": "Rail business growth",
+      "period": "FY27",
+      "deadline": "2027-03-31",
+      "target": {
+        "kind": "milestone",
+        "label": "20–25%"
+      },
+      "said": [
+        {
+          "doc": "2026-05-14",
+          "page": 13,
+          "role": "first",
+          "quote": "So rail business, I'm expecting this year to grow by around 20%, 25% because of these coming in.",
+          "speaker": "Ramesh Kunhikannan"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
     }
-   ],
-   "outcome": {
-    "status": "pending"
-   }
+  ],
+  "next_results": {
+    "label": "Q2 FY27 results (Jul–Sep 2026)",
+    "due": "2026-11-14"
   }
- ],
- "next_results": {
-  "label": "Q2 FY27 results (Jul–Sep 2026)",
-  "due": "2026-11-14"
- }
 }

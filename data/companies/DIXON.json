@@ -1,0 +1,185 @@
+{
+  "symbol": "DIXON",
+  "short": "Dixon",
+  "name": "Dixon Technologies (India)",
+  "exchange": "NSE",
+  "ir_page": "https://www.dixoninfo.com/investors",
+  "checked_on": "2026-11-07",
+  "claims": [
+    {
+      "id": "fy24-revenue",
+      "topic": "Revenue",
+      "period": "FY24",
+      "deadline": "2024-03-31",
+      "target": {
+        "kind": "range",
+        "low": 19000,
+        "high": 21000,
+        "unit": "₹ cr"
+      },
+      "said": [
+        {
+          "doc": "2023-01-25",
+          "page": 12,
+          "role": "first",
+          "quote": "next year, it can be somewhere between Rs. 19,000 crores to Rs. 21,000 crores kind of revenues.",
+          "speaker": "Saurabh Gupta"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 13,
+          "unit": "lakh",
+          "table": "Consolidated financial results (₹ lakh)",
+          "column": "Year ended 31-Mar-24 (Audited)",
+          "measure": "revenue",
+          "lines": {
+            "rev": [
+              "Revenue from operations",
+              "17,69,090"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "fy24-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY24",
+      "deadline": "2024-03-31",
+      "target": {
+        "kind": "range",
+        "low": 4.2,
+        "high": 4.5,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2023-05-23",
+          "page": 15,
+          "role": "first",
+          "quote": "broadly you should look at a range of almost 4.2 to 4.5% kind of range for this financial year.",
+          "speaker": "Saurabh Gupta"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 13,
+          "unit": "lakh",
+          "table": "Consolidated financial results (₹ lakh)",
+          "column": "Year ended 31-Mar-24 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "49,383"
+            ],
+            "fc": [
+              "Finance costs",
+              "7,472"
+            ],
+            "da": [
+              "Depreciation and amortisation expense",
+              "16,188"
+            ],
+            "oi": [
+              "Other income",
+              "2,256"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "17,69,090"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "fy25-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY25",
+      "deadline": "2025-03-31",
+      "target": {
+        "kind": "range",
+        "low": 3.9,
+        "high": 4.0,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2024-05-15",
+          "page": 14,
+          "role": "first",
+          "quote": "on the EBITDA margins, you can assume a similar level of sub-4%, 4%",
+          "speaker": "Saurabh Gupta"
+        },
+        {
+          "doc": "2024-07-30",
+          "page": 14,
+          "role": "reaffirmed",
+          "quote": "In a similar range 3.9%, 4% kind of levels.",
+          "speaker": "Saurabh Gupta"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY26",
+          "page": 16,
+          "unit": "lakh",
+          "table": "Consolidated financial results (₹ lakh)",
+          "column": "Year ended 31-Mar-25 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "1,10,982"
+            ],
+            "fc": [
+              "Finance costs",
+              "15,435"
+            ],
+            "da": [
+              "Depreciation and amortisation expense",
+              "28,102"
+            ],
+            "oi": [
+              "Other income",
+              "2,023"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "38,86,010"
+            ]
+          }
+        }
+      },
+      "note": "The first statement (“sub-4%, 4%”) is read as 3.9–4%, the range management gave in the next call."
+    },
+    {
+      "id": "fy27-revenue",
+      "topic": "Revenue",
+      "period": "FY27",
+      "deadline": "2027-03-31",
+      "target": {
+        "kind": "min",
+        "low": 56000,
+        "high": null,
+        "unit": "₹ cr"
+      },
+      "said": [
+        {
+          "doc": "2026-05-12",
+          "page": 14,
+          "role": "first",
+          "quote": "Next year, we are targeting almost INR56,000 crores without the Vivo numbers, and mobile volume being flat.",
+          "speaker": "Atul Lall"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
+    }
+  ]
+}

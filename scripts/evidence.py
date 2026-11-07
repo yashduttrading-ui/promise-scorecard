@@ -1,7 +1,7 @@
 """Write checks/<SYMBOL>_evidence.html: every quote next to an image of its PDF page, quote highlighted."""
 import base64, html, sys
 import pymupdf
-from common import ROOT, RAW, load_company, all_citations, norm, FORMULA
+from common import ROOT, RAW, load_company, all_citations, norm, FORMULA, _source
 from build import verdict, rule_text, target_text, fmt, date_label
 
 E = html.escape
@@ -11,7 +11,10 @@ def highlight_page(symbol, cit):
         pg = d[cit["page"] - 1]
         hits = []
         if "lines" in cit:
-            tp = pg.get_textpage_ocr(dpi=300, full=True) if len(pg.get_text().strip()) < 50 else None
+            src = _source(symbol, cit["doc"])
+            dpi = cit.get("ocr_dpi") or src.get("ocr_dpi", 300)
+            ocr = cit.get("ocr_dpi") or len(pg.get_text().strip()) < 50 or cit["page"] in src.get("ocr_pages", [])
+            tp = pg.get_textpage_ocr(dpi=dpi, full=True) if ocr else None
             for lbl, v in cit["lines"].values():
                 hits += pg.search_for(v, textpage=tp)
         else:

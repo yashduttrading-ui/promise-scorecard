@@ -1,5 +1,5 @@
 """Render data/companies/*.json into a static site in site/."""
-import datetime as dt, html, json, sys
+import datetime as dt, html, json, re, sys
 from common import ROOT, load_company, is_audited, FORMULA
 
 E = html.escape
@@ -7,6 +7,7 @@ OUT = ROOT / "site"
 
 def fmt(v, unit):
     if unit == "%": return f"{v:g}%"
+    if unit == "% growth": return f"{v:g}% growth"
     if unit == "days": return f"{v:g} days"
     return f"₹{v:,.0f} cr" if v >= 100 else f"₹{v:g} cr"
 
@@ -52,7 +53,7 @@ def gap(cl):
     if "value" not in o or t["kind"] == "milestone": return ""
     ref = t["high"] if t["kind"] == "max" else t["low"]
     d = o["value"] - ref
-    if t.get("unit") == "%": return f"{d:+.1f} pts vs target"
+    if t.get("unit") in ("%", "% growth"): return f"{d:+.1f} pts vs target"
     return f"{d / ref * 100:+.0f}% vs target"
 
 def date_label(d):
@@ -67,13 +68,13 @@ def cite(c, cit):
 def audited_block(c, o):
     a = o["audited"]
     rows = "".join(f'<tr><td>{E(lbl)}</td><td>{E(v)}</td></tr>' for lbl, v in a["lines"].values())
-    said = (f'Matches the {fmt(o["call_value"], o["unit"])} management stated on the call.' if o["call_value"] == o["value"]
+    said = ("" if not o.get("quote") else f'Matches the {fmt(o["call_value"], o["unit"])} management stated on the call.' if o["call_value"] == o["value"]
             else f'Management said {fmt(o["call_value"], o["unit"])} on the call; the audited figure is used.')
     return (f'<div class="q aud"><div class="qhead"><span class="tag t-audited">Audited</span>{cite(c, a)}</div>'
             f'<div class="audcol">{E(a["table"])}, column “{E(a["column"])}”</div>'
             f'<table>{rows}</table><p class="calc">{E(FORMULA[a["measure"]])}<br><b>{E(a["working"])}</b>. {E(said)}</p></div>')
 
-ROLE = {"first": "Guided", "reaffirmed": "Reaffirmed", "cut": "Cut", "moved": "Moved"}
+ROLE = {"first": "Guided", "reaffirmed": "Reaffirmed", "raised": "Raised", "cut": "Cut", "moved": "Moved"}
 
 def quote_block(c, cit, label):
     who = f' — {E(cit["speaker"])}' if cit.get("speaker") else ""
@@ -84,11 +85,11 @@ def claim_card(c, cl, today):
     vk, vl = verdict(cl, today)
     o = cl["outcome"]
     said = "".join(quote_block(c, s, ROLE[s["role"]]) for s in cl["said"])
-    if o.get("quote"):
+    if o.get("quote") or o.get("audited"):
         val = f'<b>{fmt(o["value"], o["unit"])}</b> <span class="gap">{gap(cl)}</span>' if "value" in o else ""
         aud = audited_block(c, o) if o.get("audited") else ""
         label = "Said on call" if aud else "Reported" if o.get("done", True) else "Latest update"
-        result = f'<div class="result"><div class="rhead">{"What happened" if o.get("done", True) else "Where it stands"} {val}</div>{aud}{quote_block(c, o, label)}</div>'
+        result = f'<div class="result"><div class="rhead">{"What happened" if o.get("done", True) else "Where it stands"} {val}</div>{aud}{quote_block(c, o, label) if o.get("quote") else ""}</div>'
     else:
         result = f'<div class="result pend">Deadline {date_label(cl["deadline"])}. Nothing to score yet.</div>'
     resp = quote_block(c, cl["management_response"], "Management on it") if cl.get("management_response") else ""
@@ -102,7 +103,7 @@ def claim_card(c, cl, today):
 def revenue_chart(c):
     rows = []
     for cl in c["claims"]:
-        if cl["topic"] != "Revenue" or "value" not in cl["outcome"]: continue
+        if cl["topic"] != "Revenue" or cl["target"].get("unit") != "₹ cr" or "value" not in cl["outcome"]: continue
         first = cl["target"]["low"]
         cut = next((s["value"] for s in cl["said"] if s["role"] == "cut"), None)
         rows.append((cl["period"], first, cut, cl["outcome"]["value"]))
@@ -185,7 +186,7 @@ def company_page(c):
 <div class="filters">{filters}</div>{cards}
 <section class="panel method"><h2>How this is built</h2><ul>
 <li><b>Sources:</b> {len(calls)} earnings-call transcripts from {date_label(first)} to {date_label(last)} and {n_aud} audited annual results filings, all downloaded from <a href="{E(c["ir_page"])}">the company's investor page</a>. No third-party data.</li>
-<li><b>Reported numbers:</b> revenue and margins are taken from the audited consolidated results (₹ million, converted to ₹ crore), with the working shown on each card. Revenue means revenue from operations, excluding other income. Working-capital days and milestones are not in audited results, so they come from what management said on the call.</li>
+<li><b>Reported numbers:</b> revenue and margins are taken from the audited consolidated results (converted to ₹ crore), with the working shown on each card. Revenue means revenue from operations, excluding other income. Working-capital days and milestones are not in audited results, so they come from what management said on the call.</li>
 <li><b>What counts as a promise:</b> a specific, checkable number or milestone said by management (not by analysts) with a time frame.</li>
 <li><b>Verdict:</b> scored against the <i>first</i> guidance given. Later cuts are shown, not hidden. Delivered = met or beat the target. Late = milestone happened after the stated date, or not yet.</li>
 <li><b>Checked by script:</b> every quote is tested word-for-word against the cited PDF page, and the speaker is checked against the transcript. Every audited number is checked to appear on the cited page of the filing.</li>
@@ -202,8 +203,54 @@ def index_page(cos):
                  f'<div class="score">{vs.count("met")}/{scored} kept</div></a>')
     body = f"""<section class="hero"><div class="eyebrow">Avanis Promise Scorecard</div><h1>Did management do what they said?</h1>
 <p class="lede">Free scorecards for Indian listed companies. What management guided on earnings calls, what the audited results show, and the exact page for both. No login, no API key.</p></section>
-<section class="list">{rows}</section>"""
+<section class="list">{rows}</section>
+{'<p class="lede"><a href="compare.html">Compare EMS peers side by side →</a></p>' if len(cos) > 1 else ""}"""
     return page("Avanis Promise Scorecard", body, "What Indian managements guided vs what they delivered, cited to the page.")
+
+HEADLINE = re.compile(r"^fy(2[4-7])-(revenue|ebitda)")
+SHORT = {"met": "Hit", "missed": "Miss", "late": "Late", "pending": "Open"}
+SLOTS = [(f"FY{y}", m) for y in (24, 25, 26, 27) for m in ("Revenue", "EBITDA margin")]
+
+def headline(c):
+    """Company-level full-year revenue and EBITDA-margin targets: the only claims compared across companies."""
+    out = {}
+    for cl in c["claims"]:
+        m = HEADLINE.match(cl["id"])
+        if m and cl["target"]["kind"] != "milestone":
+            out[(cl["period"], "Revenue" if m.group(2) == "revenue" else "EBITDA margin")] = cl
+    return out
+
+def compare_page(cos):
+    head = "".join(f"<th>{p}<br><span>{'Rev' if m == 'Revenue' else 'EBITDA'}</span></th>" for p, m in SLOTS)
+    rows = ""
+    for c in sorted(cos, key=lambda c: c["name"]):
+        h, today = headline(c), c["checked_on"]
+        vs = [verdict(cl, today)[0] for cl in h.values()]
+        due = [v for v in vs if v != "pending"]
+        cells = ""
+        for slot in SLOTS:
+            cl = h.get(slot)
+            if not cl:
+                cells += '<td class="none">–</td>'; continue
+            vk, vl = verdict(cl, today)
+            cells += (f'<td><a class="pill v-{vk}" href="{c["symbol"].lower()}.html#{E(cl["id"])}" '
+                      f'title="{vl}. Target {E(target_text(cl["target"]))}">{SHORT.get(vk, vl)}</a></td>')
+        rate = f"{vs.count('met')}/{len(due)}" if due else "–"
+        rows += (f'<tr><th><a href="{c["symbol"].lower()}.html">{E(c.get("short", c["name"]))}</a></th><td class="n">{len(h)}</td>'
+                 f'<td class="n"><b>{rate}</b></td>{cells}</tr>')
+    body = f"""<nav><a href="index.html">← All companies</a></nav>
+<section class="hero"><div class="eyebrow">Avanis Promise Scorecard · EMS peers</div><h1>Which EMS managements hit their own guidance?</h1>
+<p class="lede">Company-level revenue and EBITDA-margin guidance for FY24–FY27, scored the same way for every company: against the <i>first</i> target given, using audited consolidated results. Click any cell for the quotes and the filing page.</p></section>
+<section class="panel"><div class="tablewrap"><table class="compare"><thead><tr><th>Company</th><th>Targets<br>given</th><th>Hit /<br>due</th>{head}</tr></thead>
+<tbody>{rows}</tbody></table></div>
+<p class="note">“–” means management gave no company-level, full-year target for that year (segment, customer or multi-year targets are not counted). Fewer targets is not better or worse; it means less to hold management to.</p></section>
+<section class="panel method"><h2>Same rules for every company</h2><ul>
+<li><b>Included:</b> consolidated revenue (₹ crore or % growth) and EBITDA margin for a named fiscal year, said by management on an earnings call.</li>
+<li><b>Excluded:</b> segment, subsidiary, customer, quarterly, run-rate and multi-year targets, and other promises (these stay on each company's own page).</li>
+<li><b>Scored on:</b> audited consolidated results. EBITDA = profit before tax and exceptional items + finance cost + depreciation − other income, ÷ revenue from operations. Growth = revenue from operations ÷ previous year's − 1.</li>
+<li><b>Verdict:</b> Delivered if the audited figure meets the bottom of the first target. Later raises and cuts are shown on the card but do not change the target.</li></ul></section>"""
+    return page("EMS peers: guidance vs audited results | Avanis Promise Scorecard", body,
+                "Kaynes, Dixon, Syrma SGS, Amber and Cyient DLM: company-level guidance scored against audited results, cited to the page.")
 
 def main(symbols):
     OUT.mkdir(exist_ok=True)
@@ -211,6 +258,8 @@ def main(symbols):
     for c in cos:
         (OUT / f"{c['symbol'].lower()}.html").write_text(company_page(c))
     (OUT / "index.html").write_text(index_page(cos))
+    if len(cos) > 1:
+        (OUT / "compare.html").write_text(compare_page(cos))
     print("built", [c["symbol"] for c in cos])
 
 if __name__ == "__main__":

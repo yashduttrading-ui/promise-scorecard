@@ -1,0 +1,88 @@
+[
+  {
+    "date": "2023-07-21",
+    "title": "Earnings call transcript 2023-07-21",
+    "file": "CYIENTDLM_2023-07-21.pdf",
+    "url": "https://www.cyientdlm.com/images/pdf/Earnings_Conference_Call_Transcript_Q1_FY24.pdf",
+    "sha256": "0b3ca8ee0ab40bf3bac9557280672f9c2c4cea29cc0c45f476efe07b1458466a",
+    "bytes": 437619
+  },
+  {
+    "date": "2023-10-16",
+    "title": "Earnings call transcript 2023-10-16",
+    "file": "CYIENTDLM_2023-10-16.pdf",
+    "url": "https://nsearchives.nseindia.com/corporate/CYIENTDLM_19102023113857_TRANSCRIPT_OF_INVESTORCALL_q2.pdf",
+    "sha256": "701b933772e0b50b633bc3f1d121176b491949d5387abd3daf148f85332ff4fb",
+    "bytes": 1138061
+  },
+  {
+    "date": "2024-07-22",
+    "title": "Earnings call transcript 2024-07-22",
+    "file": "CYIENTDLM_2024-07-22.pdf",
+    "url": "https://www.cyientdlm.com/images/pdf/Transcript%20of%20Investor%20Conference%20Call%20-%20Q1FY25.pdf",
+    "sha256": "b724669e76d793e55af5c6de65d017e709844fecb7fe2a2340ea7090dcfec148",
+    "bytes": 366704
+  },
+  {
+    "date": "2024-10-21",
+    "title": "Earnings call transcript 2024-10-21",
+    "file": "CYIENTDLM_2024-10-21.pdf",
+    "url": "https://www.cyientdlm.com/images/pdf/Transcript%20of%20Investor%20Conference%20Call%20-%20Q2FY25.pdf",
+    "sha256": "24748d2a3081c59da35c52854a803983ee00c99853cf122775ff25b5f54e7d45",
+    "bytes": 439545
+  },
+  {
+    "date": "2025-04-22",
+    "title": "Earnings call transcript 2025-04-22",
+    "file": "CYIENTDLM_2025-04-22.pdf",
+    "url": "https://www.cyientdlm.com/images/pdf/Transcript%20of%20Investor%20Conference%20Call%20-%20Q4FY25.pdf",
+    "sha256": "1edcdc95709ceeed98f6cce693ed8c85150c63b86c52fc56432c5dba9a03d9b5",
+    "bytes": 429435
+  },
+  {
+    "date": "2025-07-22",
+    "title": "Earnings call transcript 2025-07-22",
+    "file": "CYIENTDLM_2025-07-22.pdf",
+    "url": "https://www.cyientdlm.com/images/pdf/Transcript%20of%20Investor%20Conference%20Call%20-%20Q1FY26.pdf",
+    "sha256": "e5f2b25f8781a54f48afba0964d964831adb519fff06ba28f3531b097acf7dd4",
+    "bytes": 394631
+  },
+  {
+    "date": "2026-01-20",
+    "title": "Earnings call transcript 2026-01-20",
+    "file": "CYIENTDLM_2026-01-20.pdf",
+    "url": "https://www.cyientdlm.com/images/pdf/CyientDLM-Earnings-Jan20-2026-Transcript.pdf",
+    "sha256": "36cce40f60a73460ba5e35ccef90ea2e6f8b2be58502c93af70ebabddac2f9ba",
+    "bytes": 370560
+  },
+  {
+    "date": "2026-10-15",
+    "title": "Earnings call transcript 2026-10-15",
+    "file": "CYIENTDLM_2026-10-15.pdf",
+    "url": "https://www.cyientdlm.com/images/pdf/Transcript%20of%20the%20Earnings%20call%20Q2%20FY27.pdf",
+    "sha256": "0ef722084d15370cea9e13d9b13c64a0fb14945fd235aa77820c754d4ad7737c",
+    "bytes": 478925
+  },
+  {
+    "key": "audited-FY25",
+    "kind": "audited",
+    "label": "Audited results FY25",
+    "date": "2025-04-22",
+    "title": "Audited financial results Q4 FY2024-25 (consolidated, with FY24 comparative)",
+    "file": "CYIENTDLM_audited-FY25.pdf",
+    "url": "https://www.cyientdlm.com/images/pdf/Financial%20Results%20-%20Q4FY25.pdf",
+    "sha256": "ea4fda77007c549ce065af11f2edcb7f86d678f530708930b940b745895e7551",
+    "bytes": 4453842
+  },
+  {
+    "key": "audited-FY26",
+    "kind": "audited",
+    "label": "Audited results FY26",
+    "date": "2026-04-21",
+    "title": "Audited financial results Q4 FY2025-26 (consolidated, with FY25 comparative)",
+    "file": "CYIENTDLM_audited-FY26.pdf",
+    "url": "https://www.cyientdlm.com/images/pdf/Financial%20Results%20Q4%20FY26.pdf",
+    "sha256": "9fc481cf60a3ddb6aa6b008af3ee20c9b8e89f7b253302ab20706acb9f232063",
+    "bytes": 1722247
+  }
+]
