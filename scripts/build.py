@@ -151,7 +151,7 @@ def by_metric(c, today):
         rows += (f'<tr><td>{g}</td><td class="n">{f"{kept} of {len(due)}" if due else "—"}</td><td>{res}</td>'
                  f'<td class="n">{len(cls) - len(due) or "—"}</td></tr>')
     return ('<section class="ledger metric"><table><thead><tr><th>Metric</th><th>Kept</th><th>Each due result vs first target</th>'
-            f'<th>Still open</th></tr></thead><tbody>{rows}</tbody></table></section>')
+            f'<th>Not yet due</th></tr></thead><tbody>{rows}</tbody></table></section>')
 
 def revenue_rows(c):
     return [cl for cl in c["claims"] if group(cl) == "Revenue" and "value" in cl["outcome"]]
