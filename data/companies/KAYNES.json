@@ -564,7 +564,8 @@
     "speaker": "Ramesh Kunhikannan",
     "quote": "Like the rest of the industry, we saw some disruption this quarter from the escalation in the West Asia affecting equipment imports and component logistics globally, not specific to Kaynes. This led to minor timing slippage in our OSAT and PCB ramp-up schedule.",
     "caveat": "Said in August 2026 about disruption in Q1 FY27, after the March 2026 deadline had already passed. The May 2026 call, which covered Q4 FY26, gave no reason for first revenue not starting that quarter, so this is tagged not explained."
-   }
+   },
+   "watch": "First revenue was promised for Q4 FY26, then moved to Q3 FY27. Any OSAT or PCB revenue this quarter would be the first; another move would be the second slip."
   },
   {
    "id": "usd1bn-fy28",
@@ -616,7 +617,8 @@
    ],
    "outcome": {
     "status": "pending"
-   }
+   },
+   "watch": "₹450–500 cr for FY27 from OSAT and PCB together, with first revenue only from Q3. Listen for whether the full-year number is kept with half the year gone."
   },
   {
    "id": "fy27-revenue-growth",
@@ -653,7 +655,8 @@
      18
     ],
     "multiple": 2
-   }
+   },
+   "watch": "Listen for whether “2x the EMS market’s growth” is repeated, restated in rupees, or trimmed. The arithmetic below turns it into a rupee range."
   },
   {
    "id": "semicon2-chennai-q3fy27",
@@ -674,7 +677,8 @@
    ],
    "outcome": {
     "status": "pending"
-   }
+   },
+   "watch": "Both plants were said to be on track for Q3 FY27, i.e. by December. Listen for a confirmed date or a new one."
   },
   {
    "id": "metering-cash-q3fy27",
@@ -696,7 +700,8 @@
    ],
    "outcome": {
     "status": "pending"
-   }
+   },
+   "watch": "70–80% of the ₹600 cr gap, i.e. ₹420–480 cr, was to be recovered by December. Listen for the cash collected so far against that."
   },
   {
    "id": "cash-positive-fy27",
@@ -717,7 +722,8 @@
    ],
    "outcome": {
     "status": "pending"
-   }
+   },
+   "watch": "Promised on the Aug 2026 call. Listen for H1 operating cash flow and receivables."
   },
   {
    "id": "osat-pcb-production-fy27",
