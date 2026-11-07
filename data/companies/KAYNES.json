@@ -565,7 +565,7 @@
     "quote": "Like the rest of the industry, we saw some disruption this quarter from the escalation in the West Asia affecting equipment imports and component logistics globally, not specific to Kaynes. This led to minor timing slippage in our OSAT and PCB ramp-up schedule.",
     "caveat": "Said in August 2026 about disruption in Q1 FY27, after the March 2026 deadline had already passed. The May 2026 call, which covered Q4 FY26, gave no reason for first revenue not starting that quarter, so this is tagged not explained."
    },
-   "watch": "First revenue was promised for Q4 FY26, then moved to Q3 FY27. Any OSAT or PCB revenue this quarter would be the first; another move would be the second slip."
+   "watch": "First revenue was promised for Q4 FY26, then moved to Q3 FY27. Any OSAT or PCB revenue this quarter would be the first; a new date would be the third given."
   },
   {
    "id": "usd1bn-fy28",
@@ -618,7 +618,13 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "₹450–500 cr for FY27 from OSAT and PCB together, with first revenue only from Q3. Listen for whether the full-year number is kept with half the year gone."
+   "watch": "₹450–500 cr for FY27 from OSAT and PCB together, with first revenue only from Q3 (same answer, p.13–14). Listen for whether the full-year number is kept with half the year gone.",
+   "context": {
+    "doc": "2026-08-08",
+    "page": 13,
+    "quote": "As far as OSAT and PCB is concerned, we already told from third quarter the revenue starts in both the business, and we have committed a full year revenue of totally INR500 crores between both,",
+    "speaker": "N. Muthukumar"
+   }
   },
   {
    "id": "fy27-revenue-growth",
@@ -723,7 +729,7 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "Promised on the Aug 2026 call. Listen for H1 operating cash flow and receivables."
+   "watch": "Promised on the Aug 2026 call for the full year, after a negative ₹248 cr operating cash flow in Q1 (same call, p.13). Listen for whether it is repeated with half the year gone."
   },
   {
    "id": "osat-pcb-production-fy27",
