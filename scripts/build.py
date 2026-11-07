@@ -272,8 +272,10 @@ def selection(c, n_calls):
     if not f.exists(): return ""
     rows = list(csv.DictReader(f.open()))
     used = sum(bool(r["used_in_claim"]) for r in rows)
+    other = sum(bool(r["cited_as_outcome_or_context"]) and not r["used_in_claim"] for r in rows)
     return (f'<li><b>Checking for cherry-picking:</b> a script lists every sentence management said on the {n_calls} calls that contains a number '
-            f'and a forward-looking word (will, expect, target, guidance, plan…): {len(rows)} sentences, {used} of them used here. '
+            f'and a forward-looking word (will, expect, target, guidance, plan…): {len(rows)} sentences. {used} are quoted here as promises '
+            f'and {other} as outcomes or context. '
             f'<a href="{f.name}" download>Download all {len(rows)}</a> to see what was left out and judge for yourself.</li>')
 
 def company_page(c):

@@ -26,7 +26,7 @@ def turns(pages):
 
 def main(symbol):
     c = load_company(symbol)
-    used = [(cid, norm(cit["quote"])) for cid, kind, cit in all_citations(c) if kind != "audited"]
+    used = [(cid, kind, norm(cit["quote"])) for cid, kind, cit in all_citations(c) if kind != "audited"]
     rows, matched = [], set()
     for key, src in sorted(c["sources"].items()):
         if is_audited(c, key): continue
@@ -36,17 +36,19 @@ def main(symbol):
             surname = who.split()[-1].upper() if who else ""
             if mgmt is not None and surname not in mgmt: continue
             for s in re.split(r"(?<=[.?!])\s+", text):
-                ids = sorted({cid for cid, q in used if q in s or (len(s) > 30 and s in q) or q[:60] in s})
-                if not ids and (len(s.split()) < 6 or not re.search(r"\d", s) or not FORWARD.search(s)): continue
+                hits = [(cid, kind) for cid, kind, q in used if q in s or (len(s) > 30 and s in q) or q[:60] in s]
+                ids = sorted({cid for cid, kind in hits if kind == "said"})
+                other = sorted({f"{cid} ({kind})" for cid, kind in hits if kind != "said"})
+                if not hits and (len(s.split()) < 6 or not re.search(r"\d", s) or not FORWARD.search(s)): continue
                 matched.update(i for i in ids)
-                rows.append([src["date"], page, who if mgmt is not None else "Company document", "; ".join(ids), s,
+                rows.append([src["date"], page, who if mgmt is not None else "Company document", "; ".join(ids), "; ".join(other), s,
                              f'{src["url"]}#page={page}'])
     out = ROOT / "checks" / f"{symbol}_forward_statements.csv"
     with out.open("w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["call_date", "page", "speaker", "used_in_claim", "sentence", "open_pdf_at_page"])
+        w.writerow(["call_date", "page", "speaker", "used_in_claim", "cited_as_outcome_or_context", "sentence", "open_pdf_at_page"])
         w.writerows(rows)
-    print(f"{len(rows)} sentences, {sum(bool(r[3]) for r in rows)} used; claims matched {len(matched)}/{len(c['claims'])}")
+    print(f"{len(rows)} sentences, {sum(bool(r[3]) for r in rows)} used as promises, {sum(bool(r[4]) and not r[3] for r in rows)} as other citations; claims matched {len(matched)}/{len(c['claims'])}")
     print("unmatched claims:", [cl["id"] for cl in c["claims"] if cl["id"] not in matched])
 
 if __name__ == "__main__":
