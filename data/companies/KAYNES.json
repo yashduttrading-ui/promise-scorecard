@@ -109,6 +109,13 @@
       ]
      }
     }
+   },
+   "reason": {
+    "tag": "execution",
+    "doc": "2024-01-31",
+    "page": 5,
+    "speaker": "Management",
+    "quote": "This is primarily because a lot of new projects have been onboarded. If you notice, we are growing at a very high rate. So all the new orders in the first few quarters, by the time we manage all the materials, supply chain and proper pricing and forecast, etcetera, it takes a bit of time. And that's why the gross margin appears to be a tad lower."
    }
   },
   {
@@ -210,6 +217,13 @@
       ]
      }
     }
+   },
+   "reason": {
+    "tag": "execution",
+    "doc": "2025-05-16",
+    "page": 13,
+    "speaker": "Jairam Sampath",
+    "quote": "there was a delay in execution of our smart meter business because we had a large number of orders, and this is a new facility in Hyderabad."
    }
   },
   {
@@ -329,6 +343,13 @@
     "page": 7,
     "quote": "we sincerely understand and appreciate that the guidance what we have given, we could not meet.",
     "speaker": "N. Muthukumar"
+   },
+   "reason": {
+    "tag": "external",
+    "doc": "2026-05-14",
+    "page": 3,
+    "speaker": "Ramesh Kunhikannan",
+    "quote": "Near-term top line performance did not fully meet market expectations, primarily due to geopolitical disruption, especially the West Asia conflict, which led to last-minute customer deferment, supply chain delays and product timing shift."
    }
   },
   {
@@ -414,6 +435,13 @@
     "page": 4,
     "quote": "Net working capital days for the year 2025 were at 87 days",
     "speaker": "Jairam Sampath"
+   },
+   "reason": {
+    "tag": "own-choice",
+    "doc": "2025-05-16",
+    "page": 5,
+    "speaker": "Jairam Sampath",
+    "quote": "So this is a business that we acquired in our subsidiary in the industrial area, and they had orders with pre-agreed contract conditions, which we have to honor."
    }
   },
   {
@@ -449,7 +477,14 @@
     "quote": "the working capital days reducing from 83 days in FY '24 to 53 days in FY '26.",
     "speaker": "N. Muthukumar"
    },
-   "note": "Management says the smart-meter business drove the consolidated number; core EMS was 53 days."
+   "note": "Management says the smart-meter business drove the consolidated number; core EMS was 53 days.",
+   "reason": {
+    "tag": "own-choice",
+    "doc": "2026-05-14",
+    "page": 4,
+    "speaker": "N. Muthukumar",
+    "quote": "We realized our working capital days stood at around 122 days in FY '26, primarily reflecting the business model procurement of the smart meter segment, which has different working capital cycle when compared to the core EMS business."
+   }
   },
   {
    "id": "osat-production",
@@ -483,6 +518,13 @@
     "first_seen": "2026-05-14",
     "speaker": "Ramesh Kunhikannan",
     "done": true
+   },
+   "reason": {
+    "tag": "external",
+    "doc": "2024-05-17",
+    "page": 7,
+    "speaker": "Jairam P Sampath",
+    "quote": "There's a very small delay of a couple of months due to the ongoing elections that have come in."
    }
   },
   {
@@ -512,7 +554,14 @@
     "done": false,
     "new_deadline": "2026-12-31"
    },
-   "note": "As of the Aug 2026 call, first revenue is expected from Q3 FY27."
+   "note": "As of the Aug 2026 call, first revenue is expected from Q3 FY27.",
+   "reason": {
+    "tag": "external",
+    "doc": "2026-08-08",
+    "page": 3,
+    "speaker": "Ramesh Kunhikannan",
+    "quote": "Like the rest of the industry, we saw some disruption this quarter from the escalation in the West Asia affecting equipment imports and component logistics globally, not specific to Kaynes. This led to minor timing slippage in our OSAT and PCB ramp-up schedule."
+   }
   },
   {
    "id": "usd1bn-fy28",

@@ -79,3 +79,5 @@ def all_citations(c):
             yield cl["id"], "response", cl["management_response"]
         if cl.get("context"):
             yield cl["id"], "context", cl["context"]
+        if cl.get("reason", {}).get("quote"):
+            yield cl["id"], "reason", cl["reason"]
