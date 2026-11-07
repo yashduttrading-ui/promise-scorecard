@@ -17,7 +17,7 @@ def main(symbol):
         for cid, kind, cit in all_citations(c):
             cl = claims[cid]; o = cl["outcome"]
             url = c["sources"][cit["doc"]]["url"] + f"#page={cit['page']}"
-            row_type = {"said": cit.get("role", "said"), "outcome": "reported", "response": "management_response"}[kind]
+            row_type = {"said": cit.get("role", "said"), "outcome": "reported", "response": "management_response", "context": "context"}[kind]
             m = re.search(r"Page \d+ of \d+", page_text(symbol, cit["doc"], cit["page"]))
             w.writerow([cid, cl["topic"], cl["period"], row_type, cit["doc"], cit["page"], m.group(0) if m else "", url,
                         cit.get("speaker", ""), cit["quote"], target_text(cl["target"]),

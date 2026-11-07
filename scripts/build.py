@@ -15,7 +15,7 @@ def target_text(t):
     return {"range": lambda: f"{fmt(t['low'], u)}–{fmt(t['high'], u)}",
             "min": lambda: f"{fmt(t['low'], u)}+",
             "max": lambda: f"≤ {fmt(t['high'], u)}",
-            "milestone": lambda: "Milestone"}[t["kind"]]()
+            "milestone": lambda: t.get("label", "Milestone")}[t["kind"]]()
 
 def verdict(cl, today):
     t, o = cl["target"], cl["outcome"]
@@ -79,9 +79,10 @@ def claim_card(c, cl, today):
     else:
         result = f'<div class="result pend">Deadline {date_label(cl["deadline"])}. Nothing to score yet.</div>'
     resp = quote_block(c, cl["management_response"], "Management on it") if cl.get("management_response") else ""
+    resp += quote_block(c, cl["context"], "Context") if cl.get("context") else ""
     note = f'<p class="rule"><b>How scored:</b> {E(rule_text(cl, today))}</p>'
     note += f'<p class="note">{E(cl["note"])}</p>' if cl.get("note") else ""
-    return (f'<article class="card" data-v="{vk}"><header><div><h3>{E(cl["topic"])} <span class="per">{E(cl["period"])}</span></h3>'
+    return (f'<article class="card" id="{E(cl["id"])}" data-v="{vk}"><header><div><h3>{E(cl["topic"])} <span class="per">{E(cl["period"])}</span></h3>'
             f'<div class="tgt">Target: {E(target_text(cl["target"]))}</div></div><span class="pill v-{vk}">{vl}</span></header>'
             f'{said}{result}{resp}{note}</article>')
 
@@ -116,6 +117,27 @@ def revenue_chart(c):
             f'aria-label="Revenue guidance versus reported revenue">{"".join(parts)}</svg>{legend}'
             f'<p class="src">Source: company concall transcripts, cited in the cards below. FY = April–March.</p></section>')
 
+def is_open(cl, today):
+    o = cl["outcome"]
+    return (o.get("status") == "pending" and cl["deadline"] > today) or o.get("done") is False
+
+def watch_list(c, today):
+    items = sorted((cl for cl in c["claims"] if is_open(cl, today)),
+                   key=lambda cl: (cl["outcome"].get("new_deadline", cl["deadline"]), cl["id"]))
+    if not items: return ""
+    rows = ""
+    for cl in items:
+        o, s = cl["outcome"], cl["said"][0]
+        due = o.get("new_deadline", cl["deadline"])
+        slipped = f' (originally {date_label(cl["deadline"])})' if "new_deadline" in o else ""
+        rows += (f'<li><a href="#{E(cl["id"])}"><b>{E(cl["topic"])}</b></a> <span class="per">{E(cl["period"])}</span>'
+                 f'<div class="tgt">Target: {E(target_text(cl["target"]))} · Due {date_label(due)}{E(slipped)} · '
+                 f'said {date_label(s["doc"])}, {cite(c, s)}</div></li>')
+    nr = c.get("next_results")
+    sub = (f'Next checkpoint: <b>{E(nr["label"])}</b>, due by {date_label(nr["due"])}. ' if nr else "")
+    return (f'<section class="panel watch"><h2>What to watch next</h2><p class="src">{sub}'
+            f'These promises are still open, soonest first. Click one to see the full quote.</p><ul>{rows}</ul></section>')
+
 CSS = (ROOT / "scripts/style.css").read_text()
 
 def page(title, body, desc):
@@ -142,6 +164,7 @@ def company_page(c):
 <section class="hero"><div class="eyebrow">{E(c["exchange"])}: {E(c["symbol"])}</div><h1>{E(c["name"])}</h1>
 <p class="lede">Management kept <b>{n["met"]} of {scored}</b> promises that are due so far. Every line links to the exact page of the company's own concall transcript.</p>
 <div class="stats">{stats}</div></section>
+{watch_list(c, today)}
 {revenue_chart(c)}
 <div class="filters">{filters}</div>{cards}
 <section class="panel method"><h2>How this is built</h2><ul>

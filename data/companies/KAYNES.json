@@ -366,7 +366,8 @@
     "quote": "we already told from third quarter the revenue starts in both the business",
     "first_seen": "2026-08-08",
     "speaker": "N. Muthukumar",
-    "done": false
+    "done": false,
+    "new_deadline": "2026-12-31"
    },
    "note": "As of the Aug 2026 call, first revenue is expected from Q3 FY27."
   },
@@ -421,6 +422,148 @@
    "outcome": {
     "status": "pending"
    }
+  },
+  {
+   "id": "fy27-revenue-growth",
+   "topic": "Revenue growth",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "milestone",
+    "label": "2x the EMS market's growth"
+   },
+   "said": [
+    {
+     "doc": "2026-08-08",
+     "page": 13,
+     "role": "first",
+     "quote": "revenue growth, we have committed the 2x of the market growth.",
+     "speaker": "N. Muthukumar"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "context": {
+    "doc": "2026-05-14",
+    "page": 10,
+    "quote": "the EMS space where we are playing has grown at about 18% last year or is expected to grow in this year 16% to 18%.",
+    "speaker": "N. Muthukumar"
+   },
+   "note": "Management put EMS market growth at 16–18% for this year (May 2026 call), so 2x implies roughly 32–36%. That arithmetic is ours, not management's."
+  },
+  {
+   "id": "semicon2-chennai-q3fy27",
+   "topic": "Semicon Unit 2 + Chennai PCB plant operational",
+   "period": "Q3 FY27",
+   "deadline": "2026-12-31",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2026-08-08",
+     "page": 3,
+     "role": "first",
+     "quote": "Both Kaynes Semicon Unit 2 and Kaynes Circuit Chennai remain on the track to be operational by quarter 3 FY27",
+     "speaker": "Ramesh Kunhikannan"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   }
+  },
+  {
+   "id": "metering-cash-q3fy27",
+   "topic": "Metering cash flow gap (₹600 cr) mostly closed",
+   "period": "by Q3 FY27",
+   "deadline": "2026-12-31",
+   "target": {
+    "kind": "milestone",
+    "label": "70–80% of ₹600 cr recovered"
+   },
+   "said": [
+    {
+     "doc": "2026-05-14",
+     "page": 11,
+     "role": "first",
+     "quote": "the INR600 crores by end of the third quarter will come to around we will try to work on the positive, but at least 70% to 80% of this will come down for sure.",
+     "speaker": "N. Muthukumar"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   }
+  },
+  {
+   "id": "cash-positive-fy27",
+   "topic": "Cash-flow positive",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2026-08-08",
+     "page": 5,
+     "role": "first",
+     "quote": "by end of the financial year we'll turn the cash positive, we are pretty confident on that.",
+     "speaker": "N. Muthukumar"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   }
+  },
+  {
+   "id": "osat-pcb-production-fy27",
+   "topic": "OSAT + PCB production value",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "milestone",
+    "label": "PCB ₹300–400 cr, OSAT ₹250–300 cr"
+   },
+   "said": [
+    {
+     "doc": "2026-05-14",
+     "page": 18,
+     "role": "first",
+     "quote": "I'm sure and certain we will do a good number of PCB of around INR300 crores to INR400 crores, and OSAT of around INR250 crores to INR300 crores.",
+     "speaker": "Ramesh Kunhikannan"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "note": "This is production value. The separate ₹450–500 cr figure below is revenue."
+  },
+  {
+   "id": "rail-fy27",
+   "topic": "Rail business growth",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "milestone",
+    "label": "20–25%"
+   },
+   "said": [
+    {
+     "doc": "2026-05-14",
+     "page": 13,
+     "role": "first",
+     "quote": "So rail business, I'm expecting this year to grow by around 20%, 25% because of these coming in.",
+     "speaker": "Ramesh Kunhikannan"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   }
   }
- ]
+ ],
+ "next_results": {
+  "label": "Q2 FY27 results (Jul–Sep 2026)",
+  "due": "2026-11-14"
+ }
 }

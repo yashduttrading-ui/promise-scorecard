@@ -30,3 +30,5 @@ def all_citations(c):
             yield cl["id"], "outcome", cl["outcome"]
         if cl.get("management_response"):
             yield cl["id"], "response", cl["management_response"]
+        if cl.get("context"):
+            yield cl["id"], "context", cl["context"]
