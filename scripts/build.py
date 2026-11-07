@@ -201,7 +201,7 @@ def delivery(c):
         p1 = lambda x: f'{x*100:.1f}%'
         imp = (f'<h3>{fwd["period"]} guidance at the company\'s own delivery rates</h3><table><tbody>'
                f'<tr><td>Guidance: <a href="#{E(fwd["id"])}">{E(target_text(fwd["target"]))}</a>. Market growth put at '
-               f'{i["market_growth_pct"][0]}–{i["market_growth_pct"][1]}%, so {g[0]:g}–{g[1]:g}% on {base["period"]} audited ₹{b:,.2f} cr</td><td class="n">{rng(1)}</td></tr>'
+               f'{i["market_growth_pct"][0]}–{i["market_growth_pct"][1]}%, so {g[0]:g}–{g[1]:g}% on {base["period"]} audited ₹{b:,.1f} cr</td><td class="n">{rng(1)}</td></tr>'
                f'<tr><td>If delivered at the {len(rows)}-year average rate ({p1(avg)})</td><td class="n">{rng(avg)}</td></tr>'
                f'<tr><td>If delivered at the {rows[-1]["period"]} rate ({p1(ratios[-1])})</td><td class="n">{rng(ratios[-1])}</td></tr></tbody></table>'
                f'<p class="src">Simple arithmetic on management\'s own numbers, unrounded ({", ".join(p1(r) for r in ratios)} delivered in {", ".join(E(cl["period"]) for cl in rows)}), '
