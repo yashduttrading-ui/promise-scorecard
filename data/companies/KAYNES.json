@@ -558,11 +558,12 @@
    },
    "note": "As of the Aug 2026 call, first revenue is expected from Q3 FY27.",
    "reason": {
-    "tag": "external",
+    "tag": "not-explained",
     "doc": "2026-08-08",
     "page": 3,
     "speaker": "Ramesh Kunhikannan",
-    "quote": "Like the rest of the industry, we saw some disruption this quarter from the escalation in the West Asia affecting equipment imports and component logistics globally, not specific to Kaynes. This led to minor timing slippage in our OSAT and PCB ramp-up schedule."
+    "quote": "Like the rest of the industry, we saw some disruption this quarter from the escalation in the West Asia affecting equipment imports and component logistics globally, not specific to Kaynes. This led to minor timing slippage in our OSAT and PCB ramp-up schedule.",
+    "caveat": "Said in August 2026 about disruption in Q1 FY27, after the March 2026 deadline had already passed. The May 2026 call, which covered Q4 FY26, gave no reason for first revenue not starting that quarter, so this is tagged not explained."
    }
   },
   {
