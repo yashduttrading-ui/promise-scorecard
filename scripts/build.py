@@ -100,7 +100,7 @@ def claim_card(c, cl, today):
             f'{fold(said + result + resp + note)}</article>')
 
 def fold(inner):
-    return f'<details><summary>Quotes, source pages and working</summary>{inner}</details>' if THEME == "ledger" else inner
+    return f'<details><summary>Quotes, source pages and working</summary>{inner}</details>'
 
 def actual_text(cl, today):
     o = cl["outcome"]
@@ -109,7 +109,6 @@ def actual_text(cl, today):
     return f'Done {dt.date.fromisoformat(o["first_seen"]).strftime("%b %Y")}' if o.get("done", True) else "Not yet"
 
 def ledger(c, today):
-    if THEME != "ledger": return ""
     rows = ""
     for cl in c["claims"]:
         vk, vl = verdict(cl, today)
@@ -172,19 +171,13 @@ def watch_list(c, today):
             f'These promises are still open, soonest first. Click one to see the full quote.</p><ul>{rows}</ul></section>')
 
 CSS = (ROOT / "scripts/style.css").read_text()
-FONTS = {None: "Inter:wght@400;500;600;700",
-         "note": "Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700",
-         "ledger": "IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600",
-         "paper": "Newsreader:wght@400;600&family=Public+Sans:wght@400;600"}
-THEME = None
-PREVIEW_BAR = ""
+FONTS = "Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700"
 
 def page(title, body, desc):
-    css = CSS + ((ROOT / "scripts/themes" / f"{THEME}.css").read_text() if THEME else "")
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(title)}</title><meta name="description" content="{E(desc)}"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family={FONTS[THEME]}&display=swap" rel="stylesheet">
-<style>{css}</style></head><body>{PREVIEW_BAR}<main>{body}</main>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family={FONTS}&display=swap" rel="stylesheet">
+<style>{CSS}</style></head><body><main>{body}</main>
 <footer>Built by <a href="https://app.avanisai.com">Avanis</a>. Facts only: what management said on the record and what was later reported. Not investment advice.</footer>
 <script>document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{{document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
 document.querySelectorAll('[data-v]').forEach(c=>c.hidden=b.dataset.f!=='all'&&c.dataset.v!==b.dataset.f)}});
@@ -207,10 +200,10 @@ def company_page(c):
 <section class="hero"><div class="eyebrow">{E(c["exchange"])}: {E(c["symbol"])}</div><h1>{E(c["name"])}</h1>
 <p class="lede">Management kept <b>{n["met"]} of {scored}</b> promises that are due so far. Promises come from the company's concall transcripts and reported financials from its audited results, each linked to the exact page.</p>
 <div class="stats">{stats}</div></section>
-{f'<div class="filters">{filters}</div>{ledger(c, today)}' if THEME == "ledger" else ""}
+<div class="filters">{filters}</div>{ledger(c, today)}
 {watch_list(c, today)}
 {revenue_chart(c)}
-{"<h2 class=evid>Evidence for each promise</h2>" if THEME == "ledger" else f'<div class="filters">{filters}</div>'}{cards}
+<h2 class="evid">Evidence for each promise</h2>{cards}
 <section class="panel method"><h2>How this is built</h2><ul>
 <li><b>Sources:</b> {len(calls)} earnings-call transcripts from {date_label(first)} to {date_label(last)} and {n_aud} audited annual results filings, all downloaded from <a href="{E(c["ir_page"])}">the company's investor page</a>. No third-party data.</li>
 <li><b>Reported numbers:</b> revenue and margins are taken from the audited consolidated results (₹ million, converted to ₹ crore), with the working shown on each card. Revenue means revenue from operations, excluding other income. Working-capital days and milestones are not in audited results, so they come from what management said on the call.</li>
@@ -241,23 +234,5 @@ def main(symbols):
     (OUT / "index.html").write_text(index_page(cos))
     print("built", [c["symbol"] for c in cos])
 
-OPTIONS = [("note", "A. Research note"), ("ledger", "B. Ledger table"), ("paper", "C. Financial paper")]
-
-def options(symbols):
-    """Preview only: site/options/<theme>.html, one per candidate design, with a switcher bar."""
-    global THEME, PREVIEW_BAR
-    d = OUT / "options"; d.mkdir(parents=True, exist_ok=True)
-    cos = [load_company(s) for s in symbols]
-    for t, label in OPTIONS:
-        THEME = t
-        links = " ".join(f'<a href="{k}.html" style="color:#fff;margin:0 10px;{"font-weight:700;text-decoration:underline" if k == t else "opacity:.75"}">{l}</a>' for k, l in OPTIONS)
-        PREVIEW_BAR = (f'<div style="background:#222;color:#fff;font:13px system-ui;padding:8px 12px;position:sticky;top:0;z-index:9">'
-                       f'Style preview: {links} <a href="../kaynes.html" style="color:#fff;opacity:.75;margin-left:10px">Current live design</a></div>')
-        for c in cos: (d / f"{t}.html").write_text(company_page(c))
-    THEME, PREVIEW_BAR = None, ""
-    print("options", [t for t, _ in OPTIONS])
-
 if __name__ == "__main__":
-    if sys.argv[1:2] == ["--options"]:
-        options(["KAYNES"]); sys.exit()
     main(sys.argv[1:] or [p.stem for p in (ROOT / "data/companies").glob("*.json") if "." not in p.stem])
