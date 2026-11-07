@@ -24,3 +24,6 @@ Open `checks/<SYMBOL>.csv` in Excel or Google Sheets. One row per quote:
 3. Read `how_scored`, which spells out the comparison behind the `verdict`. Mark `checked_verdict_ok`.
 
 The same "How scored" line is shown on every card on the site. `scripts/verify.py` does step 2 automatically for every row.
+
+### Evidence pack
+`cd scripts && python3 evidence.py KAYNES` writes `checks/KAYNES_evidence.html` (not committed, ~5 MB): every quote next to an image of its PDF page with the quote highlighted, plus the verdict maths and tick boxes.
