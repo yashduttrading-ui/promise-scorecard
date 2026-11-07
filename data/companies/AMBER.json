@@ -106,7 +106,15 @@
           }
         }
       },
-      "note": "Management said “by FY’26 end”; scored on the full-year audited margin, like every other margin target. Profit before tax here is before the share of joint-venture losses."
+      "note": "Management said “by FY’26 end”; scored on the full-year audited margin, like every other margin target. Profit before tax here is before the share of joint-venture losses.",
+      "reason": {
+        "tag": "not-explained",
+        "doc": "2026-05-18",
+        "page": 3,
+        "speaker": "Jasbir Singh",
+        "quote": "The consolidated revenue of Amber grew by 22%, reaching INR12,186 crores for the year and recorded operating EBITDA of INR970 crores with growth of 22%.",
+        "caveat": "Management's operating EBITDA (about 8.0% of revenue) leaves out ESOP costs and non-operating items; on the audited lines it is 7.8%. The call did not discuss the 8–9% target."
+      }
     }
   ]
 }

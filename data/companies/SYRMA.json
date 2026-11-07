@@ -117,6 +117,14 @@
           },
           "ocr_dpi": 400
         }
+      },
+      "reason": {
+        "tag": "execution",
+        "doc": "2024-05-13",
+        "page": 6,
+        "speaker": "Bijay Agarwal",
+        "quote": "So, broadly, individual customer-wise margins have not yet declined. The MIX change, mainly you can see in the quarter, my consumer business has contributed almost 46%, which has again resulted into some impact on the overall gross margin.",
+        "caveat": "Explains the lower gross margin by a larger share of low-margin consumer business. It does not mention the double-digit EBITDA target."
       }
     },
     {
@@ -180,6 +188,13 @@
           },
           "ocr_dpi": 200
         }
+      },
+      "reason": {
+        "tag": "own-choice",
+        "doc": "2025-05-14",
+        "page": 7,
+        "speaker": "J.S. Gujral",
+        "quote": "When you concentrate on high-margin verticals, which have a lot of engineering design content, the natural casualty is the top line. So it's a call which the management has taken to have accretive EBITDA from superior verticals."
       }
     },
     {
@@ -317,6 +332,13 @@
             ]
           }
         }
+      },
+      "reason": {
+        "tag": "own-choice",
+        "doc": "2026-05-12",
+        "page": 4,
+        "speaker": "J.S. Gujral",
+        "quote": "If I was to exclude consumer business from our portfolio because consumer is a low-margin business and there's a conscious effort of the management to sustain it at a certain level, my export -- my revenues have grown by a healthy 38%."
       }
     },
     {

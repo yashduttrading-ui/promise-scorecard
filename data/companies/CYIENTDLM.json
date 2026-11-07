@@ -63,6 +63,10 @@
             ]
           }
         }
+      },
+      "reason": {
+        "tag": "not-explained",
+        "caveat": "The company's IR page has no transcript of the Q4 FY24 call, and the Q1 FY25 call (22 Jul 2024) did not discuss the FY24 margin."
       }
     },
     {
@@ -123,6 +127,14 @@
             ]
           }
         }
+      },
+      "reason": {
+        "tag": "not-explained",
+        "doc": "2025-04-22",
+        "page": 8,
+        "speaker": "Shrinivas Kulkarni",
+        "quote": "We were targeting a 10% EBITDA margin for the year. So this is a little shade under that.",
+        "caveat": "Management measured the shortfall on its adjusted margin (9.6%); on the audited lines it is 9.0%. No reason was given."
       }
     },
     {
