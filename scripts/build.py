@@ -198,13 +198,14 @@ def delivery(c):
         g = [m * i["multiple"] for m in i["market_growth_pct"]]
         lo, hi = (b * (1 + x / 100) for x in g)
         rng = lambda k: f'{fmt(lo * k, "₹ cr")}–{fmt(hi * k, "₹ cr")}'
+        p1 = lambda x: f'{x*100:.1f}%'
         imp = (f'<h3>{fwd["period"]} guidance at the company\'s own delivery rates</h3><table><tbody>'
                f'<tr><td>Guidance: <a href="#{E(fwd["id"])}">{E(target_text(fwd["target"]))}</a>. Market growth put at '
-               f'{i["market_growth_pct"][0]}–{i["market_growth_pct"][1]}%, so {g[0]:g}–{g[1]:g}% on {base["period"]} audited {fmt(b, "₹ cr")}</td><td class="n">{rng(1)}</td></tr>'
-               f'<tr><td>If delivered at the {len(rows)}-year average rate ({avg*100:.0f}%)</td><td class="n">{rng(avg)}</td></tr>'
-               f'<tr><td>If delivered at the {rows[-1]["period"]} rate ({ratios[-1]*100:.0f}%)</td><td class="n">{rng(ratios[-1])}</td></tr></tbody></table>'
-               f'<p class="src">Simple arithmetic on management\'s own numbers, to show what the track record means for the open target. '
-               f'Not a forecast or a recommendation.</p>')
+               f'{i["market_growth_pct"][0]}–{i["market_growth_pct"][1]}%, so {g[0]:g}–{g[1]:g}% on {base["period"]} audited ₹{b:,.2f} cr</td><td class="n">{rng(1)}</td></tr>'
+               f'<tr><td>If delivered at the {len(rows)}-year average rate ({p1(avg)})</td><td class="n">{rng(avg)}</td></tr>'
+               f'<tr><td>If delivered at the {rows[-1]["period"]} rate ({p1(ratios[-1])})</td><td class="n">{rng(ratios[-1])}</td></tr></tbody></table>'
+               f'<p class="src">Simple arithmetic on management\'s own numbers, unrounded ({", ".join(p1(r) for r in ratios)} delivered in {", ".join(E(cl["period"]) for cl in rows)}), '
+               f'to show what the track record means for the open target. Not a forecast or a recommendation.</p>')
     return (f'<section class="panel deliv"><h2>3. What it means for a model</h2>{imp}'
             f'<h3>How the delivery rate is worked out</h3><p class="src">Audited revenue as a share of the first revenue target (lower end of the range where a range was given).</p>'
             f'<table><thead><tr><th>Year</th><th class="n">First target</th><th class="n">Audited</th><th class="n">Delivered</th></tr></thead><tbody>{trs}</tbody></table></section>')
@@ -290,8 +291,8 @@ def track_record(c, today):
     tagged = [cl for cl in c["claims"] if cl.get("reason")]
     if tagged:
         n = {k: sum(cl["reason"]["tag"] == k for cl in tagged) for k in TAGS}
-        parts.append(f'Of the {len(tagged)} misses, management\'s own explanation was external for {n["external"]}, execution for {n["execution"]}, '
-                     f'its own choice for {n["own-choice"]}, and {n["not-explained"]} were never explained on a call (<a href="#why">quotes</a>).')
+        parts.append(f'Of the {len(tagged)} misses, the reason management gave reads as external for {n["external"]}, execution for {n["execution"]}, '
+                     f'its own choice for {n["own-choice"]}, and {n["not-explained"]} were never explained on a call (our tags; <a href="#why">quotes</a>).')
     return (f'<section class="panel record"><h2>2. Track record</h2><p class="lede">{" ".join(parts)}</p>{by_metric(c, today)}'
             f'<p class="src">Scored against the first guidance given, with later cuts shown not hidden. <a href="#all">Every promise</a> with its quote and page is below.</p></section>')
 
