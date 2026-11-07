@@ -182,7 +182,7 @@ def page(title, body, desc):
 <script>document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{{document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
 document.querySelectorAll('[data-v]').forEach(c=>c.hidden=b.dataset.f!=='all'&&c.dataset.v!==b.dataset.f)}});
 document.querySelectorAll('.watch li>a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.filters button[data-f=all]').click()));
-const openHash=()=>{{const c=document.getElementById(location.hash.slice(1));if(!c)return;if(c.hidden){{document.querySelector('.filters button[data-f=all]').click();c.scrollIntoView()}}const d=c.querySelector('details');if(d)d.open=true}};addEventListener('hashchange',openHash);openHash()</script></body></html>"""
+const openHash=()=>{{const c=document.getElementById(location.hash.slice(1));if(!c)return;if(c.hidden)document.querySelector('.filters button[data-f=all]').click();const d=c.querySelector('details');if(d)d.open=true;c.scrollIntoView()}};history.scrollRestoration='manual';addEventListener('hashchange',openHash);openHash()</script></body></html>"""
 
 def company_page(c):
     today = c["checked_on"]
