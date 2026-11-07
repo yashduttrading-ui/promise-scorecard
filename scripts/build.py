@@ -182,7 +182,7 @@ def page(title, body, desc):
 <script>document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{{document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
 document.querySelectorAll('[data-v]').forEach(c=>c.hidden=b.dataset.f!=='all'&&c.dataset.v!==b.dataset.f)}});
 document.querySelectorAll('.watch li>a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.filters button[data-f=all]').click()));
-document.addEventListener('click',e=>{{if(e.target.closest('a[href^="#"]'))history.replaceState({{y:scrollY}},'')}},true);
+document.addEventListener('click',e=>{{const a=e.target.closest('a[href^="#"]');if(!a)return;history.replaceState({{y:scrollY}},'');if(a.hash===location.hash)setTimeout(openHash)}},true);
 const openHash=()=>{{const c=location.hash&&document.getElementById(location.hash.slice(1));if(!c){{if(history.state)scrollTo(0,history.state.y);return}}if(c.hidden)document.querySelector('.filters button[data-f=all]').click();const d=c.querySelector('details');if(d)d.open=true;c.scrollIntoView()}};history.scrollRestoration='manual';addEventListener('hashchange',openHash);openHash()</script></body></html>"""
 
 def company_page(c):
