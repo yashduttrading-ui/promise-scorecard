@@ -338,7 +338,8 @@
     "page": 3,
     "quote": "Unit 1 is fully operational, and Unit 2 is in commercialization by Q2 '26.",
     "first_seen": "2026-05-14",
-    "speaker": "Ramesh Kunhikannan"
+    "speaker": "Ramesh Kunhikannan",
+    "done": true
    }
   },
   {
@@ -364,7 +365,8 @@
     "page": 13,
     "quote": "we already told from third quarter the revenue starts in both the business",
     "first_seen": "2026-08-08",
-    "speaker": "N. Muthukumar"
+    "speaker": "N. Muthukumar",
+    "done": false
    },
    "note": "As of the Aug 2026 call, first revenue is expected from Q3 FY27."
   },

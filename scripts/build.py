@@ -33,8 +33,11 @@ def rule_text(cl, today):
     if o.get("status") == "pending":
         return f"Deadline {date_label(cl['deadline'])} is after {date_label(today)}, so not scored yet."
     if t["kind"] == "milestone":
-        return (f"Promised by {date_label(cl['deadline'])}. First seen done/started in the "
-                f"{date_label(o['first_seen'])} call, which is after the deadline → {vl}.")
+        if o.get("done"):
+            return (f"Promised by {date_label(cl['deadline'])}. First reported done in the "
+                    f"{date_label(o['first_seen'])} call, which is after the deadline → {vl}.")
+        return (f"Promised by {date_label(cl['deadline'])}. Not done by then; in the latest update "
+                f"({date_label(o['first_seen'])} call) it is still in the future → {vl}.")
     u, v = t.get("unit", ""), o["value"]
     if t["kind"] == "max":
         test, ok = f"{fmt(v, u)} ≤ {fmt(t['high'], u)}", v <= t["high"]
@@ -72,7 +75,7 @@ def claim_card(c, cl, today):
     said = "".join(quote_block(c, s, ROLE[s["role"]]) for s in cl["said"])
     if o.get("quote"):
         val = f'<b>{fmt(o["value"], o["unit"])}</b> <span class="gap">{gap(cl)}</span>' if "value" in o else ""
-        result = f'<div class="result"><div class="rhead">What happened {val}</div>{quote_block(c, o, "Reported")}</div>'
+        result = f'<div class="result"><div class="rhead">{"What happened" if o.get("done", True) else "Where it stands"} {val}</div>{quote_block(c, o, "Reported" if o.get("done", True) else "Latest update")}</div>'
     else:
         result = f'<div class="result pend">Deadline {date_label(cl["deadline"])}. Nothing to score yet.</div>'
     resp = quote_block(c, cl["management_response"], "Management on it") if cl.get("management_response") else ""
