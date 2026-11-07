@@ -259,8 +259,8 @@ def is_open(cl, today):
 def watch_list(c, today):
     items = sorted((cl for cl in c["claims"] if is_open(cl, today)),
                    key=lambda cl: (cl["outcome"].get("new_deadline", cl["deadline"]), cl["id"]))
+    if not items: return ""
     nr = c.get("next_results")
-    if not items or not nr: return ""
     rows = ""
     for cl in items:
         o, s = cl["outcome"], cl["said"][0]
@@ -270,7 +270,9 @@ def watch_list(c, today):
         rows += (f'<li><a href="#{E(cl["id"])}"><b>{E(cl["topic"])}</b></a> <span class="per">{E(cl["period"])}</span>{listen}'
                  f'<div class="tgt">Promised: {E(target_text(cl["target"]))} · due {date_label(due)}{E(slipped)} · '
                  f'said {date_label(s["doc"])}, {cite(c, s)}</div></li>')
-    return (f'<section class="panel watch"><h2>1. Before the {E(nr["label"].split(" (")[0])} call</h2><p class="src">Results due by {date_label(nr["due"])}. '
+    head = (f'1. Before the {E(nr["label"].split(" (")[0])} call</h2><p class="src">Results due by {date_label(nr["due"])}. ' if nr
+            else '1. Open promises</h2><p class="src">Next results date not yet announced. ')
+    return (f'<section class="panel watch"><h2>{head}'
             f'The {len(items)} promises still open, soonest due first, with what to listen for. Click one for the full quote and page.</p><ul>{rows}</ul></section>')
 
 def track_record(c, today):
