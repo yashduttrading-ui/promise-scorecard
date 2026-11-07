@@ -134,5 +134,27 @@
   "url": "https://www.kaynestechnology.co.in/doc/Regulation-46-of-sebi-lodr-regulation/EarningsCallTranscript8Aug26.pdf",
   "sha256": "c8df4b718f7ef437ecbc95b5dcb81f6c4343876cf0b54c1884a50300cdd05351",
   "bytes": 323288
+ },
+ {
+  "key": "audited-FY25",
+  "kind": "audited",
+  "label": "Audited results FY25",
+  "file": "KAYNES_audited-FY25.pdf",
+  "date": "2025-05-15",
+  "title": "Audited Financial Results Q4 FY2024-25 (consolidated, with FY24 comparative)",
+  "url": "https://www.kaynestechnology.co.in/doc/Regulation-46-of-sebi-lodr-regulation/Audited%20Financial%20Result%20Q4%20FY%202024-25.pdf",
+  "sha256": "4d5f7d2bb9dc881eaae0b7f6d76a510d2025dddc14ec4ba76ef2827efcd8d304",
+  "bytes": 5232669
+ },
+ {
+  "key": "audited-FY26",
+  "kind": "audited",
+  "label": "Audited results FY26",
+  "file": "KAYNES_audited-FY26.pdf",
+  "date": "2026-05-13",
+  "title": "Audited Financial Results Q4 FY2025-26 (consolidated)",
+  "url": "https://www.kaynestechnology.co.in/doc/Regulation-46-of-sebi-lodr-regulation/AuditedFinancialResultsQ42025-26.pdf",
+  "sha256": "8aef867edead74b01a5da7b50087ca206a6fa72fa3533e6d4aafdef1d2fb834d",
+  "bytes": 4645199
  }
 ]

@@ -1,7 +1,7 @@
 """Write checks/<SYMBOL>.csv: one row per quote, for checking by hand against the source PDF."""
 import csv, sys
 import re
-from common import ROOT, load_company, all_citations, page_text
+from common import ROOT, load_company, all_citations, page_text, FORMULA
 from build import verdict, rule_text, target_text, fmt
 
 def main(symbol):
@@ -11,18 +11,24 @@ def main(symbol):
     out.parent.mkdir(exist_ok=True)
     with out.open("w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["claim_id", "topic", "period", "row_type", "call_date", "pdf_page", "printed_page_label", "open_pdf_at_page",
+        w.writerow(["claim_id", "topic", "period", "row_type", "source", "pdf_page", "printed_page_label", "open_pdf_at_page",
                     "speaker", "exact_quote", "target", "reported_value", "verdict", "how_scored",
                     "checked_quote_ok (Y/N)", "checked_verdict_ok (Y/N)", "your_notes"])
         for cid, kind, cit in all_citations(c):
             cl = claims[cid]; o = cl["outcome"]
             url = c["sources"][cit["doc"]]["url"] + f"#page={cit['page']}"
-            row_type = {"said": cit.get("role", "said"), "outcome": "reported", "response": "management_response", "context": "context"}[kind]
+            row_type = {"said": cit.get("role", "said"), "outcome": "reported", "response": "management_response", "context": "context", "audited": "audited"}[kind]
             m = re.search(r"Page \d+ of \d+", page_text(symbol, cit["doc"], cit["page"]))
+            if kind == "audited":
+                who = f'{cit["table"]}, column: {cit["column"]}'
+                quote = "; ".join(f"{lbl} = {v}" for lbl, v in cit["lines"].values())
+                how = f'{FORMULA[cit["measure"]]} {cit["working"]}. {rule_text(cl, c["checked_on"])}'
+            else:
+                who, quote, how = cit.get("speaker", ""), cit["quote"], rule_text(cl, c["checked_on"])
             w.writerow([cid, cl["topic"], cl["period"], row_type, cit["doc"], cit["page"], m.group(0) if m else "", url,
-                        cit.get("speaker", ""), cit["quote"], target_text(cl["target"]),
+                        who, quote, target_text(cl["target"]),
                         fmt(o["value"], o["unit"]) if "value" in o else o.get("status", ""),
-                        verdict(cl, c["checked_on"])[1], rule_text(cl, c["checked_on"]), "", "", ""])
+                        verdict(cl, c["checked_on"])[1], how, "", "", ""])
     print("wrote", out)
 
 if __name__ == "__main__":

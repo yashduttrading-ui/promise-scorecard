@@ -1,6 +1,6 @@
 """Render data/companies/*.json into a static site in site/."""
 import datetime as dt, html, json, sys
-from common import ROOT, load_company
+from common import ROOT, load_company, is_audited, FORMULA
 
 E = html.escape
 OUT = ROOT / "site"
@@ -43,8 +43,9 @@ def rule_text(cl, today):
         test, ok = f"{fmt(v, u)} ≤ {fmt(t['high'], u)}", v <= t["high"]
     else:
         test, ok = f"{fmt(v, u)} ≥ {fmt(t['low'], u)} (first target)", v >= t["low"]
-    conv = " ₹1 crore = ₹10 million." if u == "₹ cr" and "million" in o["quote"] else ""
-    return f"Is reported {test}? {'Yes' if ok else 'No'} → {vl}.{conv}"
+    src = "audited" if o.get("audited") else "reported"
+    conv = " ₹1 crore = ₹10 million." if u == "₹ cr" and (o.get("audited") or "million" in o["quote"]) else ""
+    return f"Is {src} {test}? {'Yes' if ok else 'No'} → {vl}.{conv}"
 
 def gap(cl):
     t, o = cl["target"], cl["outcome"]
@@ -59,8 +60,18 @@ def date_label(d):
 
 def cite(c, cit):
     src = c["sources"][cit["doc"]]
+    name = src["label"] if is_audited(c, cit["doc"]) else f'Concall {date_label(cit["doc"])}'
     return (f'<a class="cite" href="{E(src["url"])}#page={cit["page"]}" target="_blank" rel="noopener">'
-            f'Concall {date_label(cit["doc"])} · p.{cit["page"]} ↗</a>')
+            f'{E(name)} · p.{cit["page"]} ↗</a>')
+
+def audited_block(c, o):
+    a = o["audited"]
+    rows = "".join(f'<tr><td>{E(lbl)}</td><td>{E(v)}</td></tr>' for lbl, v in a["lines"].values())
+    said = (f'Matches the {fmt(o["call_value"], o["unit"])} management stated on the call.' if o["call_value"] == o["value"]
+            else f'Management said {fmt(o["call_value"], o["unit"])} on the call; the audited figure is used.')
+    return (f'<div class="q aud"><div class="qhead"><span class="tag t-audited">Audited</span>{cite(c, a)}</div>'
+            f'<div class="audcol">{E(a["table"])}, column “{E(a["column"])}”</div>'
+            f'<table>{rows}</table><p class="calc">{E(FORMULA[a["measure"]])}<br><b>{E(a["working"])}</b>. {E(said)}</p></div>')
 
 ROLE = {"first": "Guided", "reaffirmed": "Reaffirmed", "cut": "Cut", "moved": "Moved"}
 
@@ -75,7 +86,9 @@ def claim_card(c, cl, today):
     said = "".join(quote_block(c, s, ROLE[s["role"]]) for s in cl["said"])
     if o.get("quote"):
         val = f'<b>{fmt(o["value"], o["unit"])}</b> <span class="gap">{gap(cl)}</span>' if "value" in o else ""
-        result = f'<div class="result"><div class="rhead">{"What happened" if o.get("done", True) else "Where it stands"} {val}</div>{quote_block(c, o, "Reported" if o.get("done", True) else "Latest update")}</div>'
+        aud = audited_block(c, o) if o.get("audited") else ""
+        label = "Said on call" if aud else "Reported" if o.get("done", True) else "Latest update"
+        result = f'<div class="result"><div class="rhead">{"What happened" if o.get("done", True) else "Where it stands"} {val}</div>{aud}{quote_block(c, o, label)}</div>'
     else:
         result = f'<div class="result pend">Deadline {date_label(cl["deadline"])}. Nothing to score yet.</div>'
     resp = quote_block(c, cl["management_response"], "Management on it") if cl.get("management_response") else ""
@@ -115,7 +128,7 @@ def revenue_chart(c):
               '<span><i class="b-act"></i>Reported</span></div>')
     return (f'<section class="panel"><h2>Revenue: guided vs delivered</h2><svg viewBox="0 0 {W} {H}" role="img" '
             f'aria-label="Revenue guidance versus reported revenue">{"".join(parts)}</svg>{legend}'
-            f'<p class="src">Source: company concall transcripts, cited in the cards below. FY = April–March.</p></section>')
+            f'<p class="src">Guidance: concall transcripts. Reported: audited consolidated results. Both cited in the cards below. FY = April–March.</p></section>')
 
 def is_open(cl, today):
     o = cl["outcome"]
@@ -160,19 +173,22 @@ def company_page(c):
     filters = "".join(f'<button data-f="{k}"{" class=on" if k=="all" else ""}>{l}</button>' for k, l in
                       [("all", "All"), ("met", "Delivered"), ("missed", "Missed"), ("late", "Late"), ("pending", "Pending")])
     cards = "".join(claim_card(c, cl, today) for cl in c["claims"])
-    first = min(c["sources"]); last = max(c["sources"])
+    calls = [k for k in c["sources"] if not is_audited(c, k)]
+    n_aud = len(c["sources"]) - len(calls)
+    first = min(calls); last = max(calls)
     body = f"""<nav><a href="index.html">← All companies</a></nav>
 <section class="hero"><div class="eyebrow">{E(c["exchange"])}: {E(c["symbol"])}</div><h1>{E(c["name"])}</h1>
-<p class="lede">Management kept <b>{n["met"]} of {scored}</b> promises that are due so far. Every line links to the exact page of the company's own concall transcript.</p>
+<p class="lede">Management kept <b>{n["met"]} of {scored}</b> promises that are due so far. Promises come from the company's concall transcripts and reported financials from its audited results, each linked to the exact page.</p>
 <div class="stats">{stats}</div></section>
 {watch_list(c, today)}
 {revenue_chart(c)}
 <div class="filters">{filters}</div>{cards}
 <section class="panel method"><h2>How this is built</h2><ul>
-<li><b>Sources:</b> {len(c["sources"])} earnings-call transcripts from {date_label(first)} to {date_label(last)}, downloaded from <a href="{E(c["ir_page"])}">the company's investor page</a>. No third-party data.</li>
+<li><b>Sources:</b> {len(calls)} earnings-call transcripts from {date_label(first)} to {date_label(last)} and {n_aud} audited annual results filings, all downloaded from <a href="{E(c["ir_page"])}">the company's investor page</a>. No third-party data.</li>
+<li><b>Reported numbers:</b> revenue and margins are taken from the audited consolidated results (₹ million, converted to ₹ crore), with the working shown on each card. Revenue means revenue from operations, excluding other income. Working-capital days and milestones are not in audited results, so they come from what management said on the call.</li>
 <li><b>What counts as a promise:</b> a specific, checkable number or milestone said by management (not by analysts) with a time frame.</li>
 <li><b>Verdict:</b> scored against the <i>first</i> guidance given. Later cuts are shown, not hidden. Delivered = met or beat the target. Late = milestone happened after the stated date, or not yet.</li>
-<li><b>Checked by script:</b> every quote is tested word-for-word against the cited PDF page, and the speaker is checked against the transcript.</li>
+<li><b>Checked by script:</b> every quote is tested word-for-word against the cited PDF page, and the speaker is checked against the transcript. Every audited number is checked to appear on the cited page of the filing.</li>
 <li>Data as of {date_label(today)}. Spotted an error? Open an issue on GitHub.</li></ul></section>"""
     return page(f"{c['name']}: promises vs delivery | Avanis Promise Scorecard", body,
                 f"{c['name']} management kept {n['met']} of {scored} promises. Every claim cited to the page.")
@@ -185,7 +201,7 @@ def index_page(cos):
         rows += (f'<a class="co" href="{c["symbol"].lower()}.html"><div><b>{E(c["name"])}</b><span>{E(c["exchange"])}: {E(c["symbol"])}</span></div>'
                  f'<div class="score">{vs.count("met")}/{scored} kept</div></a>')
     body = f"""<section class="hero"><div class="eyebrow">Avanis Promise Scorecard</div><h1>Did management do what they said?</h1>
-<p class="lede">Free scorecards for Indian listed companies. What management guided on earnings calls, what they actually reported, and the exact page for both. No login, no API key.</p></section>
+<p class="lede">Free scorecards for Indian listed companies. What management guided on earnings calls, what the audited results show, and the exact page for both. No login, no API key.</p></section>
 <section class="list">{rows}</section>"""
     return page("Avanis Promise Scorecard", body, "What Indian managements guided vs what they delivered, cited to the page.")
 
