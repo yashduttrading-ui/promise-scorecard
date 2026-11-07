@@ -33,8 +33,8 @@ def main(symbol):
         pages = [HEADER.sub(" ", p) for p in doc_text(symbol, key)]
         mgmt = management(pages)
         for page, who, text in turns(pages):
-            surname = who.split()[-1].upper() if who else ""
-            if mgmt is not None and surname not in mgmt: continue
+            name = re.findall(r"[A-Z]{3,}", who.split(". ")[-1].upper())
+            if mgmt is not None and not (name and all(n in mgmt for n in name)): continue
             for s in re.split(r"(?<=[.?!])\s+", text):
                 hits = [(cid, kind) for cid, kind, q in used if q in s or (len(s) > 30 and s in q) or q[:60] in s]
                 ids = sorted({cid for cid, kind in hits if kind == "said"})
