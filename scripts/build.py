@@ -82,6 +82,17 @@ def quote_block(c, cit, label):
     return (f'<div class="q"><div class="qhead"><span class="tag t-{E(label.lower())}">{E(label)}</span>{cite(c, cit)}</div>'
             f'<blockquote>“{E(cit["quote"])}”<span class="who">{who}</span></blockquote></div>')
 
+TAGS = ("external", "execution", "own-choice", "not-explained")
+
+def reason_block(c, cl):
+    r = cl.get("reason")
+    if not r: return ""
+    head = f'<div class="result reason"><div class="rhead">Management\'s explanation <span class="tag">{E(r["tag"].replace("-", " "))}</span></div>'
+    body = quote_block(c, r, "Reason given") if r.get("quote") else ""
+    body += f'<p class="note">{E(r["caveat"])}</p>' if r.get("caveat") else ""
+    if not body: body = '<p class="note">No reason was given on the calls.</p>'
+    return head + body + '</div>'
+
 def claim_card(c, cl, today):
     vk, vl = verdict(cl, today)
     o = cl["outcome"]
@@ -95,6 +106,7 @@ def claim_card(c, cl, today):
         result = f'<div class="result pend">Deadline {date_label(cl["deadline"])}. Nothing to score yet.</div>'
     resp = quote_block(c, cl["management_response"], "Management on it") if cl.get("management_response") else ""
     resp += quote_block(c, cl["context"], "Context") if cl.get("context") else ""
+    resp += reason_block(c, cl)
     note = f'<p class="rule"><b>How scored:</b> {E(rule_text(cl, today))}</p>'
     note += f'<p class="note">{E(cl["note"])}</p>' if cl.get("note") else ""
     return (f'<article class="card" id="{E(cl["id"])}" data-v="{vk}"><header><div><h3>{E(cl["topic"])} <span class="per">{E(cl["period"])}</span></h3>'
@@ -153,6 +165,19 @@ def by_metric(c, today):
     return ('<section class="ledger metric"><table><thead><tr><th>Metric</th><th>Kept</th><th>Each due result vs first target</th>'
             f'<th>Not yet due</th></tr></thead><tbody>{rows}</tbody></table></section>')
 
+def reasons(c, today):
+    tagged = [cl for cl in c["claims"] if cl.get("reason")]
+    if not tagged: return ""
+    items = ""
+    for k in TAGS:
+        cls = [cl for cl in tagged if cl["reason"]["tag"] == k]
+        if cls:
+            items += (f'<li><b>{E(k.replace("-", " ").capitalize())} ({len(cls)}):</b> ' +
+                      ", ".join(f'<a href="#{E(cl["id"])}">{E(cl["period"])} {E(cl["topic"])}</a>' for cl in cls) + "</li>")
+    return (f'<section class="panel why"><h2>What management said about the {len(tagged)} misses</h2>'
+            f'<p class="src">Each missed or late promise carries what management itself said about it on a call, quoted and linked. '
+            f'The one-word tag is our reading of that quote, so a reader can disagree. Where the calls never gave a reason, it says so.</p><ul>{items}</ul></section>')
+
 def revenue_rows(c):
     return [cl for cl in c["claims"] if group(cl) == "Revenue" and "value" in cl["outcome"]]
 
@@ -188,12 +213,12 @@ def ledger_csv(c, today):
     f = io.StringIO()
     w = csv.writer(f)
     w.writerow(["promise", "period", "target", "actual", "verdict", "result_vs_first_target", "first_said_on", "first_said_page",
-                "first_said_pdf", "speaker", "quote", "scorecard_link"])
+                "first_said_pdf", "speaker", "quote", "reason_tag", "scorecard_link"])
     for cl in c["claims"]:
         s = cl["said"][0]
         w.writerow([cl["topic"], cl["period"], target_text(cl["target"]), actual_text(cl, today), verdict(cl, today)[1], gap(cl),
                      s["doc"], s["page"], f'{c["sources"][s["doc"]]["url"]}#page={s["page"]}', s.get("speaker", ""), s["quote"],
-                     f'{SITE_URL}{c["symbol"].lower()}.html#{cl["id"]}'])
+                     cl.get("reason", {}).get("tag", ""), f'{SITE_URL}{c["symbol"].lower()}.html#{cl["id"]}'])
     return f.getvalue()
 
 def revenue_chart(c):
@@ -297,6 +322,7 @@ def company_page(c):
 <div class="stats">{stats}</div></section>
 <h2 class="evid">By metric</h2>{by_metric(c, today)}
 <h2 class="evid">Every promise</h2><div class="filters">{filters}</div>{ledger(c, today)}
+{reasons(c, today)}
 {delivery(c)}
 {watch_list(c, today)}
 {revenue_chart(c)}
@@ -306,6 +332,7 @@ def company_page(c):
 <li><b>Reported numbers:</b> revenue and margins are taken from the audited consolidated results (₹ million, converted to ₹ crore), with the working shown on each card. Revenue means revenue from operations, excluding other income. Working-capital days and milestones are not in audited results, so they come from what management said on the call.</li>
 <li><b>What counts as a promise:</b> a specific, checkable number or milestone said by management (not by analysts) with a time frame.</li>
 {selection(c, len(calls))}
+<li><b>Reason tags:</b> for each miss, the explanation is management's own, quoted from a call and linked. The tag (external, execution, own choice, not explained) is our one-word summary of that quote, nothing more. If the calls gave no reason for the miss, the tag is \"not explained\" and any related quote is shown with a caveat.</li>
 <li><b>Verdict:</b> scored against the <i>first</i> guidance given. Later cuts are shown, not hidden. Delivered = met or beat the target. Late = milestone happened after the stated date, or not yet.</li>
 <li><b>Checked by script:</b> every quote is tested word-for-word against the cited PDF page, and the speaker is checked against the transcript. Every audited number is checked to appear on the cited page of the filing.</li>
 <li>Data as of {date_label(today)}. Spotted an error? Email <a href="mailto:{EMAIL}">{EMAIL}</a> or open an issue on GitHub.</li></ul></section>"""
