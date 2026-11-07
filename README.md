@@ -10,7 +10,7 @@ What Indian company managements guided on earnings calls vs what the audited res
 
 ```bash
 pip install pymupdf   # verify.py also needs tesseract-ocr: the FY25 audited filing is a scan
-cd scripts && python3 fetch.py KAYNES && python3 verify.py KAYNES && python3 build.py
+cd scripts && for s in KAYNES DIXON SYRMA AMBER CYIENTDLM; do python3 fetch.py $s && python3 verify.py $s; done && python3 build.py
 ```
 
 Facts only, not investment advice.
@@ -31,3 +31,9 @@ The same "How scored" line is shown on every card on the site. `scripts/verify.p
 
 ### Evidence pack
 `cd scripts && python3 evidence.py KAYNES` writes `checks/KAYNES_evidence.html` (not committed, ~5 MB): every quote next to an image of its PDF page with the quote highlighted, plus the verdict maths and tick boxes.
+
+## EMS peer comparison
+
+`build.py` also writes `site/compare.html` when more than one company is built. It compares only company-level, full-year revenue (₹ crore or % growth) and EBITDA-margin targets for FY24–FY27 (claim ids `fy24-revenue…`, `fy27-ebitda…`), scored against the first target. Segment, customer, quarterly and multi-year targets stay on each company's own page only.
+
+Audited lines may be in ₹ million or ₹ lakh (`"unit"` on the audited citation). Some filings have a bad or missing text layer: a source can list `"ocr_pages"` to force OCR, and an audited citation can set `"ocr_dpi"` when one resolution reads that table cleanly (cached as `raw/ocr/<SYM>_<doc>_p<n>_dpi<d>.txt`).
