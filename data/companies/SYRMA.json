@@ -71,7 +71,11 @@
           "page": 12,
           "role": "first",
           "quote": "On the margin we still maintain the guidance that we would be striving to be a double",
-          "speaker": "JS Gujral"
+          "speaker": "JS Gujral",
+          "cont": {
+            "page": 13,
+            "quote": "digit EBITDA on operational basis."
+          }
         },
         {
           "doc": "2024-02-07",

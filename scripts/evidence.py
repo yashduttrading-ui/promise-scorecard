@@ -36,7 +36,7 @@ def main(symbol):
         cl = claims[cid]; o = cl["outcome"]
         img, found = highlight_page(symbol, cit)
         url = c["sources"][cit["doc"]]["url"] + f"#page={cit['page']}"
-        label = {"said": cit.get("role", "said"), "outcome": "reported", "response": "management response", "context": "context", "audited": "audited result"}[kind]
+        label = {"said": cit.get("role", "said"), "outcome": "reported", "response": "management response", "context": "context", "reason": "reason given", "audited": "audited result", "said (continued)": "said (continued)"}[kind]
         reported = fmt(o["value"], o["unit"]) if "value" in o else o.get("status", "")
         if kind == "audited":
             src = f'{c["sources"][cit["doc"]]["label"]} ({c["sources"][cit["doc"]]["title"]})'

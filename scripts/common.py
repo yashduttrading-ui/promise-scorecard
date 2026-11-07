@@ -85,6 +85,8 @@ def all_citations(c):
     for cl in c["claims"]:
         for s in cl["said"]:
             yield cl["id"], "said", s
+            if s.get("cont"):
+                yield cl["id"], "said (continued)", {"doc": s["doc"], **s["cont"]}
         if cl["outcome"].get("audited"):
             yield cl["id"], "audited", cl["outcome"]["audited"]
         if cl["outcome"].get("quote"):
@@ -93,3 +95,5 @@ def all_citations(c):
             yield cl["id"], "response", cl["management_response"]
         if cl.get("context"):
             yield cl["id"], "context", cl["context"]
+        if cl.get("reason", {}).get("quote"):
+            yield cl["id"], "reason", cl["reason"]
