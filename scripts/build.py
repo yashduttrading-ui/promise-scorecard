@@ -87,8 +87,10 @@ TAGS = ("external", "execution", "own-choice", "not-explained")
 def reason_block(c, cl):
     r = cl.get("reason")
     if not r: return ""
-    head = f'<div class="result reason"><div class="rhead">Why, in management\'s words <span class="tag">{E(r["tag"].replace("-", " "))}</span></div>'
-    body = quote_block(c, r, "Reason given") if r.get("quote") else f'<p class="note">{E(r.get("note", "No reason was given on the calls."))}</p>'
+    head = f'<div class="result reason"><div class="rhead">Management\'s explanation <span class="tag">{E(r["tag"].replace("-", " "))}</span></div>'
+    body = quote_block(c, r, "Reason given") if r.get("quote") else ""
+    body += f'<p class="note">{E(r["caveat"])}</p>' if r.get("caveat") else ""
+    if not body: body = '<p class="note">No reason was given on the calls.</p>'
     return head + body + '</div>'
 
 def claim_card(c, cl, today):
@@ -172,9 +174,9 @@ def reasons(c, today):
         if cls:
             items += (f'<li><b>{E(k.replace("-", " ").capitalize())} ({len(cls)}):</b> ' +
                       ", ".join(f'<a href="#{E(cl["id"])}">{E(cl["period"])} {E(cl["topic"])}</a>' for cl in cls) + "</li>")
-    return (f'<section class="panel why"><h2>Why the {len(tagged)} misses happened, in management\'s words</h2>'
-            f'<p class="src">Each missed or late promise carries the reason management itself gave on a later call, quoted and linked. '
-            f'The one-word tag is our reading of that quote, so a reader can disagree.</p><ul>{items}</ul></section>')
+    return (f'<section class="panel why"><h2>What management said about the {len(tagged)} misses</h2>'
+            f'<p class="src">Each missed or late promise carries what management itself said about it on a call, quoted and linked. '
+            f'The one-word tag is our reading of that quote, so a reader can disagree. Where the calls never gave a reason, it says so.</p><ul>{items}</ul></section>')
 
 def revenue_rows(c):
     return [cl for cl in c["claims"] if group(cl) == "Revenue" and "value" in cl["outcome"]]
@@ -330,7 +332,7 @@ def company_page(c):
 <li><b>Reported numbers:</b> revenue and margins are taken from the audited consolidated results (₹ million, converted to ₹ crore), with the working shown on each card. Revenue means revenue from operations, excluding other income. Working-capital days and milestones are not in audited results, so they come from what management said on the call.</li>
 <li><b>What counts as a promise:</b> a specific, checkable number or milestone said by management (not by analysts) with a time frame.</li>
 {selection(c, len(calls))}
-<li><b>Reason tags:</b> for each miss, the reason is management's own, quoted from a later call. The tag (external, execution, own choice, not explained) is our one-word summary of that quote, nothing more.</li>
+<li><b>Reason tags:</b> for each miss, the explanation is management's own, quoted from a call and linked. The tag (external, execution, own choice, not explained) is our one-word summary of that quote, nothing more. If the calls gave no reason for the miss, the tag is \"not explained\" and any related quote is shown with a caveat.</li>
 <li><b>Verdict:</b> scored against the <i>first</i> guidance given. Later cuts are shown, not hidden. Delivered = met or beat the target. Late = milestone happened after the stated date, or not yet.</li>
 <li><b>Checked by script:</b> every quote is tested word-for-word against the cited PDF page, and the speaker is checked against the transcript. Every audited number is checked to appear on the cited page of the filing.</li>
 <li>Data as of {date_label(today)}. Spotted an error? Email <a href="mailto:{EMAIL}">{EMAIL}</a> or open an issue on GitHub.</li></ul></section>"""

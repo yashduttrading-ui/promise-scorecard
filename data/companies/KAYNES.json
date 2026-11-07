@@ -115,7 +115,8 @@
     "doc": "2024-01-31",
     "page": 5,
     "speaker": "Management",
-    "quote": "This is primarily because a lot of new projects have been onboarded. If you notice, we are growing at a very high rate. So all the new orders in the first few quarters, by the time we manage all the materials, supply chain and proper pricing and forecast, etcetera, it takes a bit of time. And that's why the gross margin appears to be a tad lower."
+    "quote": "This is primarily because a lot of new projects have been onboarded. If you notice, we are growing at a very high rate. So all the new orders in the first few quarters, by the time we manage all the materials, supply chain and proper pricing and forecast, etcetera, it takes a bit of time. And that's why the gross margin appears to be a tad lower.",
+    "caveat": "Said in January 2024 about the Q3 FY24 gross margin, before the year closed. No later call explained the full-year miss; this is the only reason on record."
    }
   },
   {
@@ -520,11 +521,12 @@
     "done": true
    },
    "reason": {
-    "tag": "external",
+    "tag": "not-explained",
     "doc": "2024-05-17",
     "page": 7,
     "speaker": "Jairam P Sampath",
-    "quote": "There's a very small delay of a couple of months due to the ongoing elections that have come in."
+    "quote": "There's a very small delay of a couple of months due to the ongoing elections that have come in.",
+    "caveat": "Said in May 2024 about a funding-utilisation delay management called immaterial, ten months before the deadline. No later call explained why commercial production slipped into FY26, so this is tagged not explained."
    }
   },
   {
