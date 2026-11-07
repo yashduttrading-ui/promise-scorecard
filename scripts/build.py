@@ -1,9 +1,11 @@
 """Render data/companies/*.json into a static site in site/."""
-import datetime as dt, html, json, sys
+import csv, datetime as dt, html, io, json, shutil, sys
 from common import ROOT, load_company, is_audited, FORMULA
 
 E = html.escape
 OUT = ROOT / "site"
+SITE_URL = "https://yashduttrading-ui.github.io/promise-scorecard/"
+EMAIL = "yash@avanisai.com"
 
 def fmt(v, unit):
     if unit == "%": return f"{v:g}%"
@@ -96,7 +98,8 @@ def claim_card(c, cl, today):
     note = f'<p class="rule"><b>How scored:</b> {E(rule_text(cl, today))}</p>'
     note += f'<p class="note">{E(cl["note"])}</p>' if cl.get("note") else ""
     return (f'<article class="card" id="{E(cl["id"])}" data-v="{vk}"><header><div><h3>{E(cl["topic"])} <span class="per">{E(cl["period"])}</span></h3>'
-            f'<div class="tgt">Target: {E(target_text(cl["target"]))}</div></div><span class="pill v-{vk}">{vl}</span></header>'
+            f'<div class="tgt">Target: {E(target_text(cl["target"]))} · <a class="copy" href="#{E(cl["id"])}" data-copy>Copy link</a></div></div>'
+            f'<span class="pill v-{vk}">{vl}</span></header>'
             f'{fold(said + result + resp + note)}</article>')
 
 def fold(inner):
@@ -116,7 +119,82 @@ def ledger(c, today):
                  f'<td class="n">{E(target_text(cl["target"]))}</td><td class="n">{E(actual_text(cl, today))}</td>'
                  f'<td><span class="pill v-{vk}">{vl}</span></td><td>{cite(c, cl["said"][0])}</td></tr>')
     return ('<section class="ledger"><table><thead><tr><th>Promise</th><th>Period</th><th>Target</th><th>Actual</th>'
-            f'<th>Verdict</th><th>First said</th></tr></thead><tbody>{rows}</tbody></table></section>')
+            f'<th>Verdict</th><th>First said</th></tr></thead><tbody>{rows}</tbody></table></section>'
+            f'<p class="src dl"><a href="{c["symbol"].lower()}-promises.csv" download>Download this table (CSV)</a>, with quotes and page links.</p>')
+
+def group(cl):
+    t = cl["topic"].lower()
+    if "margin" in t: return "Margins"
+    if "working capital" in t: return "Working capital"
+    if "revenue" in t and cl["target"]["kind"] != "milestone": return "Revenue"
+    return "Milestones and other targets"
+
+SHORT = {"EBITDA margin": "EBITDA", "PAT margin": "PAT", "Working capital days": "", "Revenue": ""}
+
+def result_text(cl, today):
+    vk, vl = verdict(cl, today)
+    o, t = cl["outcome"], cl["target"]
+    if "value" not in o:
+        return f'{cl["topic"]}: {vl.lower()}'
+    name = " ".join(x for x in (cl["period"], SHORT.get(cl["topic"], cl["topic"])) if x)
+    if t["kind"] == "max":
+        return f'{name} {fmt(o["value"], o["unit"])} vs ≤ {fmt(t["high"], t["unit"])}'
+    return f'{name} {fmt(o["value"], o["unit"])} ({gap(cl).replace(" vs target", "").replace("-", "−")})'
+
+def by_metric(c, today):
+    rows = ""
+    for g in ("Revenue", "Margins", "Working capital", "Milestones and other targets"):
+        cls = [cl for cl in c["claims"] if group(cl) == g]
+        due = [cl for cl in cls if verdict(cl, today)[0] != "pending"]
+        kept = sum(verdict(cl, today)[0] == "met" for cl in due)
+        res = "<br>".join(f'<a href="#{E(cl["id"])}" class="v-{verdict(cl, today)[0]}">{E(result_text(cl, today))}</a>' for cl in due) or "—"
+        rows += (f'<tr><td>{g}</td><td class="n">{f"{kept} of {len(due)}" if due else "—"}</td><td>{res}</td>'
+                 f'<td class="n">{len(cls) - len(due) or "—"}</td></tr>')
+    return ('<section class="ledger metric"><table><thead><tr><th>Metric</th><th>Kept</th><th>Each due result vs first target</th>'
+            f'<th>Still open</th></tr></thead><tbody>{rows}</tbody></table></section>')
+
+def revenue_rows(c):
+    return [cl for cl in c["claims"] if group(cl) == "Revenue" and "value" in cl["outcome"]]
+
+def delivery(c):
+    rows = revenue_rows(c)
+    if not rows: return ""
+    ratios = [cl["outcome"]["value"] / cl["target"]["low"] for cl in rows]
+    avg = sum(ratios) / len(ratios)
+    trs = "".join(f'<tr><td><a href="#{E(cl["id"])}">{E(cl["period"])}</a></td><td class="n">{E(target_text(cl["target"]))}</td>'
+                  f'<td class="n">{fmt(cl["outcome"]["value"], "₹ cr")}</td><td class="n">{r*100:.0f}%</td></tr>' for cl, r in zip(rows, ratios))
+    trs += f'<tr class="tot"><td>Average</td><td></td><td></td><td class="n">{avg*100:.0f}%</td></tr>'
+    imp = ""
+    fwd = next((cl for cl in c["claims"] if cl.get("implied")), None)
+    if fwd:
+        i = fwd["implied"]
+        base = next(cl for cl in c["claims"] if cl["id"] == i["base"])
+        b = base["outcome"]["value"]
+        g = [m * i["multiple"] for m in i["market_growth_pct"]]
+        lo, hi = (b * (1 + x / 100) for x in g)
+        rng = lambda k: f'{fmt(lo * k, "₹ cr")}–{fmt(hi * k, "₹ cr")}'
+        imp = (f'<h3>What {fwd["period"]} guidance implies</h3><table><tbody>'
+               f'<tr><td>Guidance: <a href="#{E(fwd["id"])}">{E(target_text(fwd["target"]))}</a>. Market growth put at '
+               f'{i["market_growth_pct"][0]}–{i["market_growth_pct"][1]}%, so {g[0]:g}–{g[1]:g}% on {base["period"]} audited {fmt(b, "₹ cr")}</td><td class="n">{rng(1)}</td></tr>'
+               f'<tr><td>If delivered at the {len(rows)}-year average rate ({avg*100:.0f}%)</td><td class="n">{rng(avg)}</td></tr>'
+               f'<tr><td>If delivered at the {rows[-1]["period"]} rate ({ratios[-1]*100:.0f}%)</td><td class="n">{rng(ratios[-1])}</td></tr></tbody></table>'
+               f'<p class="src">Simple arithmetic on management\'s own numbers, to show what the track record means for the open target. '
+               f'Not a forecast or a recommendation.</p>')
+    return (f'<section class="panel deliv"><h2>How much of its revenue guidance gets delivered</h2>'
+            f'<p class="src">Audited revenue as a share of the first revenue target (lower end of the range where a range was given).</p>'
+            f'<table><thead><tr><th>Year</th><th class="n">First target</th><th class="n">Audited</th><th class="n">Delivered</th></tr></thead><tbody>{trs}</tbody></table>{imp}</section>')
+
+def ledger_csv(c, today):
+    f = io.StringIO()
+    w = csv.writer(f)
+    w.writerow(["promise", "period", "target", "actual", "verdict", "result_vs_first_target", "first_said_on", "first_said_page",
+                "first_said_pdf", "speaker", "quote", "scorecard_link"])
+    for cl in c["claims"]:
+        s = cl["said"][0]
+        w.writerow([cl["topic"], cl["period"], target_text(cl["target"]), actual_text(cl, today), verdict(cl, today)[1], gap(cl),
+                     s["doc"], s["page"], f'{c["sources"][s["doc"]]["url"]}#page={s["page"]}', s.get("speaker", ""), s["quote"],
+                     f'{SITE_URL}{c["symbol"].lower()}.html#{cl["id"]}'])
+    return f.getvalue()
 
 def revenue_chart(c):
     rows = []
@@ -178,12 +256,25 @@ def page(title, body, desc):
 <title>{E(title)}</title><meta name="description" content="{E(desc)}"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family={FONTS}&display=swap" rel="stylesheet">
 <style>{CSS}</style></head><body><main>{body}</main>
-<footer>Built by <a href="https://app.avanisai.com">Avanis</a>. Facts only: what management said on the record and what was later reported. Not investment advice.</footer>
+<footer>Built by <a href="https://app.avanisai.com">Avanis</a>. Facts only: what management said on the record and what was later reported. Not investment advice. Spotted an error, or want a company added? <a href="mailto:{EMAIL}">{EMAIL}</a></footer>
 <script>document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{{document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
 document.querySelectorAll('[data-v]').forEach(c=>c.hidden=b.dataset.f!=='all'&&c.dataset.v!==b.dataset.f)}});
+document.querySelectorAll('[data-copy]').forEach(a=>a.addEventListener('click',()=>{{navigator.clipboard?.writeText(location.origin+location.pathname+a.hash);a.textContent='Copied';setTimeout(()=>a.textContent='Copy link',1500)}}));
 document.querySelectorAll('.watch li>a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.filters button[data-f=all]').click()));
 document.addEventListener('click',e=>{{const a=e.target.closest('a[href^="#"]');if(!a)return;history.replaceState({{y:scrollY}},'');if(a.hash===location.hash)setTimeout(openHash)}},true);
 const openHash=()=>{{const c=location.hash&&document.getElementById(location.hash.slice(1));if(!c){{if(history.state)scrollTo(0,history.state.y);return}}if(c.hidden)document.querySelector('.filters button[data-f=all]').click();const d=c.querySelector('details');if(d)d.open=true;c.scrollIntoView()}};history.scrollRestoration='manual';addEventListener('hashchange',openHash);openHash()</script></body></html>"""
+
+def fwd_csv(c):
+    return ROOT / "checks" / f'{c["symbol"]}_forward_statements.csv'
+
+def selection(c, n_calls):
+    f = fwd_csv(c)
+    if not f.exists(): return ""
+    rows = list(csv.DictReader(f.open()))
+    used = sum(bool(r["used_in_claim"]) for r in rows)
+    return (f'<li><b>Checking for cherry-picking:</b> a script lists every sentence management said on the {n_calls} calls that contains a number '
+            f'and a forward-looking word (will, expect, target, guidance, plan…): {len(rows)} sentences, {used} of them used here. '
+            f'<a href="{f.name}" download>Download all {len(rows)}</a> to see what was left out and judge for yourself.</li>')
 
 def company_page(c):
     today = c["checked_on"]
@@ -202,7 +293,9 @@ def company_page(c):
 <section class="hero"><div class="eyebrow">{E(c["exchange"])}: {E(c["symbol"])}</div><h1>{E(c["name"])}</h1>
 <p class="lede">Management kept <b>{n["met"]} of {scored}</b> promises that are due so far. Promises come from the company's concall transcripts and reported financials from its audited results, each linked to the exact page.</p>
 <div class="stats">{stats}</div></section>
-<div class="filters">{filters}</div>{ledger(c, today)}
+<h2 class="evid">By metric</h2>{by_metric(c, today)}
+<h2 class="evid">Every promise</h2><div class="filters">{filters}</div>{ledger(c, today)}
+{delivery(c)}
 {watch_list(c, today)}
 {revenue_chart(c)}
 <h2 class="evid">Evidence for each promise</h2>{cards}
@@ -210,9 +303,10 @@ def company_page(c):
 <li><b>Sources:</b> {len(calls)} earnings-call transcripts from {date_label(first)} to {date_label(last)} and {n_aud} audited annual results filings, all downloaded from <a href="{E(c["ir_page"])}">the company's investor page</a>. No third-party data.</li>
 <li><b>Reported numbers:</b> revenue and margins are taken from the audited consolidated results (₹ million, converted to ₹ crore), with the working shown on each card. Revenue means revenue from operations, excluding other income. Working-capital days and milestones are not in audited results, so they come from what management said on the call.</li>
 <li><b>What counts as a promise:</b> a specific, checkable number or milestone said by management (not by analysts) with a time frame.</li>
+{selection(c, len(calls))}
 <li><b>Verdict:</b> scored against the <i>first</i> guidance given. Later cuts are shown, not hidden. Delivered = met or beat the target. Late = milestone happened after the stated date, or not yet.</li>
 <li><b>Checked by script:</b> every quote is tested word-for-word against the cited PDF page, and the speaker is checked against the transcript. Every audited number is checked to appear on the cited page of the filing.</li>
-<li>Data as of {date_label(today)}. Spotted an error? Open an issue on GitHub.</li></ul></section>"""
+<li>Data as of {date_label(today)}. Spotted an error? Email <a href="mailto:{EMAIL}">{EMAIL}</a> or open an issue on GitHub.</li></ul></section>"""
     return page(f"{c['name']}: promises vs delivery | Avanis Promise Scorecard", body,
                 f"{c['name']} management kept {n['met']} of {scored} promises. Every claim cited to the page.")
 
@@ -233,6 +327,8 @@ def main(symbols):
     cos = [load_company(s) for s in symbols]
     for c in cos:
         (OUT / f"{c['symbol'].lower()}.html").write_text(company_page(c))
+        (OUT / f"{c['symbol'].lower()}-promises.csv").write_text(ledger_csv(c, c["checked_on"]))
+        if fwd_csv(c).exists(): shutil.copy(fwd_csv(c), OUT / fwd_csv(c).name)
     (OUT / "index.html").write_text(index_page(cos))
     print("built", [c["symbol"] for c in cos])
 
