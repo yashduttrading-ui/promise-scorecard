@@ -175,7 +175,7 @@ def reasons(c, today):
         if cls:
             items += (f'<li><b>{E(k.replace("-", " ").capitalize())} ({len(cls)}):</b> ' +
                       ", ".join(f'<a href="#{E(cl["id"])}">{E(cl["period"])} {E(cl["topic"])}</a>' for cl in cls) + "</li>")
-    return (f'<section class="panel why"><h2>What management said about the {len(tagged)} misses</h2>'
+    return (f'<section class="panel why" id="why"><h2>What management said about the {len(tagged)} misses</h2>'
             f'<p class="src">Each missed or late promise carries what management itself said about it on a call, quoted and linked. '
             f'The one-word tag is our reading of that quote, so a reader can disagree. Where the calls never gave a reason, it says so.</p><ul>{items}</ul></section>')
 
@@ -199,16 +199,17 @@ def delivery(c):
         g = [m * i["multiple"] for m in i["market_growth_pct"]]
         lo, hi = (b * (1 + x / 100) for x in g)
         rng = lambda k: f'{fmt(lo * k, "₹ cr")}–{fmt(hi * k, "₹ cr")}'
-        imp = (f'<h3>What {fwd["period"]} guidance implies</h3><table><tbody>'
+        p1 = lambda x: f'{x*100:.1f}%'
+        imp = (f'<h3>{fwd["period"]} guidance at the company\'s own delivery rates</h3><table><tbody>'
                f'<tr><td>Guidance: <a href="#{E(fwd["id"])}">{E(target_text(fwd["target"]))}</a>. Market growth put at '
-               f'{i["market_growth_pct"][0]}–{i["market_growth_pct"][1]}%, so {g[0]:g}–{g[1]:g}% on {base["period"]} audited {fmt(b, "₹ cr")}</td><td class="n">{rng(1)}</td></tr>'
-               f'<tr><td>If delivered at the {len(rows)}-year average rate ({avg*100:.0f}%)</td><td class="n">{rng(avg)}</td></tr>'
-               f'<tr><td>If delivered at the {rows[-1]["period"]} rate ({ratios[-1]*100:.0f}%)</td><td class="n">{rng(ratios[-1])}</td></tr></tbody></table>'
-               f'<p class="src">Simple arithmetic on management\'s own numbers, to show what the track record means for the open target. '
-               f'Not a forecast or a recommendation.</p>')
-    return (f'<section class="panel deliv"><h2>How much of its revenue guidance gets delivered</h2>'
-            f'<p class="src">Audited revenue as a share of the first revenue target (lower end of the range where a range was given).</p>'
-            f'<table><thead><tr><th>Year</th><th class="n">First target</th><th class="n">Audited</th><th class="n">Delivered</th></tr></thead><tbody>{trs}</tbody></table>{imp}</section>')
+               f'{i["market_growth_pct"][0]}–{i["market_growth_pct"][1]}%, so {g[0]:g}–{g[1]:g}% on {base["period"]} audited ₹{b:,.1f} cr</td><td class="n">{rng(1)}</td></tr>'
+               f'<tr><td>If delivered at the {len(rows)}-year average rate ({p1(avg)})</td><td class="n">{rng(avg)}</td></tr>'
+               f'<tr><td>If delivered at the {rows[-1]["period"]} rate ({p1(ratios[-1])})</td><td class="n">{rng(ratios[-1])}</td></tr></tbody></table>'
+               f'<p class="src">Simple arithmetic on management\'s own numbers, unrounded ({", ".join(p1(r) for r in ratios)} delivered in {", ".join(E(cl["period"]) for cl in rows)}), '
+               f'to show what the track record means for the open target. Not a forecast or a recommendation.</p>')
+    return (f'<section class="panel deliv"><h2>3. What it means for a model</h2>{imp}'
+            f'<h3>How the delivery rate is worked out</h3><p class="src">Audited revenue as a share of the first revenue target (lower end of the range where a range was given).</p>'
+            f'<table><thead><tr><th>Year</th><th class="n">First target</th><th class="n">Audited</th><th class="n">Delivered</th></tr></thead><tbody>{trs}</tbody></table></section>')
 
 def ledger_csv(c, today):
     f = io.StringIO()
@@ -262,18 +263,40 @@ def watch_list(c, today):
     items = sorted((cl for cl in c["claims"] if is_open(cl, today)),
                    key=lambda cl: (cl["outcome"].get("new_deadline", cl["deadline"]), cl["id"]))
     if not items: return ""
+    nr = c.get("next_results")
     rows = ""
     for cl in items:
         o, s = cl["outcome"], cl["said"][0]
         due = o.get("new_deadline", cl["deadline"])
         slipped = f' (originally {date_label(cl["deadline"])})' if "new_deadline" in o else ""
-        rows += (f'<li><a href="#{E(cl["id"])}"><b>{E(cl["topic"])}</b></a> <span class="per">{E(cl["period"])}</span>'
-                 f'<div class="tgt">Target: {E(target_text(cl["target"]))} · Due {date_label(due)}{E(slipped)} · '
+        listen = f'<div class="listen">{E(cl["watch"])}</div>' if cl.get("watch") else ""
+        rows += (f'<li><a href="#{E(cl["id"])}"><b>{E(cl["topic"])}</b></a> <span class="per">{E(cl["period"])}</span>{listen}'
+                 f'<div class="tgt">Promised: {E(target_text(cl["target"]))} · due {date_label(due)}{E(slipped)} · '
                  f'said {date_label(s["doc"])}, {cite(c, s)}</div></li>')
-    nr = c.get("next_results")
-    sub = (f'Next checkpoint: <b>{E(nr["label"])}</b>, due by {date_label(nr["due"])}. ' if nr else "")
-    return (f'<section class="panel watch"><h2>What to watch next</h2><p class="src">{sub}'
-            f'These promises are still open, soonest first. Click one to see the full quote.</p><ul>{rows}</ul></section>')
+    head = (f'1. Before the {E(nr["label"].split(" (")[0])} call</h2><p class="src">Results due by {date_label(nr["due"])}. ' if nr
+            else '1. Open promises</h2><p class="src">Next results date not yet announced. ')
+    return (f'<section class="panel watch"><h2>{head}'
+            f'The {len(items)} promises still open, soonest due first, with what to listen for. Click one for the full quote and page.</p><ul>{rows}</ul></section>')
+
+def track_record(c, today):
+    vs = [verdict(cl, today)[0] for cl in c["claims"]]
+    scored = sum(v != "pending" for v in vs)
+    rev = revenue_rows(c)
+    parts = [f'Management kept <b>{vs.count("met")} of {scored}</b> promises that have come due.']
+    if rev:
+        pct = ", ".join(f'{cl["outcome"]["value"] / cl["target"]["low"] * 100:.0f}% ({E(cl["period"])})' for cl in rev)
+        cuts = sum(any(x.get("role") == "cut" for x in cl["said"]) for cl in rev)
+        parts.append(f'Revenue came in at {pct} of the first guidance, and guidance was cut mid-year in {cuts} of {len(rev)} years.')
+    for g, lab in (("Margins", "Margin targets"), ("Working capital", "Working-capital targets"), ("Milestones and other targets", "Milestones")):
+        due = [cl for cl in c["claims"] if group(cl) == g and verdict(cl, today)[0] != "pending"]
+        if due: parts.append(f'{lab}: {sum(verdict(cl, today)[0] == "met" for cl in due)} of {len(due)} kept{" on time" if g.startswith("Milestones") else ""}.')
+    tagged = [cl for cl in c["claims"] if cl.get("reason")]
+    if tagged:
+        n = {k: sum(cl["reason"]["tag"] == k for cl in tagged) for k in TAGS}
+        parts.append(f'Of the {len(tagged)} misses, the reason management gave reads as external for {n["external"]}, execution for {n["execution"]}, '
+                     f'its own choice for {n["own-choice"]}, and {n["not-explained"]} were never explained on a call (our tags; <a href="#why">quotes</a>).')
+    return (f'<section class="panel record"><h2>2. Track record</h2><p class="lede">{" ".join(parts)}</p>{by_metric(c, today)}'
+            f'<p class="src">Scored against the first guidance given, with later cuts shown not hidden. <a href="#all">Every promise</a> with its quote and page is below.</p></section>')
 
 CSS = (ROOT / "scripts/style.css").read_text()
 FONTS = "Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700"
@@ -320,13 +343,13 @@ def company_page(c):
     first = min(calls); last = max(calls)
     body = f"""<nav><a href="index.html">← All companies</a></nav>
 <section class="hero"><div class="eyebrow">{E(c["exchange"])}: {E(c["symbol"])}</div><h1>{E(c["name"])}</h1>
-<p class="lede">Management kept <b>{n["met"]} of {scored}</b> promises that are due so far. Promises come from the company's concall transcripts and reported financials from its audited results, each linked to the exact page.</p>
+<p class="lede">Management kept <b>{n["met"]} of {scored}</b> promises that are due so far. Three things an analyst needs, in order: what to listen for on the next call, the track record, and what it means for a model. Every number links to the exact page of the company's own transcript or audited results.</p>
 <div class="stats">{stats}</div></section>
-<h2 class="evid">By metric</h2>{by_metric(c, today)}
-<h2 class="evid">Every promise</h2><div class="filters">{filters}</div>{ledger(c, today)}
-{reasons(c, today)}
-{delivery(c)}
 {watch_list(c, today)}
+{track_record(c, today)}
+{delivery(c)}
+<h2 class="evid" id="all">Every promise</h2><div class="filters">{filters}</div>{ledger(c, today)}
+{reasons(c, today)}
 {revenue_chart(c)}
 <h2 class="evid">Evidence for each promise</h2>{cards}
 <section class="panel method"><h2>How this is built</h2><ul>
