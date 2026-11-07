@@ -14,3 +14,13 @@ cd scripts && python3 fetch.py KAYNES && python3 verify.py KAYNES && python3 bui
 ```
 
 Facts only, not investment advice.
+
+## Checking it by hand
+
+Open `checks/<SYMBOL>.csv` in Excel or Google Sheets. One row per quote:
+
+1. Click `open_pdf_at_page`. It opens the company's own PDF at `pdf_page` (the page number in your PDF viewer; `printed_page_label` is what is printed on the page itself).
+2. Find `exact_quote` on that page (Ctrl+F a few words of it) and check the `speaker`. Mark `checked_quote_ok`.
+3. Read `how_scored`, which spells out the comparison behind the `verdict`. Mark `checked_verdict_ok`.
+
+The same "How scored" line is shown on every card on the site. `scripts/verify.py` does step 2 automatically for every row.

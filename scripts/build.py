@@ -27,6 +27,22 @@ def verdict(cl, today):
     ok = v <= t["high"] if t["kind"] == "max" else v >= t["low"]
     return ("met", "Delivered") if ok else ("missed", "Missed")
 
+def rule_text(cl, today):
+    t, o = cl["target"], cl["outcome"]
+    vk, vl = verdict(cl, today)
+    if o.get("status") == "pending":
+        return f"Deadline {date_label(cl['deadline'])} is after {date_label(today)}, so not scored yet."
+    if t["kind"] == "milestone":
+        return (f"Promised by {date_label(cl['deadline'])}. First seen done/started in the "
+                f"{date_label(o['first_seen'])} call, which is after the deadline → {vl}.")
+    u, v = t.get("unit", ""), o["value"]
+    if t["kind"] == "max":
+        test, ok = f"{fmt(v, u)} ≤ {fmt(t['high'], u)}", v <= t["high"]
+    else:
+        test, ok = f"{fmt(v, u)} ≥ {fmt(t['low'], u)} (first target)", v >= t["low"]
+    conv = " ₹1 crore = ₹10 million." if u == "₹ cr" and "million" in o["quote"] else ""
+    return f"Is reported {test}? {'Yes' if ok else 'No'} → {vl}.{conv}"
+
 def gap(cl):
     t, o = cl["target"], cl["outcome"]
     if "value" not in o or t["kind"] == "milestone": return ""
@@ -60,7 +76,8 @@ def claim_card(c, cl, today):
     else:
         result = f'<div class="result pend">Deadline {date_label(cl["deadline"])}. Nothing to score yet.</div>'
     resp = quote_block(c, cl["management_response"], "Management on it") if cl.get("management_response") else ""
-    note = f'<p class="note">{E(cl["note"])}</p>' if cl.get("note") else ""
+    note = f'<p class="rule"><b>How scored:</b> {E(rule_text(cl, today))}</p>'
+    note += f'<p class="note">{E(cl["note"])}</p>' if cl.get("note") else ""
     return (f'<article class="card" data-v="{vk}"><header><div><h3>{E(cl["topic"])} <span class="per">{E(cl["period"])}</span></h3>'
             f'<div class="tgt">Target: {E(target_text(cl["target"]))}</div></div><span class="pill v-{vk}">{vl}</span></header>'
             f'{said}{result}{resp}{note}</article>')
