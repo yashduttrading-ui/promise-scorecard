@@ -1,6 +1,6 @@
 """Render data/companies/*.json into a static site in site/."""
 import csv, datetime as dt, html, io, json, re, shutil, sys
-from common import ROOT, load_company, is_audited, FORMULA
+from common import ROOT, load_company, is_audited, FORMULA, PER_CRORE, num
 
 E = html.escape
 OUT = ROOT / "site"
@@ -182,13 +182,24 @@ def reasons(c, today):
 def revenue_rows(c):
     return [cl for cl in c["claims"] if group(cl) == "Revenue" and "value" in cl["outcome"]]
 
+def rev_crore(cl):
+    """(first target, audited revenue) in ₹ crore. A growth target is converted with the audited base-year revenue."""
+    if cl["target"]["unit"] == "₹ cr": return cl["target"]["low"], cl["outcome"]["value"]
+    a = cl["outcome"]["audited"]; k = PER_CRORE[a.get("unit", "million")]
+    base, act = num(a["lines"]["rev_prev"][1]) / k, num(a["lines"]["rev"][1]) / k
+    return base * (1 + cl["target"]["low"] / 100), act
+
 def delivery(c):
     rows = revenue_rows(c)
     if not rows: return ""
-    ratios = [cl["outcome"]["value"] / cl["target"]["low"] for cl in rows]
+    ratios = [rev_crore(cl)[1] / rev_crore(cl)[0] for cl in rows]
+    def tgt(cl):
+        if cl["target"]["unit"] == "₹ cr": return E(target_text(cl["target"]))
+        a = cl["outcome"]["audited"]; base = num(a["lines"]["rev_prev"][1]) / PER_CRORE[a.get("unit", "million")]
+        return f'{E(target_text(cl["target"]))}: {cl["target"]["low"]:g}% on ₹{base:,.1f} cr = {fmt(rev_crore(cl)[0], "₹ cr")}' 
     avg = sum(ratios) / len(ratios)
-    trs = "".join(f'<tr><td><a href="#{E(cl["id"])}">{E(cl["period"])}</a></td><td class="n">{E(target_text(cl["target"]))}</td>'
-                  f'<td class="n">{fmt(cl["outcome"]["value"], "₹ cr")}</td><td class="n">{r*100:.0f}%</td></tr>' for cl, r in zip(rows, ratios))
+    trs = "".join(f'<tr><td><a href="#{E(cl["id"])}">{E(cl["period"])}</a></td><td class="n">{tgt(cl)}</td>'
+                  f'<td class="n">{fmt(rev_crore(cl)[1], "₹ cr")}</td><td class="n">{r*100:.0f}%</td></tr>' for cl, r in zip(rows, ratios))
     trs += f'<tr class="tot"><td>Average</td><td></td><td></td><td class="n">{avg*100:.0f}%</td></tr>'
     imp = ""
     fwd = next((cl for cl in c["claims"] if cl.get("implied")), None)
@@ -208,7 +219,7 @@ def delivery(c):
                f'<p class="src">Simple arithmetic on management\'s own numbers, unrounded ({", ".join(p1(r) for r in ratios)} delivered in {", ".join(E(cl["period"]) for cl in rows)}), '
                f'to show what the track record means for the open target. Not a forecast or a recommendation.</p>')
     return (f'<section class="panel deliv"><h2>3. What it means for a model</h2>{imp}'
-            f'<h3>How the delivery rate is worked out</h3><p class="src">Audited revenue as a share of the first revenue target (lower end of the range where a range was given).</p>'
+            f'<h3>How the delivery rate is worked out</h3><p class="src">Audited revenue as a share of the first revenue target (lower end of the range where a range was given). A growth target is converted to ₹ crore using the audited revenue of the year before.</p>'
             f'<table><thead><tr><th>Year</th><th class="n">First target</th><th class="n">Audited</th><th class="n">Delivered</th></tr></thead><tbody>{trs}</tbody></table></section>')
 
 def ledger_csv(c, today):
@@ -284,7 +295,7 @@ def track_record(c, today):
     rev = revenue_rows(c)
     parts = [f'Management kept <b>{vs.count("met")} of {scored}</b> promises that have come due.']
     if rev:
-        pct = ", ".join(f'{cl["outcome"]["value"] / cl["target"]["low"] * 100:.0f}% ({E(cl["period"])})' for cl in rev)
+        pct = ", ".join(f'{rev_crore(cl)[1] / rev_crore(cl)[0] * 100:.0f}% ({E(cl["period"])})' for cl in rev)
         cuts = sum(any(x.get("role") == "cut" for x in cl["said"]) for cl in rev)
         parts.append(f'Revenue came in at {pct} of the first guidance, and guidance was cut mid-year in {cuts} of {len(rev)} years.')
     for g, lab in (("Margins", "Margin targets"), ("Working capital", "Working-capital targets"), ("Milestones and other targets", "Milestones")):
