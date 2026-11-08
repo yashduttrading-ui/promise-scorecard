@@ -452,7 +452,13 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "Guided 30% in January, 35% in May, 40–45% in November (≈₹7,000 cr, p.4). Two raises in a year; the first target is what gets scored. Listen for whether 40–45% holds and what 9-month revenue implies for Q4."
+   "watch": "Guided 30% in January, 35% in May, 40–45% in November (≈₹7,000 cr, context quote). Two raises in a year; the first target is what gets scored. Listen for whether 40–45% holds and what 9-month revenue implies for Q4.",
+   "context": {
+    "doc": "2026-11-02",
+    "page": 4,
+    "quote": "So on all the qualitative aspects, we have surpassed what we did in FY25 in H1 and this gives us the confidence to revise our guidance upwards that we would be able to deliver 40% to 45% growth this year on an annualized basis, which would translate into around INR7,000 crores of revenue.",
+    "speaker": "J.S. Gujral"
+   }
   },
   {
    "id": "fy27-ebitda",
@@ -498,7 +504,13 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "Guided 10%, raised to 10.5–11% in May, cut to 10–10.5% in November with H1 at 9.9% (p.6). Listen for the H2 margin needed to reach 10% for the year."
+   "watch": "Guided 10%, raised to 10.5–11% in May, cut to 10–10.5% in November with H1 at 9.9% (context quote). Listen for the H2 margin needed to reach 10% for the year.",
+   "context": {
+    "doc": "2026-11-02",
+    "page": 6,
+    "quote": "Our EBITDA margin for H1 is 9.9% as compared to 10.1% last year and despite a slight in the operating EBITDA margin, our absolute profitability continues to increase substantially.",
+    "speaker": "Bijay Agrawal"
+   }
   },
   {
    "id": "fy27-exports",
@@ -579,7 +591,13 @@
     "status": "pending"
    },
    "note": "Worded as an aim ('we will strive'), weaker than the revenue and margin guidance.",
-   "watch": "60–65 days at year-end, against 63 days at March 2026 (May 2026 call p.4). Listen for the December figure."
+   "watch": "60–65 days at year-end, against 63 days at March 2026 (context quote). Listen for the December figure.",
+   "context": {
+    "doc": "2026-05-12",
+    "page": 4,
+    "quote": "Working capital cycle, we had said that we will endeavour to bring it down, and we have brought it down from 69 days to 63 days.",
+    "speaker": "J.S. Gujral"
+   }
   },
   {
    "id": "pcb-commercial-production",
@@ -608,7 +626,13 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "April 2027 start, with ₹200 cr spent and another ₹200 cr due by March (Nov call p.7). Listen for equipment installation and trial-run dates."
+   "watch": "April 2027 start, with ₹200 cr spent and another ₹200 cr due by March (context quote). Listen for equipment installation and trial-run dates.",
+   "context": {
+    "doc": "2026-11-02",
+    "page": 7,
+    "quote": "We have already spent more than INR200 crores for the project and expecting to spend another INR200 crores in the balance of the year.",
+    "speaker": "Bijay Agrawal"
+   }
   }
  ],
  "next_results": {
