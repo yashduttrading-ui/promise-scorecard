@@ -1,64 +1,96 @@
 [
-  {
-    "date": "2023-01-25",
-    "title": "Earnings call transcript 2023-01-25",
-    "file": "DIXON_2023-01-25.pdf",
-    "url": "https://nsearchives.nseindia.com/corporate/DIXON_30012023182823_EarningCallTranscriptQ330012023.pdf",
-    "sha256": "a31ededf4bce474820f53569b5239a446c7605a1f0fcf717ca8106dc65d16b59",
-    "bytes": 899183
-  },
-  {
-    "date": "2023-05-23",
-    "title": "Earnings call transcript 2023-05-23",
-    "file": "DIXON_2023-05-23.pdf",
-    "url": "https://nsearchives.nseindia.com/corporate/DIXON_27052023214724_EarningCallTranscriptQ4Intimation27052023.pdf",
-    "sha256": "3b1d8bd3835313e2288b1bf26d2a00b210fa58c0f1004de1303471a94ee21962",
-    "bytes": 871455
-  },
-  {
-    "date": "2024-05-15",
-    "title": "Earnings call transcript 2024-05-15",
-    "file": "DIXON_2024-05-15.pdf",
-    "url": "https://nsearchives.nseindia.com/corporate/DIXON_20052024172949_EarningCallTranscriptQ4FY24.pdf",
-    "sha256": "7b400e6cb66417dd640a85aefcd46e4057328a2dccef88d57e5b692fdc3b6063",
-    "bytes": 1366863
-  },
-  {
-    "date": "2024-07-30",
-    "title": "Earnings call transcript 2024-07-30",
-    "file": "DIXON_2024-07-30.pdf",
-    "url": "https://d1iixm87htyovw.cloudfront.net/new_uploads/Investor%20Structure%20with%20docs/Financial%20Performance-20250331T105053Z-001/Financial%20Performance/Earnings%20Call%20Transcripts/2024-25/Q1%20Earning%20Call%20Transcript.pdf",
-    "sha256": "174c0805214b512b9cf0d32793f767c59622012e99a8a4f693b7bd9bda8efaa3",
-    "bytes": 545092
-  },
-  {
-    "date": "2026-05-12",
-    "title": "Earnings call transcript 2026-05-12",
-    "file": "DIXON_2026-05-12.pdf",
-    "url": "https://d1iixm87htyovw.cloudfront.net/uploads/17eb4df3-5044-40f5-b3c4-3def219cbd19-EarningTranscriptQ4FY26.pdf",
-    "sha256": "4e9f594fb390bd300fdbedcaebdf83eb70fdc48333a90f2c135a63121aacfd80",
-    "bytes": 332758
-  },
-  {
-    "key": "audited-FY25",
-    "kind": "audited",
-    "label": "Audited results FY25",
-    "date": "2025-05-20",
-    "title": "Audited financial results Q4 FY2024-25 (consolidated, with FY24 comparative), filed on NSE",
-    "file": "DIXON_audited-FY25.pdf",
-    "url": "https://nsearchives.nseindia.com/corporate/DIXON_20052025154712_Outcome20052025.pdf",
-    "sha256": "cffdce868bd90c39a461a24c0d6487b659c0775922c7c53fdf631485c284b79c",
-    "bytes": 5233611
-  },
-  {
-    "key": "audited-FY26",
-    "kind": "audited",
-    "label": "Audited results FY26",
-    "date": "2026-05-12",
-    "title": "Audited financial results Q4 FY2025-26 (consolidated, with FY25 comparative), filed on NSE",
-    "file": "DIXON_audited-FY26.pdf",
-    "url": "https://nsearchives.nseindia.com/corporate/DIXON_12052026155100_OutcomeofBoardMeeeting12052026WPPT.pdf",
-    "sha256": "174f524b3e073f29e0c2444579f19f1679fee5a2c04b467497fd79d925bd25fe",
-    "bytes": 25819549
-  }
+ {
+  "date": "2023-01-25",
+  "title": "Earnings call transcript 2023-01-25",
+  "file": "DIXON_2023-01-25.pdf",
+  "url": "https://nsearchives.nseindia.com/corporate/DIXON_30012023182823_EarningCallTranscriptQ330012023.pdf",
+  "sha256": "a31ededf4bce474820f53569b5239a446c7605a1f0fcf717ca8106dc65d16b59",
+  "bytes": 899183
+ },
+ {
+  "date": "2023-05-23",
+  "title": "Earnings call transcript 2023-05-23",
+  "file": "DIXON_2023-05-23.pdf",
+  "url": "https://nsearchives.nseindia.com/corporate/DIXON_27052023214724_EarningCallTranscriptQ4Intimation27052023.pdf",
+  "sha256": "3b1d8bd3835313e2288b1bf26d2a00b210fa58c0f1004de1303471a94ee21962",
+  "bytes": 871455
+ },
+ {
+  "date": "2024-05-15",
+  "title": "Earnings call transcript 2024-05-15",
+  "file": "DIXON_2024-05-15.pdf",
+  "url": "https://nsearchives.nseindia.com/corporate/DIXON_20052024172949_EarningCallTranscriptQ4FY24.pdf",
+  "sha256": "7b400e6cb66417dd640a85aefcd46e4057328a2dccef88d57e5b692fdc3b6063",
+  "bytes": 1366863
+ },
+ {
+  "date": "2024-07-30",
+  "title": "Earnings call transcript 2024-07-30",
+  "file": "DIXON_2024-07-30.pdf",
+  "url": "https://d1iixm87htyovw.cloudfront.net/new_uploads/Investor%20Structure%20with%20docs/Financial%20Performance-20250331T105053Z-001/Financial%20Performance/Earnings%20Call%20Transcripts/2024-25/Q1%20Earning%20Call%20Transcript.pdf",
+  "sha256": "174c0805214b512b9cf0d32793f767c59622012e99a8a4f693b7bd9bda8efaa3",
+  "bytes": 545092
+ },
+ {
+  "date": "2026-05-12",
+  "title": "Earnings call transcript 2026-05-12",
+  "file": "DIXON_2026-05-12.pdf",
+  "url": "https://d1iixm87htyovw.cloudfront.net/uploads/17eb4df3-5044-40f5-b3c4-3def219cbd19-EarningTranscriptQ4FY26.pdf",
+  "sha256": "4e9f594fb390bd300fdbedcaebdf83eb70fdc48333a90f2c135a63121aacfd80",
+  "bytes": 332758
+ },
+ {
+  "key": "audited-FY25",
+  "kind": "audited",
+  "label": "Audited results FY25",
+  "date": "2025-05-20",
+  "title": "Audited financial results Q4 FY2024-25 (consolidated, with FY24 comparative), filed on NSE",
+  "file": "DIXON_audited-FY25.pdf",
+  "url": "https://nsearchives.nseindia.com/corporate/DIXON_20052025154712_Outcome20052025.pdf",
+  "sha256": "cffdce868bd90c39a461a24c0d6487b659c0775922c7c53fdf631485c284b79c",
+  "bytes": 5233611
+ },
+ {
+  "key": "audited-FY26",
+  "kind": "audited",
+  "label": "Audited results FY26",
+  "date": "2026-05-12",
+  "title": "Audited financial results Q4 FY2025-26 (consolidated, with FY25 comparative), filed on NSE",
+  "file": "DIXON_audited-FY26.pdf",
+  "url": "https://nsearchives.nseindia.com/corporate/DIXON_12052026155100_OutcomeofBoardMeeeting12052026WPPT.pdf",
+  "sha256": "174f524b3e073f29e0c2444579f19f1679fee5a2c04b467497fd79d925bd25fe",
+  "bytes": 25819549
+ },
+ {
+  "file": "DIXON_2025-10-17.pdf",
+  "date": "2025-10-17",
+  "title": "Earnings call transcript 2025-10-17 (NSE filing)",
+  "url": "https://nsearchives.nseindia.com/corporate/DIXON_24102025103411_Transcript17072025.pdf",
+  "sha256": "3eb64ae01c28627c2afbd121b90c576b6bf6dceb763fdb22898197c691303d15",
+  "bytes": 1066081
+ },
+ {
+  "file": "DIXON_2026-01-29.pdf",
+  "date": "2026-01-29",
+  "title": "Earnings call transcript 2026-01-29 (NSE filing)",
+  "url": "https://nsearchives.nseindia.com/corporate/DIXON_03022026170954_EarningCallTranscript_Q3Intimation.pdf",
+  "sha256": "377ade8dfd9a7c6b18d099802eed105342c65a48603b9980a75cef217a3ae995",
+  "bytes": 1089909
+ },
+ {
+  "file": "DIXON_2026-07-31.pdf",
+  "date": "2026-07-31",
+  "title": "Earnings call transcript 2026-07-31 (NSE filing)",
+  "url": "https://nsearchives.nseindia.com/corporate/DIXON_05082026183904_EarningCallTranscriptQ1Intimation05082026F.pdf",
+  "sha256": "f693ad398dd3f7ce05de2b6eb0e20a4bfd06b690a1c9025c462271f493759504",
+  "bytes": 854456
+ },
+ {
+  "file": "DIXON_2026-10-30.pdf",
+  "date": "2026-10-30",
+  "title": "Earnings call transcript 2026-10-30 (NSE filing)",
+  "url": "https://nsearchives.nseindia.com/corporate/DIXON_05112026163605_EarningCallTranscriptQ2Intimation.pdf",
+  "sha256": "4deece13445b61edc4734a1c17361d40b6ae2ef97a136a6ce211845435564829",
+  "bytes": 909626
+ }
 ]

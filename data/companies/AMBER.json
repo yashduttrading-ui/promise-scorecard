@@ -1,120 +1,301 @@
 {
-  "symbol": "AMBER",
-  "short": "Amber",
-  "name": "Amber Enterprises India",
-  "exchange": "NSE",
-  "ir_page": "https://www.ir.ambergroupindia.com",
-  "checked_on": "2026-11-07",
-  "claims": [
+ "symbol": "AMBER",
+ "short": "Amber",
+ "name": "Amber Enterprises India",
+ "exchange": "NSE",
+ "ir_page": "https://www.ir.ambergroupindia.com",
+ "checked_on": "2026-11-07",
+ "claims": [
+  {
+   "id": "fy25-revenue-growth",
+   "topic": "Revenue",
+   "period": "FY25",
+   "deadline": "2025-03-31",
+   "target": {
+    "kind": "min",
+    "low": 25,
+    "high": null,
+    "unit": "% growth"
+   },
+   "said": [
     {
-      "id": "fy25-revenue-growth",
-      "topic": "Revenue",
-      "period": "FY25",
-      "deadline": "2025-03-31",
-      "target": {
-        "kind": "min",
-        "low": 25,
-        "high": null,
-        "unit": "% growth"
-      },
-      "said": [
-        {
-          "doc": "2024-07-27",
-          "page": 6,
-          "role": "first",
-          "quote": "we expect our consol revenue to grow around 25%.",
-          "speaker": "Sudhir Goyal"
-        },
-        {
-          "doc": "2024-10-23",
-          "page": 6,
-          "role": "reaffirmed",
-          "quote": "we expect the console revenue to grow around 25% for the year",
-          "speaker": "Sudhir Goyal"
-        }
-      ],
-      "outcome": {
-        "audited": {
-          "doc": "audited-FY25",
-          "page": 13,
-          "unit": "lakh",
-          "table": "Consolidated financial results (₹ lakh)",
-          "column": "Year ended 31 March 2025 vs 31 March 2024 (Audited)",
-          "measure": "revenue_growth",
-          "lines": {
-            "rev": [
-              "Revenue from operations",
-              "9,97,301.57"
-            ],
-            "rev_prev": [
-              "Revenue from operations (previous year)",
-              "6,72,926.89"
-            ]
-          }
-        }
-      }
+     "doc": "2024-07-27",
+     "page": 6,
+     "role": "first",
+     "quote": "we expect our consol revenue to grow around 25%.",
+     "speaker": "Sudhir Goyal"
     },
     {
-      "id": "fy26-ebitda",
-      "topic": "EBITDA margin",
-      "period": "FY26",
-      "deadline": "2026-03-31",
-      "target": {
-        "kind": "range",
-        "low": 8,
-        "high": 9,
-        "unit": "%"
-      },
-      "said": [
-        {
-          "doc": "2025-07-30",
-          "page": 3,
-          "role": "first",
-          "quote": "we expect the consolidated margins to be in the range of 8% to 9% by FY '26 end",
-          "speaker": "Jasbir Singh"
-        }
-      ],
-      "outcome": {
-        "audited": {
-          "doc": "audited-FY26",
-          "page": 15,
-          "unit": "lakh",
-          "table": "Consolidated financial results (₹ lakh)",
-          "column": "Year ended 31 March 2026 (Audited)",
-          "measure": "ebitda_margin",
-          "lines": {
-            "pbt": [
-              "Profit before tax",
-              "46,553.11"
-            ],
-            "fc": [
-              "Finance costs",
-              "28,439.38"
-            ],
-            "da": [
-              "Depreciation and amortisation expense",
-              "32,255.67"
-            ],
-            "oi": [
-              "Other income",
-              "12,016.04"
-            ],
-            "rev": [
-              "Revenue from operations",
-              "12,18,647.66"
-            ]
-          }
-        }
-      },
-      "note": "Management said “by FY’26 end”; scored on the full-year audited margin, like every other margin target. Profit before tax here is before the share of joint-venture losses.",
-      "reason": {
-        "tag": "not-explained",
-        "doc": "2026-05-18",
-        "page": 3,
-        "speaker": "Jasbir Singh",
-        "quote": "The consolidated revenue of Amber grew by 22%, reaching INR12,186 crores for the year and recorded operating EBITDA of INR970 crores with growth of 22%.",
-        "caveat": "Management's operating EBITDA (about 8.0% of revenue) leaves out ESOP costs and non-operating items; on the audited lines it is 7.8%. The call did not discuss the 8–9% target."
-      }
+     "doc": "2024-10-23",
+     "page": 6,
+     "role": "reaffirmed",
+     "quote": "we expect the console revenue to grow around 25% for the year",
+     "speaker": "Sudhir Goyal"
     }
-  ]
+   ],
+   "outcome": {
+    "audited": {
+     "doc": "audited-FY25",
+     "page": 13,
+     "unit": "lakh",
+     "table": "Consolidated financial results (₹ lakh)",
+     "column": "Year ended 31 March 2025 vs 31 March 2024 (Audited)",
+     "measure": "revenue_growth",
+     "lines": {
+      "rev": [
+       "Revenue from operations",
+       "9,97,301.57"
+      ],
+      "rev_prev": [
+       "Revenue from operations (previous year)",
+       "6,72,926.89"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "fy26-ebitda",
+   "topic": "EBITDA margin",
+   "period": "FY26",
+   "deadline": "2026-03-31",
+   "target": {
+    "kind": "range",
+    "low": 8,
+    "high": 9,
+    "unit": "%"
+   },
+   "said": [
+    {
+     "doc": "2025-07-30",
+     "page": 3,
+     "role": "first",
+     "quote": "we expect the consolidated margins to be in the range of 8% to 9% by FY '26 end",
+     "speaker": "Jasbir Singh"
+    }
+   ],
+   "outcome": {
+    "audited": {
+     "doc": "audited-FY26",
+     "page": 15,
+     "unit": "lakh",
+     "table": "Consolidated financial results (₹ lakh)",
+     "column": "Year ended 31 March 2026 (Audited)",
+     "measure": "ebitda_margin",
+     "lines": {
+      "pbt": [
+       "Profit before tax",
+       "46,553.11"
+      ],
+      "fc": [
+       "Finance costs",
+       "28,439.38"
+      ],
+      "da": [
+       "Depreciation and amortisation expense",
+       "32,255.67"
+      ],
+      "oi": [
+       "Other income",
+       "12,016.04"
+      ],
+      "rev": [
+       "Revenue from operations",
+       "12,18,647.66"
+      ]
+     }
+    }
+   },
+   "note": "Management said “by FY’26 end”; scored on the full-year audited margin, like every other margin target. Profit before tax here is before the share of joint-venture losses.",
+   "reason": {
+    "tag": "not-explained",
+    "doc": "2026-05-18",
+    "page": 3,
+    "speaker": "Jasbir Singh",
+    "quote": "The consolidated revenue of Amber grew by 22%, reaching INR12,186 crores for the year and recorded operating EBITDA of INR970 crores with growth of 22%.",
+    "caveat": "Management's operating EBITDA (about 8.0% of revenue) leaves out ESOP costs and non-operating items; on the audited lines it is 7.8%. The call did not discuss the 8–9% target."
+   }
+  },
+  {
+   "id": "cd-fy26-growth",
+   "topic": "Consumer durables division revenue growth",
+   "period": "FY26",
+   "deadline": "2026-03-31",
+   "target": {
+    "kind": "range",
+    "low": 13,
+    "high": 15,
+    "unit": "% growth"
+   },
+   "said": [
+    {
+     "doc": "2025-11-07",
+     "page": 9,
+     "role": "first",
+     "quote": "And that's the reason why we are very confident that we will deliver 13% to 15% growth.",
+     "speaker": "Jasbir Singh"
+    }
+   ],
+   "outcome": {
+    "value": 14,
+    "unit": "% growth",
+    "doc": "2026-05-18",
+    "page": 4,
+    "quote": "In line with our guidance, the division outperformed the industry, recording a growth of 14% over previous year.",
+    "speaker": "Jasbir Singh"
+   },
+   "note": "Segment target; the outcome is management's figure on the Q4 call, not an audited line."
+  },
+  {
+   "id": "elec-fy27-growth",
+   "topic": "Electronics division revenue growth",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "min",
+    "low": 40,
+    "unit": "% growth"
+   },
+   "said": [
+    {
+     "doc": "2026-05-18",
+     "page": 4,
+     "role": "first",
+     "quote": "Continuing the strong growth momentum, this division is expected to grow by around 40% in FY '27.",
+     "speaker": "Jasbir Singh"
+    },
+    {
+     "doc": "2026-08-14",
+     "page": 14,
+     "role": "reaffirmed",
+     "quote": "So all 3 put together will lead to this 40% mark.",
+     "speaker": "Jasbir Singh"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "About 40% growth for the division in FY27, repeated in August. Listen for the H1 division growth rate and whether 40% is kept."
+  },
+  {
+   "id": "elec-fy27-margin",
+   "topic": "Electronics division margin",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "range",
+    "low": 9.5,
+    "high": 10,
+    "unit": "%"
+   },
+   "said": [
+    {
+     "doc": "2026-05-18",
+     "page": 14,
+     "role": "first",
+     "quote": "And the margins, what we are expecting right now should be in the range of 9.5% to 10% range.",
+     "speaker": "Jasbir Singh"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "9.5–10% for the division for FY27. Listen for the H1 division margin."
+  },
+  {
+   "id": "rail-fy27-growth",
+   "topic": "Railway subsystems (Sidwal) revenue growth",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "range",
+    "low": 30,
+    "high": 35,
+    "unit": "% growth"
+   },
+   "said": [
+    {
+     "doc": "2026-05-18",
+     "page": 5,
+     "role": "first",
+     "quote": "The division is expected to deliver 30% to 35% revenue growth in FY '27.",
+     "speaker": "Sudhir Goyal"
+    },
+    {
+     "doc": "2026-08-14",
+     "page": 4,
+     "role": "reaffirmed",
+     "quote": "For the full year, we expect this division to deliver growth of about 30% to 35% for the full year, as informed earlier.",
+     "speaker": "Jasbir Singh"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "30–35% division growth for FY27. Listen for the H1 rate and the order book."
+  },
+  {
+   "id": "fy27-net-debt",
+   "topic": "Net debt",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "max",
+    "high": 800,
+    "unit": "₹ cr"
+   },
+   "said": [
+    {
+     "doc": "2026-05-18",
+     "page": 17,
+     "role": "first",
+     "quote": "So you can expect around INR700 crores to INR800 crores of net debt by year-end.",
+     "speaker": "Sudhir Goyal"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "Net debt of ₹700–800 cr at March 2027, in a year with ₹1,800–2,000 cr of capex (same call p.16). Listen for the September net debt figure."
+  },
+  {
+   "id": "ascent-pcb-production",
+   "topic": "Ascent Circuits PCB plant: mass production",
+   "period": "Q3 FY27",
+   "deadline": "2026-12-31",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2025-11-07",
+     "page": 8,
+     "role": "first",
+     "quote": "We expect the plant to be up and running by September of next year and the trials to begin in September and the mass production will start in quarter 3 of FY '27.",
+     "speaker": "Jasbir Singh"
+    },
+    {
+     "doc": "2026-05-18",
+     "page": 13,
+     "role": "moved",
+     "quote": "We expect that the trial production will start by Q3 and commercial production will start by February, mid of February of next 2027.",
+     "speaker": "Jasbir Singh"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "context": {
+    "doc": "2025-11-07",
+    "page": 11,
+    "quote": "so we have seen like a 2, 3 quarter delays now in the last presentation, we had pointed out that we were expecting commercial production to start by 4Q or 1Q FY '27.",
+    "speaker": "Nirransh Jain"
+   },
+   "watch": "Mass production was first put at Q3 FY27, then moved to mid-February 2027; an analyst on the Nov 2025 call said earlier material had Q4 FY26 or Q1 FY27 (context quote). Listen for whether trial production started in Q3 as last stated."
+  }
+ ],
+ "next_results": {
+  "label": "Q2 FY27 results (Jul–Sep 2026)",
+  "due": "2026-11-14"
+ }
 }

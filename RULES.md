@@ -25,7 +25,7 @@ The same rules apply to every company. If a case is not covered here, add the ru
 - Financial outcomes come from the **audited consolidated** results (revenue from operations, not total income). EBITDA = PBT + finance cost + depreciation − other income, over revenue from operations, unless the company's own definition is stated and used consistently.
 - Where no audited line exists (working-capital days, order book), use management's stated figure and say so on the card.
 - Rounding: compare the unrounded audited figure with the target; display to one decimal.
-- Verdicts: **Delivered**, **Missed**, **Late** (milestone delivered after its date), **Pending** (deadline not passed). A promise withdrawn before its deadline is still scored at the deadline.
+- Verdicts: **Delivered**, **Missed**, **Late** (milestone delivered after its date), **Pending** (deadline not passed, or passed but no call after it has been read yet: a September milestone stays Pending until the November call is in). A promise withdrawn before its deadline is still scored at the deadline.
 
 ## 5. Reasons
 - Each miss carries what management said about it, quoted with page and speaker. Tag: `external` (outside the company's control, as management described it), `execution` (the company's own delivery), `own-choice` (a decision the company took), `not-explained` (the calls gave no reason).
