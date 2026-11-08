@@ -41,7 +41,9 @@ def load_company(symbol):
     c = json.loads((ROOT / "data/companies" / f"{symbol}.json").read_text())
     srcs = json.loads((ROOT / "data/companies" / f"{symbol}.sources.json").read_text())
     c["sources"] = {s.get("key") or s["date"] + ("_bizupdate" if "bizupdate" in s["file"] else ""): s for s in srcs}
+    last_call = max(s["date"] for s in c["sources"].values() if s.get("kind") != "audited")
     for cl in c["claims"]:
+        cl["_reported"] = last_call  # a passed deadline is only scored once a call after it has been read
         o = cl["outcome"]
         if o.get("audited"):
             o["call_value"] = o.get("value")

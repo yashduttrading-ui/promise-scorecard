@@ -450,8 +450,6 @@ def main(symbols):
     OUT.mkdir(exist_ok=True)
     cos = [load_company(s) for s in symbols]
     for c in cos:
-        last_call = max(s["date"] for s in c["sources"].values() if s.get("kind") != "audited")
-        for cl in c["claims"]: cl["_reported"] = last_call
         (OUT / f"{c['symbol'].lower()}.html").write_text(company_page(c))
         (OUT / f"{c['symbol'].lower()}-promises.csv").write_text(ledger_csv(c, c["checked_on"]))
         if fwd_csv(c).exists(): shutil.copy(fwd_csv(c), OUT / fwd_csv(c).name)
