@@ -1,0 +1,120 @@
+{
+  "symbol": "AMBER",
+  "short": "Amber",
+  "name": "Amber Enterprises India",
+  "exchange": "NSE",
+  "ir_page": "https://www.ir.ambergroupindia.com",
+  "checked_on": "2026-11-07",
+  "claims": [
+    {
+      "id": "fy25-revenue-growth",
+      "topic": "Revenue",
+      "period": "FY25",
+      "deadline": "2025-03-31",
+      "target": {
+        "kind": "min",
+        "low": 25,
+        "high": null,
+        "unit": "% growth"
+      },
+      "said": [
+        {
+          "doc": "2024-07-27",
+          "page": 6,
+          "role": "first",
+          "quote": "we expect our consol revenue to grow around 25%.",
+          "speaker": "Sudhir Goyal"
+        },
+        {
+          "doc": "2024-10-23",
+          "page": 6,
+          "role": "reaffirmed",
+          "quote": "we expect the console revenue to grow around 25% for the year",
+          "speaker": "Sudhir Goyal"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 13,
+          "unit": "lakh",
+          "table": "Consolidated financial results (₹ lakh)",
+          "column": "Year ended 31 March 2025 vs 31 March 2024 (Audited)",
+          "measure": "revenue_growth",
+          "lines": {
+            "rev": [
+              "Revenue from operations",
+              "9,97,301.57"
+            ],
+            "rev_prev": [
+              "Revenue from operations (previous year)",
+              "6,72,926.89"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "fy26-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY26",
+      "deadline": "2026-03-31",
+      "target": {
+        "kind": "range",
+        "low": 8,
+        "high": 9,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2025-07-30",
+          "page": 3,
+          "role": "first",
+          "quote": "we expect the consolidated margins to be in the range of 8% to 9% by FY '26 end",
+          "speaker": "Jasbir Singh"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY26",
+          "page": 15,
+          "unit": "lakh",
+          "table": "Consolidated financial results (₹ lakh)",
+          "column": "Year ended 31 March 2026 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "46,553.11"
+            ],
+            "fc": [
+              "Finance costs",
+              "28,439.38"
+            ],
+            "da": [
+              "Depreciation and amortisation expense",
+              "32,255.67"
+            ],
+            "oi": [
+              "Other income",
+              "12,016.04"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "12,18,647.66"
+            ]
+          }
+        }
+      },
+      "note": "Management said “by FY’26 end”; scored on the full-year audited margin, like every other margin target. Profit before tax here is before the share of joint-venture losses.",
+      "reason": {
+        "tag": "not-explained",
+        "doc": "2026-05-18",
+        "page": 3,
+        "speaker": "Jasbir Singh",
+        "quote": "The consolidated revenue of Amber grew by 22%, reaching INR12,186 crores for the year and recorded operating EBITDA of INR970 crores with growth of 22%.",
+        "caveat": "Management's operating EBITDA (about 8.0% of revenue) leaves out ESOP costs and non-operating items; on the audited lines it is 7.8%. The call did not discuss the 8–9% target."
+      }
+    }
+  ]
+}

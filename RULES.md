@@ -3,7 +3,7 @@
 The same rules apply to every company. If a case is not covered here, add the rule before scoring it.
 
 ## 1. Sources
-- Only documents from the company's own investor-relations page (earnings-call transcripts, audited and unaudited results). No data providers, no news, no broker notes.
+- Only the company's own documents (earnings-call transcripts, audited and unaudited results), taken from its investor-relations page. If a document is not on that page, or the page cannot be reached, use the copy the company filed with the exchange (NSE/BSE archive URL). No data providers, no news, no broker notes.
 - Register every PDF in `data/companies/<SYM>.sources.json` with its URL, sha256 and size. If a URL goes dead or the hash changes, note it; never silently swap the file.
 - A results link can be a blank placeholder (Kaynes posted a logo-only page for Q2 FY27). Check page count and text before using it.
 

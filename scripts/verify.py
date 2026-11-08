@@ -3,7 +3,7 @@ and the named speaker is the last speaker label before the quote."""
 import re, sys
 from common import load_company, doc_text, page_text, norm, all_citations, is_audited
 
-SPEAKER = re.compile(r"([A-Z][A-Za-z\.]+(?: [A-Z][A-Za-z\.]*){0,3}) ?:")
+SPEAKER = re.compile(r"([A-Z][A-Za-z\.]+(?: [A-Z][A-Za-z\.]*){0,3}) ?: ?(?=[A-Z\"“‘']|$)")
 
 def check(symbol, c, cit):
     if cit["doc"] not in c["sources"]:
@@ -26,12 +26,12 @@ def check_audited(symbol, c, cl, a):
     """Each audited number must be printed on the cited page, and must match what management said on the call."""
     if not is_audited(c, a["doc"]):
         return "not an audited source"
-    text = page_text(symbol, a["doc"], a["page"])
+    text = page_text(symbol, a["doc"], a["page"], a.get("ocr_dpi"))
     missing = [f"{lbl} {v}" for lbl, v in a["lines"].values() if v not in text]
     if missing:
         return "not on page: " + "; ".join(missing)
     o = cl["outcome"]
-    if o["call_value"] != o["value"]:
+    if o["call_value"] is not None and o["call_value"] != o["value"]:
         return f"call says {o['call_value']}, audited works out to {o['value']}"
     return None
 

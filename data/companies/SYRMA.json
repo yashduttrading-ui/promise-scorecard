@@ -1,0 +1,502 @@
+{
+  "symbol": "SYRMA",
+  "short": "Syrma SGS",
+  "name": "Syrma SGS Technology",
+  "exchange": "NSE",
+  "ir_page": "https://www.syrmasgs.com/investors",
+  "checked_on": "2026-11-07",
+  "claims": [
+    {
+      "id": "fy24-revenue-growth",
+      "topic": "Revenue",
+      "period": "FY24",
+      "deadline": "2024-03-31",
+      "target": {
+        "kind": "range",
+        "low": 35,
+        "high": 40,
+        "unit": "% growth"
+      },
+      "said": [
+        {
+          "doc": "2023-05-19",
+          "page": 5,
+          "role": "first",
+          "quote": "we expect that the revenue in the coming year should grow by about 35% to 40%",
+          "speaker": "J. S. Gujral"
+        },
+        {
+          "doc": "2024-02-07",
+          "page": 4,
+          "role": "raised",
+          "quote": "achieving INR3,000 crores of revenue",
+          "speaker": "J.S Gujral"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY24",
+          "page": 17,
+          "unit": "million",
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2024 vs 31 March 2023 (Audited)",
+          "measure": "revenue_growth",
+          "lines": {
+            "rev": [
+              "Revenue from operations",
+              "31,538.39"
+            ],
+            "rev_prev": [
+              "Revenue from operations (previous year)",
+              "20,483.48"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "fy24-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY24",
+      "deadline": "2024-03-31",
+      "target": {
+        "kind": "min",
+        "low": 10,
+        "high": null,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2023-08-02",
+          "page": 12,
+          "role": "first",
+          "quote": "On the margin we still maintain the guidance that we would be striving to be a double",
+          "speaker": "JS Gujral",
+          "cont": {
+            "page": 13,
+            "quote": "digit EBITDA on operational basis."
+          }
+        },
+        {
+          "doc": "2024-02-07",
+          "page": 4,
+          "role": "cut",
+          "quote": "EBITDA of approximately 7% to 7.5%",
+          "speaker": "J.S Gujral"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 14,
+          "unit": "million",
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2024 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "1,677.91"
+            ],
+            "fc": [
+              "Finance costs",
+              "413.07"
+            ],
+            "da": [
+              "Depreciation and amortisation expense",
+              "514.85"
+            ],
+            "oi": [
+              "Other income",
+              "414.85"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "31,541.17"
+            ]
+          },
+          "ocr_dpi": 400
+        }
+      },
+      "reason": {
+        "tag": "execution",
+        "doc": "2024-05-13",
+        "page": 6,
+        "speaker": "Bijay Agarwal",
+        "quote": "So, broadly, individual customer-wise margins have not yet declined. The MIX change, mainly you can see in the quarter, my consumer business has contributed almost 46%, which has again resulted into some impact on the overall gross margin.",
+        "caveat": "Explains the lower gross margin by a larger share of low-margin consumer business. It does not mention the double-digit EBITDA target."
+      }
+    },
+    {
+      "id": "fy25-revenue-growth",
+      "topic": "Revenue",
+      "period": "FY25",
+      "deadline": "2025-03-31",
+      "target": {
+        "kind": "range",
+        "low": 35,
+        "high": 40,
+        "unit": "% growth"
+      },
+      "said": [
+        {
+          "doc": "2023-05-19",
+          "page": 16,
+          "role": "first",
+          "quote": "we will be growing at about 35%-40% this year. The next year, if we grow at the same rate which we are confident of",
+          "speaker": "J. S. Gujral"
+        },
+        {
+          "doc": "2024-02-07",
+          "page": 4,
+          "role": "raised",
+          "quote": "next year will also grow in the same level as we have grown this year, which is between 40%-45%",
+          "speaker": "J.S Gujral"
+        },
+        {
+          "doc": "2024-08-06",
+          "page": 15,
+          "role": "reaffirmed",
+          "quote": "We said about INR4,500 crores would be our target for this year",
+          "speaker": "J.S. Gujral"
+        },
+        {
+          "doc": "2024-10-28",
+          "page": 4,
+          "role": "reaffirmed",
+          "quote": "We stand by the full-year guidance of 40%-45% growth and INR310-INR320 crores of EBIDA which translates into 7% of operating EBITDA.",
+          "speaker": "J S Gujral"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 14,
+          "unit": "million",
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2025 vs 31 March 2024 (Audited)",
+          "measure": "revenue_growth",
+          "lines": {
+            "rev": [
+              "Revenue from operations",
+              "37,866.91"
+            ],
+            "rev_prev": [
+              "Revenue from operations (previous year)",
+              "31,541.17"
+            ]
+          },
+          "ocr_dpi": 200
+        }
+      },
+      "reason": {
+        "tag": "own-choice",
+        "doc": "2025-05-14",
+        "page": 7,
+        "speaker": "J.S. Gujral",
+        "quote": "When you concentrate on high-margin verticals, which have a lot of engineering design content, the natural casualty is the top line. So it's a call which the management has taken to have accretive EBITDA from superior verticals."
+      }
+    },
+    {
+      "id": "fy25-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY25",
+      "deadline": "2025-03-31",
+      "target": {
+        "kind": "range",
+        "low": 7,
+        "high": 8,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2024-02-07",
+          "page": 13,
+          "role": "first",
+          "quote": "we are giving the guidance on 7% to 8% for the next year",
+          "speaker": "J.S Gujral"
+        },
+        {
+          "doc": "2024-05-13",
+          "page": 16,
+          "role": "cut",
+          "quote": "So we say 7% operating EBITDA margin for full annual FY'25 against 6.8% of FY'24.",
+          "speaker": "J S Gujral"
+        },
+        {
+          "doc": "2024-08-06",
+          "page": 4,
+          "role": "reaffirmed",
+          "quote": "These may translate into 7.1 or 6.9 margin",
+          "speaker": "J.S. Gujral"
+        },
+        {
+          "doc": "2025-01-29",
+          "page": 4,
+          "role": "reaffirmed",
+          "quote": "min EBITDA margin of 7%",
+          "speaker": "J. S. Gujral"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 14,
+          "unit": "million",
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2025 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "2,392.13"
+            ],
+            "fc": [
+              "Finance costs",
+              "584.60"
+            ],
+            "da": [
+              "Depreciation and amortisation expense",
+              "750.69"
+            ],
+            "oi": [
+              "Other income",
+              "489.22"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "37,866.91"
+            ]
+          },
+          "ocr_dpi": 200
+        }
+      }
+    },
+    {
+      "id": "fy26-revenue-growth",
+      "topic": "Revenue",
+      "period": "FY26",
+      "deadline": "2026-03-31",
+      "target": {
+        "kind": "range",
+        "low": 30,
+        "high": 35,
+        "unit": "% growth"
+      },
+      "said": [
+        {
+          "doc": "2025-01-29",
+          "page": 4,
+          "role": "first",
+          "quote": "next year, we expect a growth of about 30%, 35%",
+          "speaker": "J. S. Gujral"
+        },
+        {
+          "doc": "2025-05-14",
+          "page": 10,
+          "role": "reaffirmed",
+          "quote": "Yes, 30%, 35% growth with about 8% margin profile.",
+          "speaker": "J.S. Gujral"
+        },
+        {
+          "doc": "2025-11-11",
+          "page": 7,
+          "role": "reaffirmed",
+          "quote": "we stand by 30% approximately growth esimates, give or take a couple of percentage points here or there.",
+          "speaker": "J. S. Gujral"
+        },
+        {
+          "doc": "2026-01-30",
+          "page": 9,
+          "role": "reaffirmed",
+          "quote": "we should be sitting at anything between INR4,850 crores, INR4,900 crores to INR5,000 crores.",
+          "speaker": "J.S. Gujral"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY26",
+          "page": 16,
+          "unit": "million",
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2026 vs 31 March 2025 (Audited)",
+          "measure": "revenue_growth",
+          "lines": {
+            "rev": [
+              "Revenue from operations",
+              "48,190.59"
+            ],
+            "rev_prev": [
+              "Revenue from operations (previous year)",
+              "37,866.91"
+            ]
+          }
+        }
+      },
+      "reason": {
+        "tag": "own-choice",
+        "doc": "2026-05-12",
+        "page": 4,
+        "speaker": "J.S. Gujral",
+        "quote": "If I was to exclude consumer business from our portfolio because consumer is a low-margin business and there's a conscious effort of the management to sustain it at a certain level, my export -- my revenues have grown by a healthy 38%."
+      }
+    },
+    {
+      "id": "fy26-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY26",
+      "deadline": "2026-03-31",
+      "target": {
+        "kind": "min",
+        "low": 8,
+        "high": null,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2025-05-14",
+          "page": 10,
+          "role": "first",
+          "quote": "Yes, 30%, 35% growth with about 8% margin profile.",
+          "speaker": "J.S. Gujral"
+        },
+        {
+          "doc": "2025-07-24",
+          "page": 14,
+          "role": "raised",
+          "quote": "we should be able to deliver our EBITDA of 8.5% to 9% this year.",
+          "speaker": "J.S. Gujral"
+        },
+        {
+          "doc": "2025-11-11",
+          "page": 7,
+          "role": "raised",
+          "quote": "Whether it is 9.5%, 9.4%, 9.6%, I think that we'll leave it at that, but we'll be positive giving EBITDA north of what we had guided last quarter for the full year as a whole.",
+          "speaker": "J. S. Gujral"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY26",
+          "page": 16,
+          "unit": "million",
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31 March 2026 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "4,499.49"
+            ],
+            "fc": [
+              "Finance costs",
+              "482.60"
+            ],
+            "da": [
+              "Depreciation and amortisation expense",
+              "841.09"
+            ],
+            "oi": [
+              "Other income",
+              "378.07"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "48,190.59"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "fy27-revenue-growth",
+      "topic": "Revenue",
+      "period": "FY27",
+      "deadline": "2027-03-31",
+      "target": {
+        "kind": "min",
+        "low": 30,
+        "high": null,
+        "unit": "% growth"
+      },
+      "said": [
+        {
+          "doc": "2026-01-30",
+          "page": 10,
+          "role": "first",
+          "quote": "we believe that we are in a position to deliver a 30% growth on top line and on EBITDA in the coming year -- in the coming year '26, '27.",
+          "speaker": "J.S. Gujral"
+        },
+        {
+          "doc": "2026-05-12",
+          "page": 6,
+          "role": "raised",
+          "quote": "sustained revenue growth of 35%",
+          "speaker": "Bijay Agrawal"
+        },
+        {
+          "doc": "2026-07-30",
+          "page": 11,
+          "role": "reaffirmed",
+          "quote": "35% plus kind of a revenue growth for the full year",
+          "speaker": "Bijay Agrawal"
+        },
+        {
+          "doc": "2026-11-02",
+          "page": 4,
+          "role": "raised",
+          "quote": "deliver 40% to 45% growth this year on an annualized basis",
+          "speaker": "J.S. Gujral"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "fy27-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY27",
+      "deadline": "2027-03-31",
+      "target": {
+        "kind": "min",
+        "low": 10,
+        "high": null,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2026-01-30",
+          "page": 10,
+          "role": "first",
+          "quote": "we guide that we should be able to deliver a blended EBITDA margin of 10% for the next year.",
+          "speaker": "J.S. Gujral"
+        },
+        {
+          "doc": "2026-05-12",
+          "page": 9,
+          "role": "raised",
+          "quote": "next year, we are guiding 10.5% to 11%",
+          "speaker": "J.S. Gujral"
+        },
+        {
+          "doc": "2026-07-30",
+          "page": 11,
+          "role": "reaffirmed",
+          "quote": "10.5% to 11%, we maintain that we will be delivering that margin profile for the full year",
+          "speaker": "J.S. Gujral"
+        },
+        {
+          "doc": "2026-11-02",
+          "page": 5,
+          "role": "cut",
+          "quote": "I expect the year to close at 10% to 10.5%",
+          "speaker": "J.S. Gujral"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
+    }
+  ]
+}

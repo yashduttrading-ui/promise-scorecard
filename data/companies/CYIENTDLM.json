@@ -1,0 +1,232 @@
+{
+  "symbol": "CYIENTDLM",
+  "short": "Cyient DLM",
+  "name": "Cyient DLM",
+  "exchange": "NSE",
+  "ir_page": "https://www.cyientdlm.com/investors",
+  "checked_on": "2026-11-07",
+  "claims": [
+    {
+      "id": "fy24-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY24",
+      "deadline": "2024-03-31",
+      "target": {
+        "kind": "range",
+        "low": 10,
+        "high": 11,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2023-07-21",
+          "page": 5,
+          "role": "first",
+          "quote": "EBITDA will be similar to what we did last year, that will be 10% and 11%.",
+          "speaker": "Shrinivas Kulkarni"
+        },
+        {
+          "doc": "2023-10-16",
+          "page": 10,
+          "role": "reaffirmed",
+          "quote": "Yes, so our target has been to have the double-digit margin"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 3,
+          "unit": "million",
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31-Mar-24 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "821.39"
+            ],
+            "fc": [
+              "Finance costs",
+              "343.87"
+            ],
+            "da": [
+              "Depreciation and amortisation expense",
+              "223.12"
+            ],
+            "oi": [
+              "Other income",
+              "278.26"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "11,918.71"
+            ]
+          }
+        }
+      },
+      "reason": {
+        "tag": "not-explained",
+        "caveat": "The company's IR page has no transcript of the Q4 FY24 call, and the Q1 FY25 call (22 Jul 2024) did not discuss the FY24 margin."
+      }
+    },
+    {
+      "id": "fy25-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY25",
+      "deadline": "2025-03-31",
+      "target": {
+        "kind": "range",
+        "low": 10,
+        "high": 11,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2024-07-22",
+          "page": 13,
+          "role": "first",
+          "quote": "I think our near term visibility we said was about double digit which is about 10%-11%.",
+          "speaker": "Shrinivas Kulkarni"
+        },
+        {
+          "doc": "2024-10-21",
+          "page": 8,
+          "role": "cut",
+          "quote": "at a minimum we will remain flat year-on-year basis.",
+          "speaker": "Shrinivas Kulkarni"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY25",
+          "page": 3,
+          "unit": "million",
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31-Mar-25 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "917.24"
+            ],
+            "fc": [
+              "Finance costs",
+              "375.45"
+            ],
+            "da": [
+              "Depreciation and amortisation expense",
+              "340.62"
+            ],
+            "oi": [
+              "Other income",
+              "261.57"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "15,196.26"
+            ]
+          }
+        }
+      },
+      "reason": {
+        "tag": "not-explained",
+        "doc": "2025-04-22",
+        "page": 8,
+        "speaker": "Shrinivas Kulkarni",
+        "quote": "We were targeting a 10% EBITDA margin for the year. So this is a little shade under that.",
+        "caveat": "Management measured the shortfall on its adjusted margin (9.6%); on the audited lines it is 9.0%. No reason was given."
+      }
+    },
+    {
+      "id": "fy26-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY26",
+      "deadline": "2026-03-31",
+      "target": {
+        "kind": "min",
+        "low": 10,
+        "high": null,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2025-04-22",
+          "page": 16,
+          "role": "first",
+          "quote": "On a full year basis, we will be at double digit.",
+          "speaker": "Shrinivas Kulkarni"
+        },
+        {
+          "doc": "2025-07-22",
+          "page": 16,
+          "role": "reaffirmed",
+          "quote": "from a consolidated perspective, we are confident of exceeding the 10% margin this year.",
+          "speaker": "Shrinivas Kulkarni"
+        }
+      ],
+      "outcome": {
+        "audited": {
+          "doc": "audited-FY26",
+          "page": 3,
+          "unit": "million",
+          "table": "Consolidated financial results (₹ million)",
+          "column": "Year ended 31-Mar-26 (Audited)",
+          "measure": "ebitda_margin",
+          "lines": {
+            "pbt": [
+              "Profit before tax",
+              "931.61"
+            ],
+            "fc": [
+              "Finance costs",
+              "271.69"
+            ],
+            "da": [
+              "Depreciation and amortisation expense",
+              "427.52"
+            ],
+            "oi": [
+              "Other income",
+              "362.63"
+            ],
+            "rev": [
+              "Revenue from operations",
+              "12,614.85"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "fy27-ebitda",
+      "topic": "EBITDA margin",
+      "period": "FY27",
+      "deadline": "2027-03-31",
+      "target": {
+        "kind": "min",
+        "low": 10,
+        "high": null,
+        "unit": "%"
+      },
+      "said": [
+        {
+          "doc": "2026-01-20",
+          "page": 15,
+          "role": "first",
+          "quote": "you will be seeing margins in good healthy margins, double-digit margins like what we have seen in the Q3 here. I think you will be seeing slightly more than that in Q4 and probably also in FY '27.",
+          "speaker": "Rajendra Velagapudi"
+        },
+        {
+          "doc": "2026-10-15",
+          "page": 12,
+          "role": "cut",
+          "quote": "Yes, in that range. 9% to 10% range.",
+          "speaker": "Rajendra Velagapudi"
+        }
+      ],
+      "outcome": {
+        "status": "pending"
+      }
+    }
+  ]
+}

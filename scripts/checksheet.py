@@ -17,7 +17,7 @@ def main(symbol):
         for cid, kind, cit in all_citations(c):
             cl = claims[cid]; o = cl["outcome"]
             url = c["sources"][cit["doc"]]["url"] + f"#page={cit['page']}"
-            row_type = {"said": cit.get("role", "said"), "outcome": "reported", "response": "management_response", "context": "context", "reason": "reason", "audited": "audited"}[kind]
+            row_type = {"said": cit.get("role", "said"), "outcome": "reported", "response": "management_response", "context": "context", "reason": "reason", "audited": "audited", "said (continued)": "said_continued"}[kind]
             m = re.search(r"Page \d+ of \d+", page_text(symbol, cit["doc"], cit["page"]))
             if kind == "audited":
                 who = f'{cit["table"]}, column: {cit["column"]}'

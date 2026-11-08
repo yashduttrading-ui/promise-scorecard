@@ -10,7 +10,7 @@ What Indian company managements guided on earnings calls vs what the audited res
 
 ```bash
 pip install pymupdf   # verify.py also needs tesseract-ocr: the FY25 audited filing is a scan
-cd scripts && python3 fetch.py KAYNES && python3 verify.py KAYNES && python3 build.py
+cd scripts && for s in KAYNES DIXON SYRMA AMBER CYIENTDLM; do python3 fetch.py $s && python3 verify.py $s; done && python3 build.py
 ```
 
 Facts only, not investment advice.
@@ -37,3 +37,9 @@ Scoring rules are in `RULES.md`. For a new quarter: `cd scripts && python3 new_q
 
 ### What was left out
 `cd scripts && python3 candidates.py KAYNES` writes `checks/KAYNES_forward_statements.csv`. It lists every sentence a management speaker said on the calls that contains a number and a forward-looking word, and marks the ones the scorecard uses (`used_in_claim`). Read the unused rows to check whether a material promise was missed. The site links to this file and to a CSV of the promise table.
+
+## EMS peer comparison
+
+`build.py` also writes `site/compare.html` when more than one company is built. It compares only company-level, full-year revenue (₹ crore or % growth) and EBITDA-margin targets for FY24–FY27 (claim ids `fy24-revenue…`, `fy27-ebitda…`), scored against the first target. Segment, customer, quarterly and multi-year targets stay on each company's own page only.
+
+Audited lines may be in ₹ million or ₹ lakh (`"unit"` on the audited citation). Some filings have a bad or missing text layer: a source can list `"ocr_pages"` to force OCR, and an audited citation can set `"ocr_dpi"` when one resolution reads that table cleanly (cached as `raw/ocr/<SYM>_<doc>_p<n>_dpi<d>.txt`).
