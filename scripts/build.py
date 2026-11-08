@@ -35,7 +35,13 @@ def rule_text(cl, today):
     t, o = cl["target"], cl["outcome"]
     vk, vl = verdict(cl, today)
     if o.get("status") == "pending":
-        return f"Deadline {date_label(cl['deadline'])} is after {date_label(today)}, so not scored yet."
+        if cl["deadline"] > today:
+            return f"Deadline {date_label(cl['deadline'])} is after {date_label(today)}, so not scored yet."
+        last = cl.get("_reported", today)
+        if vk == "pending":
+            return (f"Deadline {date_label(cl['deadline'])} has passed, but the latest call read ({date_label(last)}) "
+                    f"was before it, so nothing to score yet.")
+        return f"Deadline {date_label(cl['deadline'])} has passed and the {date_label(last)} call did not report it done → {vl}."
     if t["kind"] == "milestone":
         if o.get("done"):
             return (f"Promised by {date_label(cl['deadline'])}. First reported done in the "
