@@ -1,202 +1,431 @@
 {
-  "symbol": "DIXON",
-  "short": "Dixon",
-  "name": "Dixon Technologies (India)",
-  "exchange": "NSE",
-  "ir_page": "https://www.dixoninfo.com/investors",
-  "checked_on": "2026-11-07",
-  "claims": [
+ "symbol": "DIXON",
+ "short": "Dixon",
+ "name": "Dixon Technologies (India)",
+ "exchange": "NSE",
+ "ir_page": "https://www.dixoninfo.com/investors",
+ "checked_on": "2026-11-07",
+ "claims": [
+  {
+   "id": "fy24-revenue",
+   "topic": "Revenue",
+   "period": "FY24",
+   "deadline": "2024-03-31",
+   "target": {
+    "kind": "range",
+    "low": 19000,
+    "high": 21000,
+    "unit": "₹ cr"
+   },
+   "said": [
     {
-      "id": "fy24-revenue",
-      "topic": "Revenue",
-      "period": "FY24",
-      "deadline": "2024-03-31",
-      "target": {
-        "kind": "range",
-        "low": 19000,
-        "high": 21000,
-        "unit": "₹ cr"
-      },
-      "said": [
-        {
-          "doc": "2023-01-25",
-          "page": 12,
-          "role": "first",
-          "quote": "next year, it can be somewhere between Rs. 19,000 crores to Rs. 21,000 crores kind of revenues.",
-          "speaker": "Saurabh Gupta"
-        }
-      ],
-      "outcome": {
-        "audited": {
-          "doc": "audited-FY25",
-          "page": 13,
-          "unit": "lakh",
-          "table": "Consolidated financial results (₹ lakh)",
-          "column": "Year ended 31-Mar-24 (Audited)",
-          "measure": "revenue",
-          "lines": {
-            "rev": [
-              "Revenue from operations",
-              "17,69,090"
-            ]
-          }
-        }
-      },
-      "reason": {
-        "tag": "not-explained",
-        "doc": "2024-05-15",
-        "page": 14,
-        "speaker": "Atul Lall",
-        "quote": "So we are not -- we have not been giving that guidance now.",
-        "caveat": "Said on the Q4 FY24 call when asked for FY25 guidance. The call did not explain why FY24 revenue came in below the first target."
-      }
-    },
-    {
-      "id": "fy24-ebitda",
-      "topic": "EBITDA margin",
-      "period": "FY24",
-      "deadline": "2024-03-31",
-      "target": {
-        "kind": "range",
-        "low": 4.2,
-        "high": 4.5,
-        "unit": "%"
-      },
-      "said": [
-        {
-          "doc": "2023-05-23",
-          "page": 15,
-          "role": "first",
-          "quote": "broadly you should look at a range of almost 4.2 to 4.5% kind of range for this financial year.",
-          "speaker": "Saurabh Gupta"
-        }
-      ],
-      "outcome": {
-        "audited": {
-          "doc": "audited-FY25",
-          "page": 13,
-          "unit": "lakh",
-          "table": "Consolidated financial results (₹ lakh)",
-          "column": "Year ended 31-Mar-24 (Audited)",
-          "measure": "ebitda_margin",
-          "lines": {
-            "pbt": [
-              "Profit before tax",
-              "49,383"
-            ],
-            "fc": [
-              "Finance costs",
-              "7,472"
-            ],
-            "da": [
-              "Depreciation and amortisation expense",
-              "16,188"
-            ],
-            "oi": [
-              "Other income",
-              "2,256"
-            ],
-            "rev": [
-              "Revenue from operations",
-              "17,69,090"
-            ]
-          }
-        }
-      },
-      "reason": {
-        "tag": "not-explained",
-        "doc": "2024-05-15",
-        "page": 14,
-        "speaker": "Atul Lall",
-        "quote": "So we are not -- we have not been giving that guidance now.",
-        "caveat": "Said on the Q4 FY24 call when asked for FY25 guidance. The call did not explain why the FY24 margin came in below the first target."
-      }
-    },
-    {
-      "id": "fy25-ebitda",
-      "topic": "EBITDA margin",
-      "period": "FY25",
-      "deadline": "2025-03-31",
-      "target": {
-        "kind": "range",
-        "low": 3.9,
-        "high": 4.0,
-        "unit": "%"
-      },
-      "said": [
-        {
-          "doc": "2024-05-15",
-          "page": 14,
-          "role": "first",
-          "quote": "on the EBITDA margins, you can assume a similar level of sub-4%, 4%",
-          "speaker": "Saurabh Gupta"
-        },
-        {
-          "doc": "2024-07-30",
-          "page": 14,
-          "role": "reaffirmed",
-          "quote": "In a similar range 3.9%, 4% kind of levels.",
-          "speaker": "Saurabh Gupta"
-        }
-      ],
-      "outcome": {
-        "audited": {
-          "doc": "audited-FY26",
-          "page": 16,
-          "unit": "lakh",
-          "table": "Consolidated financial results (₹ lakh)",
-          "column": "Year ended 31-Mar-25 (Audited)",
-          "measure": "ebitda_margin",
-          "lines": {
-            "pbt": [
-              "Profit before tax",
-              "1,10,982"
-            ],
-            "fc": [
-              "Finance costs",
-              "15,435"
-            ],
-            "da": [
-              "Depreciation and amortisation expense",
-              "28,102"
-            ],
-            "oi": [
-              "Other income",
-              "2,023"
-            ],
-            "rev": [
-              "Revenue from operations",
-              "38,86,010"
-            ]
-          }
-        }
-      },
-      "note": "The first statement (“sub-4%, 4%”) is read as 3.9–4%, the range management gave in the next call."
-    },
-    {
-      "id": "fy27-ex-vivo-revenue",
-      "topic": "Revenue excluding Vivo",
-      "period": "FY27",
-      "deadline": "2027-03-31",
-      "target": {
-        "kind": "min",
-        "low": 56000,
-        "high": null,
-        "unit": "₹ cr"
-      },
-      "said": [
-        {
-          "doc": "2026-05-12",
-          "page": 14,
-          "role": "first",
-          "quote": "Next year, we are targeting almost INR56,000 crores without the Vivo numbers, and mobile volume being flat.",
-          "speaker": "Atul Lall"
-        }
-      ],
-      "outcome": {
-        "status": "pending"
-      },
-      "note": "Target excludes the Vivo business, which audited consolidated revenue will include. Not in the peer comparison; to score it, the audited Vivo contribution has to be taken out first."
+     "doc": "2023-01-25",
+     "page": 12,
+     "role": "first",
+     "quote": "next year, it can be somewhere between Rs. 19,000 crores to Rs. 21,000 crores kind of revenues.",
+     "speaker": "Saurabh Gupta"
     }
-  ]
+   ],
+   "outcome": {
+    "audited": {
+     "doc": "audited-FY25",
+     "page": 13,
+     "unit": "lakh",
+     "table": "Consolidated financial results (₹ lakh)",
+     "column": "Year ended 31-Mar-24 (Audited)",
+     "measure": "revenue",
+     "lines": {
+      "rev": [
+       "Revenue from operations",
+       "17,69,090"
+      ]
+     }
+    }
+   },
+   "reason": {
+    "tag": "not-explained",
+    "doc": "2024-05-15",
+    "page": 14,
+    "speaker": "Atul Lall",
+    "quote": "So we are not -- we have not been giving that guidance now.",
+    "caveat": "Said on the Q4 FY24 call when asked for FY25 guidance. The call did not explain why FY24 revenue came in below the first target."
+   }
+  },
+  {
+   "id": "fy24-ebitda",
+   "topic": "EBITDA margin",
+   "period": "FY24",
+   "deadline": "2024-03-31",
+   "target": {
+    "kind": "range",
+    "low": 4.2,
+    "high": 4.5,
+    "unit": "%"
+   },
+   "said": [
+    {
+     "doc": "2023-05-23",
+     "page": 15,
+     "role": "first",
+     "quote": "broadly you should look at a range of almost 4.2 to 4.5% kind of range for this financial year.",
+     "speaker": "Saurabh Gupta"
+    }
+   ],
+   "outcome": {
+    "audited": {
+     "doc": "audited-FY25",
+     "page": 13,
+     "unit": "lakh",
+     "table": "Consolidated financial results (₹ lakh)",
+     "column": "Year ended 31-Mar-24 (Audited)",
+     "measure": "ebitda_margin",
+     "lines": {
+      "pbt": [
+       "Profit before tax",
+       "49,383"
+      ],
+      "fc": [
+       "Finance costs",
+       "7,472"
+      ],
+      "da": [
+       "Depreciation and amortisation expense",
+       "16,188"
+      ],
+      "oi": [
+       "Other income",
+       "2,256"
+      ],
+      "rev": [
+       "Revenue from operations",
+       "17,69,090"
+      ]
+     }
+    }
+   },
+   "reason": {
+    "tag": "not-explained",
+    "doc": "2024-05-15",
+    "page": 14,
+    "speaker": "Atul Lall",
+    "quote": "So we are not -- we have not been giving that guidance now.",
+    "caveat": "Said on the Q4 FY24 call when asked for FY25 guidance. The call did not explain why the FY24 margin came in below the first target."
+   }
+  },
+  {
+   "id": "fy25-ebitda",
+   "topic": "EBITDA margin",
+   "period": "FY25",
+   "deadline": "2025-03-31",
+   "target": {
+    "kind": "range",
+    "low": 3.9,
+    "high": 4.0,
+    "unit": "%"
+   },
+   "said": [
+    {
+     "doc": "2024-05-15",
+     "page": 14,
+     "role": "first",
+     "quote": "on the EBITDA margins, you can assume a similar level of sub-4%, 4%",
+     "speaker": "Saurabh Gupta"
+    },
+    {
+     "doc": "2024-07-30",
+     "page": 14,
+     "role": "reaffirmed",
+     "quote": "In a similar range 3.9%, 4% kind of levels.",
+     "speaker": "Saurabh Gupta"
+    }
+   ],
+   "outcome": {
+    "audited": {
+     "doc": "audited-FY26",
+     "page": 16,
+     "unit": "lakh",
+     "table": "Consolidated financial results (₹ lakh)",
+     "column": "Year ended 31-Mar-25 (Audited)",
+     "measure": "ebitda_margin",
+     "lines": {
+      "pbt": [
+       "Profit before tax",
+       "1,10,982"
+      ],
+      "fc": [
+       "Finance costs",
+       "15,435"
+      ],
+      "da": [
+       "Depreciation and amortisation expense",
+       "28,102"
+      ],
+      "oi": [
+       "Other income",
+       "2,023"
+      ],
+      "rev": [
+       "Revenue from operations",
+       "38,86,010"
+      ]
+     }
+    }
+   },
+   "note": "The first statement (“sub-4%, 4%”) is read as 3.9–4%, the range management gave in the next call."
+  },
+  {
+   "id": "fy27-ex-vivo-revenue",
+   "topic": "Revenue excluding Vivo",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "min",
+    "low": 56000,
+    "high": null,
+    "unit": "₹ cr"
+   },
+   "said": [
+    {
+     "doc": "2026-05-12",
+     "page": 14,
+     "role": "first",
+     "quote": "Next year, we are targeting almost INR56,000 crores without the Vivo numbers, and mobile volume being flat.",
+     "speaker": "Atul Lall"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "note": "Target excludes the Vivo business, which audited consolidated revenue will include. Not in the peer comparison; to score it, the audited Vivo contribution has to be taken out first.",
+   "watch": "₹56,000 cr for FY27 excluding Vivo, said in May with mobile volumes flat. Mobile volumes have since been cut from 55–60 million to about 34 million (see the mobile-volume card). Listen for whether ₹56,000 cr ex-Vivo is repeated."
+  },
+  {
+   "id": "mobile-volume-fy27",
+   "topic": "Smartphone volumes",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "range",
+    "low": 55,
+    "high": 60,
+    "unit": "million units"
+   },
+   "said": [
+    {
+     "doc": "2025-10-17",
+     "page": 9,
+     "role": "first",
+     "quote": "So, next year, we feel that we should be somewhere between 55 to 60 million.",
+     "speaker": "Atul Lall"
+    },
+    {
+     "doc": "2026-10-30",
+     "page": 9,
+     "role": "cut",
+     "quote": "So the market has shrunk, but our volumes are going to be in the range of around 34 million in the current fiscal.",
+     "speaker": "Atul Lall",
+     "value": 34
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "context": {
+    "doc": "2025-10-17",
+    "page": 9,
+    "quote": "So, we feel that this year numbers are going to be similar, 40 million, 42 million.",
+    "speaker": "Atul Lall"
+   },
+   "watch": "Guided 55–60 million for FY27 in October 2025 (against 40–42 million for FY26, context quote), cut to about 34 million in October 2026, a year later. Listen for the Q3 volume and whether 34 million holds; FY26 volume was put at 16–16.5 million for the first half (Jul 2026 call p.18)."
+  },
+  {
+   "id": "it-hardware-fy27-revenue",
+   "topic": "IT hardware revenue",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "range",
+    "low": 3500,
+    "high": 4000,
+    "unit": "₹ cr"
+   },
+   "said": [
+    {
+     "doc": "2026-01-29",
+     "page": 17,
+     "role": "first",
+     "quote": "We feel that for next year, the numbers are going to be somewhere around INR3,500 crores to INR4,000 crores.",
+     "speaker": "Atul Lall"
+    },
+    {
+     "doc": "2026-10-30",
+     "page": 10,
+     "role": "raised",
+     "quote": "And this year itself we feel confident that we are going to be somewhere around INR 6,000 crores in this",
+     "speaker": "Atul Lall",
+     "value": 6000
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "context": {
+    "doc": "2026-10-30",
+    "page": 15,
+    "quote": "this year we are looking at a volume of closer to 1.3-1.4 million, which will translate into revenues of closer to INR 6,000-6,500 crores.",
+    "speaker": "Saurabh Gupta"
+   },
+   "watch": "₹3,500–4,000 cr guided in January for FY27, raised to about ₹6,000 cr in October (1.3–1.4 million units, context quote). Listen for the 9-month IT hardware revenue."
+  },
+  {
+   "id": "telecom-fy27-revenue",
+   "topic": "Telecom revenue",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "range",
+    "low": 6700,
+    "high": 7000,
+    "unit": "₹ cr"
+   },
+   "said": [
+    {
+     "doc": "2026-07-31",
+     "page": 20,
+     "role": "first",
+     "quote": "So, telecom revenues, please appreciate, we have grown from INR700 crores to INR3,600 crores to INR5,000 crores and we feel, as I mentioned earlier, we're going to be somewhere between INR6,700 crores to INR7,000 crores in this fiscal.",
+     "speaker": "Atul Lall"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "₹6,700–7,000 cr for FY27 from telecom, up from about ₹5,000 cr in FY26 (their figure). Listen for the 9-month telecom number."
+  },
+  {
+   "id": "vivo-jv-q3fy27",
+   "topic": "Vivo JV: operations start and revenue consolidation",
+   "period": "Q3 FY27",
+   "deadline": "2026-12-31",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2026-07-31",
+     "page": 4,
+     "role": "first",
+     "quote": "We expect the JV to commence operations and start reflecting in our revenues from Q3 of the current fiscal.",
+     "speaker": "Atul Lall"
+    },
+    {
+     "doc": "2026-10-30",
+     "page": 5,
+     "role": "moved",
+     "quote": "Consolidation of Vivo operations is expected to commence from Q4, with significant volumes anticipated for the next financial year.",
+     "speaker": "Atul Lall"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "context": {
+    "doc": "2026-07-31",
+    "page": 4,
+    "quote": "We received the PN3 approval for our JV with Vivo in July '26, and we are now working towards the consummation of the transaction.",
+    "speaker": "Atul Lall"
+   },
+   "watch": "Revenue from the Vivo JV was put at Q3 FY27 in July and at Q4 in October. Listen for whether Vivo numbers are in the Q3 results at all, and the date now given."
+  },
+  {
+   "id": "display-fab-trials",
+   "topic": "Display fab (HKC JV): trials",
+   "period": "Q1 FY27",
+   "deadline": "2026-06-30",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2026-01-29",
+     "page": 8,
+     "role": "first",
+     "quote": "But -- and the trials, as communicated in the remarks, will happen somewhere in Q1.",
+     "speaker": "Saurabh Gupta"
+    }
+   ],
+   "outcome": {
+    "status": "late",
+    "doc": "2026-10-30",
+    "page": 5,
+    "quote": "The first phase covering automotive and notebook displays is expected to commence trials in Q3, followed by mobile display trials in Q4, with mass production targeted to begin from the next fiscal year.",
+    "first_seen": "2026-10-30",
+    "speaker": "Atul Lall",
+    "done": false,
+    "new_deadline": "2027-03-31"
+   },
+   "context": {
+    "doc": "2026-01-29",
+    "page": 8,
+    "quote": "And also the display, the machineries have been ordered and some of them will get ordered in the next few months.",
+    "speaker": "Saurabh Gupta"
+   },
+   "watch": "Display trials were put at Q1 FY27 in January; in October they were put at Q3 (auto and notebook) and Q4 (mobile), with mass production moved to FY28. Listen for whether the Q3 trials happened."
+  },
+  {
+   "id": "longcheer-jv-q3fy27",
+   "topic": "Longcheer JV: operations start",
+   "period": "Q3 FY27",
+   "deadline": "2026-12-31",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2026-10-30",
+     "page": 5,
+     "role": "first",
+     "quote": "Longcheer JV is expected to commence operation with Q3 of the current financial year.",
+     "speaker": "Atul Lall"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "Due in the quarter being reported. Listen for a start date."
+  },
+  {
+   "id": "inventec-jv-fy27",
+   "topic": "Inventec JV (Chennai): operational",
+   "period": "Q4 FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2026-07-31",
+     "page": 5,
+     "role": "first",
+     "quote": "Our new manufacturing facility addition to our current facility in Chennai for a 60-40 joint venture with Inventec Corporation, one of the largest top 5 ODMs in IT space is expected to get operational from Q4 of this fiscal.",
+     "speaker": "Atul Lall"
+    },
+    {
+     "doc": "2026-10-30",
+     "page": 11,
+     "role": "reaffirmed",
+     "quote": "Further, as I mentioned in my opening remarks, and that our joint venture with Inventec is going to get operationalized by Q3 end or Q4 of the current fiscal, and that is further going to add volumes.",
+     "speaker": "Atul Lall"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "Operational by Q4 FY27, with trials in Q3 (Oct call p.6). Listen for whether trials ran in Q3."
+  }
+ ],
+ "next_results": {
+  "label": "Q3 FY27 results (Oct–Dec 2026)",
+  "due": "2027-02-14"
+ }
 }

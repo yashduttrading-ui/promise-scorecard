@@ -1,0 +1,267 @@
+{
+ "symbol": "AVALON",
+ "name": "Avalon Technologies",
+ "exchange": "NSE",
+ "ir_page": "https://www.avalontec.com/investors/",
+ "checked_on": "2026-11-07",
+ "claims": [
+  {
+   "id": "fy26-revenue-growth",
+   "topic": "Revenue growth",
+   "period": "FY26",
+   "deadline": "2026-03-31",
+   "target": {
+    "kind": "range",
+    "low": 18,
+    "high": 20,
+    "unit": "% growth"
+   },
+   "said": [
+    {
+     "doc": "2025-05-07",
+     "page": 4,
+     "role": "first",
+     "quote": "we are guiding for a revenue growth of 18% to 20% for FY26",
+     "speaker": "Kunhamed Bicha"
+    },
+    {
+     "doc": "2025-11-06",
+     "page": 3,
+     "role": "raised",
+     "quote": "Accordingly, we are revising our full-year revenue growth guidance upwards to 28%–30%, from the earlier 23%–25%.",
+     "speaker": "Kunhamed Bicha",
+     "value": 28
+    },
+    {
+     "doc": "2026-02-05",
+     "page": 3,
+     "role": "raised",
+     "quote": "our FY '26 revenue growth guidance upward to around 40% from the earlier guidance of 28% to 30%.",
+     "speaker": "Kunhamed Bicha",
+     "value": 40
+    }
+   ],
+   "outcome": {
+    "value": 46,
+    "unit": "% growth",
+    "doc": "2026-05-07",
+    "page": 2,
+    "quote": "We delivered a 46% revenue growth for the full year, higher than our 40% guidance.",
+    "speaker": "Kunhamed Bicha",
+    "audited": {
+     "doc": "audited-FY26",
+     "page": 10,
+     "unit": "million",
+     "table": "Consolidated financial results (₹ million)",
+     "column": "Year ended March 31, 2026 (Audited) vs March 31, 2025",
+     "measure": "revenue_growth",
+     "lines": {
+      "rev": [
+       "Revenue from Operations",
+       "16,032.05"
+      ],
+      "rev_prev": [
+       "Revenue from Operations (previous year)",
+       "10,981.28"
+      ]
+     }
+    }
+   },
+   "note": "The 23–25% step was given on the Aug 2025 call, whose transcript is not on the IR site (only the filing letter is). The results filing is a scanned PDF; the cited page is OCR'd, so check the figures against the page image."
+  },
+  {
+   "id": "fy26-nwc",
+   "topic": "Working capital days",
+   "period": "FY26",
+   "deadline": "2026-03-31",
+   "target": {
+    "kind": "max",
+    "high": 130,
+    "unit": "days"
+   },
+   "said": [
+    {
+     "doc": "2025-11-06",
+     "page": 9,
+     "role": "first",
+     "quote": "What we had given as a guidance on overall net working capital for the end of the year is 120 to 130 days.",
+     "speaker": "Suresh Veerappan"
+    },
+    {
+     "doc": "2026-02-05",
+     "page": 6,
+     "role": "reaffirmed",
+     "quote": "In the previous call, we had guided net working capital days in the range of 120 to 130 by March 2026 and we are currently below this range as of December 2025.",
+     "speaker": "Suresh Veerappan"
+    }
+   ],
+   "outcome": {
+    "value": 112,
+    "unit": "days",
+    "doc": "2026-05-07",
+    "page": 2,
+    "quote": "On net working capital, we reported 112 days, better than our guided range of 120 to 130 days.",
+    "speaker": "Kunhamed Bicha"
+   }
+  },
+  {
+   "id": "fy26-gross-margin",
+   "topic": "Gross margin",
+   "period": "FY26",
+   "deadline": "2026-03-31",
+   "target": {
+    "kind": "range",
+    "low": 33,
+    "high": 35,
+    "unit": "%"
+   },
+   "said": [
+    {
+     "doc": "2025-11-06",
+     "page": 7,
+     "role": "first",
+     "quote": "A few quarters, we may have 36%, okay, or 37% in certain times, but our guidance always been between 33% and 35%.",
+     "speaker": "Kunhamed Bicha"
+    }
+   ],
+   "outcome": {
+    "value": 34.3,
+    "unit": "%",
+    "doc": "2026-05-07",
+    "page": 3,
+    "quote": "Gross margin for the year was 34.3% at the upper end of our guided range.",
+    "speaker": "Kunhamed Bicha"
+   },
+   "note": "A standing range management repeats every call, not a one-year target; included because it is scored every year."
+  },
+  {
+   "id": "fy27-revenue-growth",
+   "topic": "Revenue growth",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "range",
+    "low": 24,
+    "high": 27,
+    "unit": "% growth"
+   },
+   "said": [
+    {
+     "doc": "2026-05-07",
+     "page": 4,
+     "role": "first",
+     "quote": "We always seek to be conservative and hence, guiding for a revenue growth of 24% to 27%.",
+     "speaker": "Kunhamed Bicha"
+    },
+    {
+     "doc": "2026-08-05",
+     "page": 6,
+     "role": "raised",
+     "quote": "With improved business visibility, we have revised our FY '27 revenue growth guidance upwards to 26 – 30% from the earlier guidance of 24% to 27%.",
+     "speaker": "Suresh V.R.",
+     "value": 26
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "First FY27 guidance 24–27%, raised to 26–30% in August after one quarter. On an FY26 base of ₹1,603 cr (their figure, May 2026 call p.5) that is ₹2,020–2,084 cr. Listen for whether the range moves again after Q2."
+  },
+  {
+   "id": "fy27-double-fy24",
+   "topic": "Revenue (double FY24 by FY27)",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "min",
+    "low": 1725,
+    "unit": "₹ cr"
+   },
+   "said": [
+    {
+     "doc": "2026-05-07",
+     "page": 4,
+     "role": "first",
+     "quote": "On revenue guidance, we have previously committed to doubling revenues from FY24 to FY27, a target of approximately INR1,725 crores.",
+     "speaker": "Kunhamed Bicha"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "note": "Management says this was committed earlier; the May 2026 call is the first of the calls read here where the ₹ figure is stated.",
+   "watch": "₹1,725 cr for FY27. The 26–30% growth guidance on ₹1,603 cr implies ₹2,020–2,084 cr, so this older target is already inside the newer one; a miss here would mean a very large miss on the newer one."
+  },
+  {
+   "id": "chennai-plant-q2fy27",
+   "topic": "New Chennai plant: commercial production",
+   "period": "Q2 FY27",
+   "deadline": "2026-09-30",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2026-08-05",
+     "page": 4,
+     "role": "first",
+     "quote": "On our manufacturing footprint, our new manufacturing plant focused on domestic demand in Chennai is now complete and will commence commercial production from Q2 FY27.",
+     "speaker": "Kunhamed Bicha"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "Due in the quarter just reported. Listen for a plain statement that commercial production started by September; anything else is a slip."
+  },
+  {
+   "id": "us-breakeven-fy27",
+   "topic": "US operations: towards breakeven",
+   "period": "later FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2026-05-07",
+     "page": 12,
+     "role": "first",
+     "quote": "With that scale-up expected to happen in FY27, we see this trend of losses coming down and moving towards breakeven in later part of FY27.",
+     "speaker": "Suresh V.R."
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "Listen for the US loss number this quarter and whether 'breakeven in later FY27' is repeated."
+  },
+  {
+   "id": "semicon-volume-fy27",
+   "topic": "Semiconductor equipment: volume production",
+   "period": "FY27",
+   "deadline": "2027-03-31",
+   "target": {
+    "kind": "milestone"
+   },
+   "said": [
+    {
+     "doc": "2026-05-07",
+     "page": 4,
+     "role": "first",
+     "quote": "In semiconductor equipment, we have completed the project readiness phase with our global partner, a meaningful milestone ahead of volume production expected in FY27.",
+     "speaker": "Kunhamed Bicha"
+    }
+   ],
+   "outcome": {
+    "status": "pending"
+   },
+   "watch": "Listen for whether volume production has started or a quarter is named."
+  }
+ ],
+ "short": "Avalon",
+ "next_results": {
+  "label": "Q2 FY27 results (Jul–Sep 2026)",
+  "due": "2026-11-14"
+ }
+}

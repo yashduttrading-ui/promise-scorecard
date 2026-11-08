@@ -1,0 +1,56 @@
+[
+ {
+  "file": "AVALON_2025-11-06.pdf",
+  "date": "2025-11-06",
+  "title": "Q2FY26-call",
+  "url": "https://www.avalontec.com/investor/financials/quarterly-results/q2/Q2-FY26-Earnings-Call-Transcript.pdf",
+  "sha256": "3826468a2bfcf10fd967fd32f4968175c63884b4ee307db338b058e95f8a2055",
+  "bytes": 326898
+ },
+ {
+  "file": "AVALON_2026-02-05.pdf",
+  "date": "2026-02-05",
+  "title": "Q3FY26-call",
+  "url": "https://www.avalontec.com/investor/earnings-call-audio/JMFIS-AvalonTech-Q3-FY26.pdf",
+  "sha256": "a282b48f1da6a79a9fda3659fc288db6a7065146f9ebfb24d8b5bccacebbaa5a",
+  "bytes": 280638
+ },
+ {
+  "file": "AVALON_2026-05-07.pdf",
+  "date": "2026-05-07",
+  "title": "Q4FY26-call",
+  "url": "https://www.avalontec.com/investor/conference_call/Q4FY26_Call/MOFSL-AvalonTech-May07-2026.pdf",
+  "sha256": "0e62a0e4c8e31aa90b26e6f2110168e7103ead8bd4426026019a5110ab1ad063",
+  "bytes": 278412
+ },
+ {
+  "file": "AVALON_2026-08-05.pdf",
+  "date": "2026-08-05",
+  "title": "Q1FY27-call",
+  "url": "https://www.avalontec.com/investor/earnings-call-audio/Avalon-Technologies-Limited-Q1-FY27-Earnings-Call-Transcript.pdf",
+  "sha256": "477df90ebd092fff25549ab84b13ac014263e80cbef28a91323fcce0633761cf",
+  "bytes": 734531
+ },
+ {
+  "file": "AVALON_2025-05-07.pdf",
+  "date": "2025-05-07",
+  "title": "Q4FY25-call",
+  "url": "https://www.avalontec.com/wp-content/uploads/2025/05/Q4_FY25_Earnings_Call_Transcript.pdf",
+  "sha256": "f0b6872ef044d79362f0c61042da269fd986dc9eaeea5bcd66794e8f40bb2f5d",
+  "bytes": 254997
+ },
+ {
+  "key": "audited-FY26",
+  "kind": "audited",
+  "label": "Audited results FY26",
+  "date": "2026-05-07",
+  "title": "Audited financial results Q4 FY2025-26 (consolidated, with FY25 comparative), filed under Regulation 33; scanned, OCR'd",
+  "file": "AVALON_audited-FY26.pdf",
+  "url": "https://www.avalontec.com/investor/financials/quarterly-results/q4/Q4FY26-FR.pdf",
+  "sha256": "40cb2449e2f260d0a01ec3010f53e1663b5de49dd442e02f2b402f19d9ee5f99",
+  "bytes": 4544389,
+  "ocr_pages": [
+   10
+  ]
+ }
+]

@@ -58,5 +58,29 @@
   "url": "https://www.ir.ambergroupindia.com/wp-content/uploads/2026/05/SE-Intimation-Q4-FY-26-Earning-Call-Transcript.pdf",
   "sha256": "2a0bc36e036970a874b9709e7536fbfb05aad052ade7b71f03ba6abb15593c97",
   "bytes": 579764
+ },
+ {
+  "file": "AMBER_2025-11-07.pdf",
+  "date": "2025-11-07",
+  "title": "Q2FY26-call",
+  "url": "https://www.ir.ambergroupindia.com/wp-content/uploads/2025/11/SE_Intimation_Earnings_Call_Transcript_13112025.pdf",
+  "sha256": "5a72cb29094e4099efaaf46eaa30fcd9ac8003c81927cd79cd7df1f190bff78a",
+  "bytes": 620226
+ },
+ {
+  "file": "AMBER_2026-02-10.pdf",
+  "date": "2026-02-10",
+  "title": "Q3FY26-call",
+  "url": "https://www.ir.ambergroupindia.com/wp-content/uploads/2026/02/SE-Intimation-Earnings-Call-Transcript-16022026.pdf",
+  "sha256": "15d29520c1b18ca76456889119c4425e66277aa32d57451b74b65645a4261bf0",
+  "bytes": 618766
+ },
+ {
+  "file": "AMBER_2026-08-14.pdf",
+  "date": "2026-08-14",
+  "title": "Q1FY27-call",
+  "url": "https://www.ir.ambergroupindia.com/wp-content/uploads/2026/08/SE-Intimation-Q1-FY2027-Earnings-Call-Transcript-14.08.2026.pdf",
+  "sha256": "ef8da2363d81f256fa00ed1c6c9946125d8a07079aaf08369cc21fcf8a4421fb",
+  "bytes": 510024
  }
 ]

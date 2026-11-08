@@ -23,7 +23,8 @@ def target_text(t):
 def verdict(cl, today):
     t, o = cl["target"], cl["outcome"]
     if o.get("status") == "pending":
-        return ("pending", "Pending") if cl["deadline"] > today else ("missed", "Missed")
+        # a deadline that has passed is only a miss once a call after it has been read
+        return ("pending", "Pending") if cl["deadline"] > min(today, cl.get("_reported", today)) else ("missed", "Missed")
     if o.get("status") == "late": return "late", "Late"
     if o.get("status") == "met": return "met", "Delivered"
     v = o["value"]
@@ -139,7 +140,7 @@ def group(cl):
     t = cl["topic"].lower()
     if "margin" in t: return "Margins"
     if "working capital" in t: return "Working capital"
-    if "revenue" in t and cl["target"]["kind"] != "milestone": return "Revenue"
+    if t.startswith("revenue") and cl["target"]["kind"] != "milestone": return "Revenue"
     return "Milestones and other targets"
 
 SHORT = {"EBITDA margin": "EBITDA", "PAT margin": "PAT", "Working capital days": "", "Revenue": ""}
@@ -180,7 +181,8 @@ def reasons(c, today):
             f'The one-word tag is our reading of that quote, so a reader can disagree. Where the calls never gave a reason, it says so.</p><ul>{items}</ul></section>')
 
 def revenue_rows(c):
-    return [cl for cl in c["claims"] if group(cl) == "Revenue" and "value" in cl["outcome"]]
+    return [cl for cl in c["claims"] if group(cl) == "Revenue" and "value" in cl["outcome"]
+            and ("audited" in cl["outcome"] or cl["target"]["unit"] == "₹ cr")]
 
 def rev_crore(cl):
     """(first target, audited revenue) in ₹ crore. A growth target is converted with the audited base-year revenue."""
@@ -268,7 +270,7 @@ def revenue_chart(c):
 
 def is_open(cl, today):
     o = cl["outcome"]
-    return (o.get("status") == "pending" and cl["deadline"] > today) or o.get("done") is False
+    return (o.get("status") == "pending" and cl["deadline"] > min(today, cl.get("_reported", today))) or o.get("done") is False
 
 def watch_list(c, today):
     items = sorted((cl for cl in c["claims"] if is_open(cl, today)),
@@ -437,6 +439,8 @@ def main(symbols):
     OUT.mkdir(exist_ok=True)
     cos = [load_company(s) for s in symbols]
     for c in cos:
+        last_call = max(s["date"] for s in c["sources"].values() if s.get("kind") != "audited")
+        for cl in c["claims"]: cl["_reported"] = last_call
         (OUT / f"{c['symbol'].lower()}.html").write_text(company_page(c))
         (OUT / f"{c['symbol'].lower()}-promises.csv").write_text(ledger_csv(c, c["checked_on"]))
         if fwd_csv(c).exists(): shutil.copy(fwd_csv(c), OUT / fwd_csv(c).name)
