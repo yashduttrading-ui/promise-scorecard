@@ -236,7 +236,7 @@
     "quote": "So, we feel that this year numbers are going to be similar, 40 million, 42 million.",
     "speaker": "Atul Lall"
    },
-   "watch": "Guided 55–60 million for FY27 in October 2025 (against 40–42 million for FY26, context quote), cut to about 34 million in October 2026, a year later. Listen for the Q3 volume and whether 34 million holds; FY26 volume was put at 16–16.5 million for the first half (Jul 2026 call p.18)."
+   "watch": "Guided 55–60 million for FY27 in October 2025 (against 40–42 million for FY26, context quote), cut to about 34 million in October 2026, a year later. Listen for the Q3 volume and whether 34 million holds."
   },
   {
    "id": "it-hardware-fy27-revenue",
@@ -421,7 +421,13 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "Operational by Q4 FY27, with trials in Q3 (Oct call p.6). Listen for whether trials ran in Q3."
+   "watch": "Operational by Q4 FY27, with a trial in Q3 (context quote). Listen for whether the trial ran in Q3.",
+   "context": {
+    "doc": "2026-10-30",
+    "page": 6,
+    "quote": "A new manufacturing facility adjacent to our current facility in Chennai for our 60/40 joint venture with Inventec Corporation from Taiwan, which is one of the world's top 5 PCODMs, is expected to start a trial in Q3 of the current fiscal.",
+    "speaker": "Atul Lall"
+   }
   }
  ],
  "next_results": {
