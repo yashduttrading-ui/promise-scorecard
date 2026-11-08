@@ -216,7 +216,7 @@
   },
   {
    "id": "us-breakeven-fy27",
-   "topic": "US operations: towards breakeven",
+   "topic": "US operations: moving towards breakeven",
    "period": "later FY27",
    "deadline": "2027-03-31",
    "target": {
@@ -234,7 +234,7 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "Listen for the US loss number this quarter and whether 'breakeven in later FY27' is repeated."
+   "watch": "Listen for the US loss number this quarter and whether 'moving towards breakeven in the later part of FY27' is repeated."
   },
   {
    "id": "semicon-volume-fy27",

@@ -11,7 +11,8 @@ def fmt(v, unit):
     if unit == "%": return f"{v:g}%"
     if unit == "% growth": return f"{v:g}% growth"
     if unit == "days": return f"{v:g} days"
-    return f"₹{v:,.0f} cr" if v >= 100 else f"₹{v:g} cr"
+    if unit == "₹ cr": return f"₹{v:,.0f} cr" if v >= 100 else f"₹{v:g} cr"
+    return f"{v:,g} {unit}"
 
 def target_text(t):
     u = t.get("unit", "")
