@@ -335,6 +335,7 @@ def page(title, body, desc):
 document.querySelectorAll('[data-v]').forEach(c=>c.hidden=b.dataset.f!=='all'&&c.dataset.v!==b.dataset.f)}});
 document.querySelectorAll('[data-copy]').forEach(a=>a.addEventListener('click',()=>{{navigator.clipboard?.writeText(location.origin+location.pathname+a.hash);a.textContent='Copied';setTimeout(()=>a.textContent='Copy link',1500)}}));
 document.querySelectorAll('.watch li>a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.filters button[data-f=all]').click()));
+document.querySelectorAll('.stats a[data-f]').forEach(a=>a.addEventListener('click',()=>document.querySelector(`.filters button[data-f=${{a.dataset.f}}]`).click()));
 document.addEventListener('click',e=>{{const a=e.target.closest('a[href^="#"]');if(!a)return;history.replaceState({{y:scrollY}},'');if(a.hash===location.hash)setTimeout(openHash)}},true);
 const openHash=()=>{{const c=location.hash&&document.getElementById(location.hash.slice(1));if(!c){{if(history.state)scrollTo(0,history.state.y);return}}if(c.hidden)document.querySelector('.filters button[data-f=all]').click();const d=c.querySelector('details');if(d)d.open=true;c.scrollIntoView()}};history.scrollRestoration='manual';addEventListener('hashchange',openHash);openHash()</script></body></html>"""
 
@@ -357,7 +358,7 @@ def company_page(c):
     vs = [verdict(cl, today)[0] for cl in c["claims"]]
     n = {k: vs.count(k) for k in ("met", "missed", "late", "pending")}
     scored = n["met"] + n["missed"] + n["late"]
-    stats = "".join(f'<div class="stat s-{k}"><b>{n[k]}</b><span>{l}</span></div>' for k, l in
+    stats = "".join(f'<a class="stat s-{k}" href="#all" data-f="{k}" title="Show only {l.lower()} promises"><b>{n[k]}</b><span>{l}</span></a>' for k, l in
                     [("met", "Delivered"), ("missed", "Missed"), ("late", "Late"), ("pending", "Pending")])
     filters = "".join(f'<button data-f="{k}"{" class=on" if k=="all" else ""}>{l}</button>' for k, l in
                       [("all", "All"), ("met", "Delivered"), ("missed", "Missed"), ("late", "Late"), ("pending", "Pending")])

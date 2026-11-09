@@ -4,7 +4,7 @@ main{max-width:860px;margin:0 auto;padding:28px 20px 40px}a{color:var(--teal)}na
 .hero{padding:18px 0 8px}.eyebrow{color:var(--teal);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
 h1{font-size:34px;line-height:1.15;margin:6px 0 10px}.lede{font-size:17px;color:var(--mute);max-width:640px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
-.stat b{display:block;font-size:28px}.stat span{color:var(--mute);font-size:13px}.s-met b{color:var(--met)}.s-missed b{color:var(--miss)}.s-late b{color:var(--late)}.s-pending b{color:var(--pend)}
+a.stat{text-decoration:none;color:inherit;display:block}a.stat:hover b{text-decoration:underline}.stat b{display:block;font-size:28px}.stat span{color:var(--mute);font-size:13px}.s-met b{color:var(--met)}.s-missed b{color:var(--miss)}.s-late b{color:var(--late)}.s-pending b{color:var(--pend)}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:18px 0}.panel h2{font-size:17px;margin:0 0 8px}
 svg{width:100%;height:auto}.grid{stroke:var(--line)}.ax{fill:var(--mute);font-size:12px}.val{fill:var(--ink);font-size:11px;font-weight:600}
 .b-guide{fill:#99d5cf;background:#99d5cf}.b-cut{fill:#f5c27a;background:#f5c27a}.b-act{fill:var(--teal);background:var(--teal)}
