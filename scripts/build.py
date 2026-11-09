@@ -11,7 +11,8 @@ def fmt(v, unit):
     if unit == "%": return f"{v:g}%"
     if unit == "% growth": return f"{v:g}% growth"
     if unit == "days": return f"{v:g} days"
-    return f"₹{v:,.0f} cr" if v >= 100 else f"₹{v:g} cr"
+    if unit == "₹ cr": return f"₹{v:,.0f} cr" if v >= 100 else f"₹{v:g} cr"
+    return f"{v:,g} {unit}"
 
 def target_text(t):
     u = t.get("unit", "")
@@ -35,7 +36,13 @@ def rule_text(cl, today):
     t, o = cl["target"], cl["outcome"]
     vk, vl = verdict(cl, today)
     if o.get("status") == "pending":
-        return f"Deadline {date_label(cl['deadline'])} is after {date_label(today)}, so not scored yet."
+        if cl["deadline"] > today:
+            return f"Deadline {date_label(cl['deadline'])} is after {date_label(today)}, so not scored yet."
+        last = cl.get("_reported", today)
+        if vk == "pending":
+            return (f"Deadline {date_label(cl['deadline'])} has passed, but the latest call read ({date_label(last)}) "
+                    f"was before it, so nothing to score yet.")
+        return f"Deadline {date_label(cl['deadline'])} has passed and the {date_label(last)} call did not report it done → {vl}."
     if t["kind"] == "milestone":
         if o.get("done"):
             return (f"Promised by {date_label(cl['deadline'])}. First reported done in the "
@@ -300,9 +307,13 @@ def track_record(c, today):
         pct = ", ".join(f'{rev_crore(cl)[1] / rev_crore(cl)[0] * 100:.0f}% ({E(cl["period"])})' for cl in rev)
         cuts = sum(any(x.get("role") == "cut" for x in cl["said"]) for cl in rev)
         parts.append(f'Revenue came in at {pct} of the first guidance, and guidance was cut mid-year in {cuts} of {len(rev)} years.')
-    for g, lab in (("Margins", "Margin targets"), ("Working capital", "Working-capital targets"), ("Milestones and other targets", "Milestones")):
-        due = [cl for cl in c["claims"] if group(cl) == g and verdict(cl, today)[0] != "pending"]
-        if due: parts.append(f'{lab}: {sum(verdict(cl, today)[0] == "met" for cl in due)} of {len(due)} kept{" on time" if g.startswith("Milestones") else ""}.')
+    def kept(sel, lab, tail=""):
+        due = [cl for cl in c["claims"] if sel(cl) and verdict(cl, today)[0] != "pending"]
+        if due: parts.append(f'{lab}: {sum(verdict(cl, today)[0] == "met" for cl in due)} of {len(due)} kept{tail}.')
+    kept(lambda cl: group(cl) == "Margins", "Margin targets")
+    kept(lambda cl: group(cl) == "Working capital", "Working-capital targets")
+    kept(lambda cl: cl["target"]["kind"] == "milestone", "Milestones", " on time")
+    kept(lambda cl: group(cl) == "Milestones and other targets" and cl["target"]["kind"] != "milestone", "Other targets (segment and company-specific)")
     tagged = [cl for cl in c["claims"] if cl.get("reason")]
     if tagged:
         n = {k: sum(cl["reason"]["tag"] == k for cl in tagged) for k in TAGS}
@@ -439,8 +450,6 @@ def main(symbols):
     OUT.mkdir(exist_ok=True)
     cos = [load_company(s) for s in symbols]
     for c in cos:
-        last_call = max(s["date"] for s in c["sources"].values() if s.get("kind") != "audited")
-        for cl in c["claims"]: cl["_reported"] = last_call
         (OUT / f"{c['symbol'].lower()}.html").write_text(company_page(c))
         (OUT / f"{c['symbol'].lower()}-promises.csv").write_text(ledger_csv(c, c["checked_on"]))
         if fwd_csv(c).exists(): shutil.copy(fwd_csv(c), OUT / fwd_csv(c).name)

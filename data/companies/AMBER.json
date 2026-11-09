@@ -256,7 +256,13 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "Net debt of ₹700–800 cr at March 2027, in a year with ₹1,800–2,000 cr of capex (same call p.16). Listen for the September net debt figure."
+   "watch": "Net debt of ₹700–800 cr at March 2027, in a year with ₹1,800–2,000 cr of capex (context quote). Listen for the September net debt figure.",
+   "context": {
+    "doc": "2026-05-18",
+    "page": 16,
+    "quote": "So on the capex, yes, we will be doing around INR1,800 crores to INR2,000 crores of overall capex, including Ascent new project, some part of Ascent-K and the other divisions.",
+    "speaker": "Sudhir Goyal"
+   }
   },
   {
    "id": "ascent-pcb-production",

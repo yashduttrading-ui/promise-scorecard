@@ -165,7 +165,13 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "First FY27 guidance 24–27%, raised to 26–30% in August after one quarter. On an FY26 base of ₹1,603 cr (their figure, May 2026 call p.5) that is ₹2,020–2,084 cr. Listen for whether the range moves again after Q2."
+   "watch": "First FY27 guidance 24–27%, raised to 26–30% in August after one quarter. On an FY26 base of ₹1,603 cr (their figure, context quote) that is ₹2,020–2,084 cr. Listen for whether the range moves again after Q2.",
+   "context": {
+    "doc": "2026-05-07",
+    "page": 5,
+    "quote": "For the full-year FY26, revenues were at INR1,603 crores, reflecting 46% growth year-on-year, ahead of our guided range of 40%.",
+    "speaker": "Suresh V.R."
+   }
   },
   {
    "id": "fy27-double-fy24",
@@ -190,7 +196,13 @@
     "status": "pending"
    },
    "note": "Management says this was committed earlier; the May 2026 call is the first of the calls read here where the ₹ figure is stated.",
-   "watch": "₹1,725 cr for FY27. The 26–30% growth guidance on ₹1,603 cr implies ₹2,020–2,084 cr, so this older target is already inside the newer one; a miss here would mean a very large miss on the newer one."
+   "watch": "₹1,725 cr for FY27. The 26–30% growth guidance on ₹1,603 cr (context quote) implies ₹2,020–2,084 cr, so this older target is already inside the newer one; a miss here would mean a very large miss on the newer one.",
+   "context": {
+    "doc": "2026-05-07",
+    "page": 5,
+    "quote": "For the full-year FY26, revenues were at INR1,603 crores, reflecting 46% growth year-on-year, ahead of our guided range of 40%.",
+    "speaker": "Suresh V.R."
+   }
   },
   {
    "id": "chennai-plant-q2fy27",
@@ -212,11 +224,11 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "Due in the quarter just reported. Listen for a plain statement that commercial production started by September; anything else is a slip."
+   "watch": "Due in the quarter just reported. Listen for whether commercial production started by September and, if not, the new date."
   },
   {
    "id": "us-breakeven-fy27",
-   "topic": "US operations: towards breakeven",
+   "topic": "US operations: moving towards breakeven",
    "period": "later FY27",
    "deadline": "2027-03-31",
    "target": {
@@ -234,7 +246,7 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "Listen for the US loss number this quarter and whether 'breakeven in later FY27' is repeated."
+   "watch": "Listen for the US loss number this quarter and whether 'moving towards breakeven in the later part of FY27' is repeated."
   },
   {
    "id": "semicon-volume-fy27",

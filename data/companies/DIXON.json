@@ -197,7 +197,7 @@
     "status": "pending"
    },
    "note": "Target excludes the Vivo business, which audited consolidated revenue will include. Not in the peer comparison; to score it, the audited Vivo contribution has to be taken out first.",
-   "watch": "₹56,000 cr for FY27 excluding Vivo, said in May with mobile volumes flat. Mobile volumes have since been cut from 55–60 million to about 34 million (see the mobile-volume card). Listen for whether ₹56,000 cr ex-Vivo is repeated."
+   "watch": "₹56,000 cr for FY27 excluding Vivo, said in May with mobile volumes flat. Since then smartphone volumes went from 55–60 million (including Vivo) to about 34 million (excluding Vivo); see the smartphone-volume card for the basis. Listen for whether ₹56,000 cr ex-Vivo is repeated."
   },
   {
    "id": "mobile-volume-fy27",
@@ -231,12 +231,13 @@
     "status": "pending"
    },
    "context": {
-    "doc": "2025-10-17",
+    "doc": "2026-10-30",
     "page": 9,
-    "quote": "So, we feel that this year numbers are going to be similar, 40 million, 42 million.",
+    "quote": "And in this, I am not including the Vivo quantities.",
     "speaker": "Atul Lall"
    },
-   "watch": "Guided 55–60 million for FY27 in October 2025 (against 40–42 million for FY26, context quote), cut to about 34 million in October 2026, a year later. Listen for the Q3 volume and whether 34 million holds; FY26 volume was put at 16–16.5 million for the first half (Jul 2026 call p.18)."
+   "watch": "Guided 55–60 million for FY27 in October 2025, including Vivo; a year later put at about 34 million excluding Vivo (context quote), so the two figures are not like-for-like. Listen for the Q3 volume, whether 34 million holds, and what Vivo adds.",
+   "note": "Not like-for-like: the 55–60 million (Oct 2025, p.9) included Vivo volumes (analyst: \"So, that is including Vivo, you expect 55 million to 60 million?\" — \"That's right.\"), while the 34 million (Oct 2026) excludes them (context quote). The same Oct 2025 page put FY26 at 40–42 million."
   },
   {
    "id": "it-hardware-fy27-revenue",
@@ -421,7 +422,13 @@
    "outcome": {
     "status": "pending"
    },
-   "watch": "Operational by Q4 FY27, with trials in Q3 (Oct call p.6). Listen for whether trials ran in Q3."
+   "watch": "Operational by Q4 FY27, with a trial in Q3 (context quote). Listen for whether the trial ran in Q3.",
+   "context": {
+    "doc": "2026-10-30",
+    "page": 6,
+    "quote": "A new manufacturing facility adjacent to our current facility in Chennai for our 60/40 joint venture with Inventec Corporation from Taiwan, which is one of the world's top 5 PCODMs, is expected to start a trial in Q3 of the current fiscal.",
+    "speaker": "Atul Lall"
+   }
   }
  ],
  "next_results": {
